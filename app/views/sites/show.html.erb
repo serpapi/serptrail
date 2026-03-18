@@ -60,7 +60,7 @@
         </div>
 
         <div class="card-chart">
-          <% sparkline = position_sparkline(success_checks) %>
+          <% sparkline = position_sparkline(success_checks, width: 440, height: 120) %>
           <% if sparkline %>
             <%= sparkline %>
           <% else %>
