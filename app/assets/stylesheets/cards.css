@@ -1,0 +1,105 @@
+@layer components {
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .card-actions a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.8125rem;
+  }
+
+  .card-actions form {
+    display: flex;
+    align-items: center;
+  }
+
+  .card-actions button {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: 0.8125rem;
+    padding: 0;
+  }
+
+  .card-actions form:last-child button {
+    color: var(--color-danger);
+  }
+
+  .card-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-stat-label {
+    font-size: 0.6875rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .card-stat-value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+  }
+
+  .card-stat-value a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .card-chart {
+    border-top: 1px solid var(--color-border);
+    padding-top: 0.75rem;
+  }
+
+  .card-chart .sparkline {
+    display: block;
+    width: 100%;
+    height: 80px;
+  }
+
+  .card-no-data {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+    font-size: 0.8125rem;
+  }
+}

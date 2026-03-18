@@ -21,6 +21,13 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
     get site_url(@site), headers: @headers
     assert_response :success
     assert_select "h1", @site.name
+    assert_select ".card-grid"
+  end
+
+  test "get table" do
+    get table_site_url(@site), headers: @headers
+    assert_response :success
+    assert_select "table"
   end
 
   test "get new" do

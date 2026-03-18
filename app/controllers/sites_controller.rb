@@ -1,11 +1,15 @@
 class SitesController < ApplicationController
-  before_action :set_site, only: %i[show edit update destroy]
+  before_action :set_site, only: %i[show table edit update destroy]
 
   def index
     @sites = Site.all.order(:name)
   end
 
   def show
+    @keywords = @site.keywords.includes(:checks).order(:query)
+  end
+
+  def table
     @keywords = @site.keywords.order(:query)
   end
 

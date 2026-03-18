@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "sites#index"
 
   resources :sites do
+    get :table, on: :member
     resources :keywords, except: [ :index, :show ] do
       post :check, on: :member
     end

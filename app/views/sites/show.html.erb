@@ -1,6 +1,7 @@
 <div class="header">
   <h1><%= @site.name %></h1>
   <div class="header-actions">
+    <%= link_to "Table", table_site_path(@site), class: "btn btn-secondary" %>
     <%= link_to "Edit", edit_site_path(@site), class: "btn btn-secondary" %>
     <%= link_to "Add keyword", new_site_keyword_path(@site), class: "btn" %>
   </div>
@@ -12,52 +13,63 @@
 </p>
 
 <% if @keywords.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Query</th>
-        <th>Frequency</th>
-        <th>Position</th>
-        <th>Change</th>
-        <th>Ranked URL</th>
-        <th>Last Checked</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @keywords.each do |keyword| %>
-        <% latest = keyword.latest_check %>
-        <% change = keyword.position_change %>
-        <tr>
-          <td><%= keyword.query %></td>
-          <td><%= keyword.check_frequency.capitalize %></td>
-          <td>
-            <% if latest %>
-              <%= link_to(latest.position || "Not ranked", keyword_checks_path(keyword)) %>
-            <% else %>
-              <span class="muted">--</span>
-            <% end %>
-          </td>
-          <td>
-            <% if change && change != 0 %>
-              <% if change > 0 %>
-                <span class="change-up">+<%= change %></span>
-              <% else %>
-                <span class="change-down"><%= change %></span>
-              <% end %>
-            <% end %>
-          </td>
-          <td class="url-cell"><%= latest&.url %></td>
-          <td><%= keyword.last_checked_at && time_ago_in_words(keyword.last_checked_at) + " ago" %></td>
-          <td class="actions">
+  <div class="card-grid">
+    <% @keywords.each do |keyword| %>
+      <% latest = keyword.latest_check %>
+      <% change = keyword.position_change %>
+      <% success_checks = keyword.checks.select(&:success?) %>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title"><%= keyword.query %></h2>
+          <div class="card-actions">
             <%= button_to "Check", check_site_keyword_path(@site, keyword), method: :post %>
             <%= link_to "Edit", edit_site_keyword_path(@site, keyword) %>
             <%= button_to "Delete", site_keyword_path(@site, keyword), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+          </div>
+        </div>
+
+        <div class="card-stats">
+          <div class="card-stat">
+            <span class="card-stat-label">Position</span>
+            <span class="card-stat-value">
+              <% if latest %>
+                <%= link_to(latest.position || "N/R", keyword_checks_path(keyword)) %>
+              <% else %>
+                <span class="muted">--</span>
+              <% end %>
+            </span>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Change</span>
+            <span class="card-stat-value">
+              <% if change && change != 0 %>
+                <% if change > 0 %>
+                  <span class="change-up">+<%= change %></span>
+                <% else %>
+                  <span class="change-down"><%= change %></span>
+                <% end %>
+              <% else %>
+                <span class="muted">--</span>
+              <% end %>
+            </span>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Frequency</span>
+            <span class="card-stat-value"><%= keyword.check_frequency.capitalize %></span>
+          </div>
+        </div>
+
+        <div class="card-chart">
+          <% sparkline = position_sparkline(success_checks) %>
+          <% if sparkline %>
+            <%= sparkline %>
+          <% else %>
+            <div class="card-no-data">No data</div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <p>No keywords yet. Add one to start tracking.</p>
 <% end %>
