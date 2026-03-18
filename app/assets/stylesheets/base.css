@@ -1,0 +1,22 @@
+/*
+ * Base styles for HTML elements.
+ * Builds on reset.css with your app's defaults.
+ */
+@layer base {
+  /* body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  } */
+
+  /* a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+  } */
+
+  /* :focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 2px;
+  } */
+}

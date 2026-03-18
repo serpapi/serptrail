@@ -1,0 +1,28 @@
+/*
+ * Form input styles.
+ * Text inputs, selects, textareas, checkboxes, switches.
+ */
+@layer components {
+  /* Text inputs */
+  /* .input {
+    border-radius: 0.5em;
+    border: 1px solid var(--color-ink-medium);
+    font-size: max(16px, 1em);
+    padding: 0.5em 0.8em;
+    width: 100%;
+  } */
+
+  /* .input:focus {
+    outline: var(--focus-ring);
+    outline-offset: -1px;
+  } */
+
+  /* Select dropdowns */
+  /* .input--select {} */
+
+  /* Textareas */
+  /* .input--textarea {} */
+
+  /* Switches/toggles */
+  /* .switch {} */
+}

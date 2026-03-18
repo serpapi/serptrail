@@ -1,0 +1,19 @@
+/*
+ * Modal and dialog styles.
+ * Uses the native <dialog> element.
+ */
+@layer components {
+  /* .dialog {
+    border: 0;
+    border-radius: 0.5em;
+    padding: 1rem;
+  } */
+
+  /* .dialog::backdrop {
+    background-color: rgb(0 0 0 / 50%);
+  } */
+
+  /* .dialog[open] {
+    animation: fade-in 150ms ease-out;
+  } */
+}
