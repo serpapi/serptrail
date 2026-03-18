@@ -1,21 +1,80 @@
-/*
- * Button component styles.
- */
 @layer components {
-  /* .btn {
-    align-items: center;
-    border-radius: 99rem;
-    border: 1px solid var(--color-ink-light);
+  .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    text-decoration: none;
     cursor: pointer;
-    display: inline-flex;
-    font-weight: 600;
-    gap: 0.5em;
-    justify-content: center;
-    padding: 0.5em 1.1em;
-  } */
+  }
 
-  /* Variants */
-  /* .btn--primary {} */
-  /* .btn--secondary {} */
-  /* .btn--negative {} */
+  .btn:hover {
+    background: var(--color-primary-hover);
+  }
+
+  .btn-secondary {
+    background: #fff;
+    color: #374151;
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background: #f3f4f6;
+  }
+
+  /* Button group (segmented control) */
+  .btn-group {
+    display: inline-flex;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .field .btn-group-option {
+    display: block;
+    margin: 0;
+    line-height: 1;
+    font-weight: normal;
+  }
+
+  .btn-group-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .btn-group-label {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    background: #fff;
+    cursor: pointer;
+    border-right: 1px solid var(--color-border);
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+  }
+
+  .btn-group-option:last-child .btn-group-label {
+    border-right: none;
+  }
+
+  .btn-group-label:hover {
+    background: #f3f4f6;
+  }
+
+  .btn-group-input:checked + .btn-group-label {
+    background: #111827;
+    color: #fff;
+  }
+
+  .btn-group-input:focus-visible + .btn-group-label {
+    outline: 2px solid #111827;
+    outline-offset: -2px;
+  }
 }

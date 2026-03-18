@@ -1,13 +1,31 @@
-/*
- * Navigation styles.
- * Header nav, menus, mobile nav.
- */
 @layer components {
-  /* .nav {} */
+  .navbar {
+    background: #fff;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.75rem 0;
+    margin-bottom: 2rem;
+  }
 
-  /* .nav__menu {} */
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
 
-  /* .nav__item {} */
+  .navbar-brand {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
 
-  /* .nav__link {} */
+  .navbar-link {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  .navbar-link:hover {
+    color: #111827;
+  }
 }

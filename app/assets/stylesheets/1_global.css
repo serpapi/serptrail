@@ -1,19 +1,11 @@
 @layer reset, base, components, utilities;
 
 :root {
-  /* Spacing */
-
-  /* Text */
-
-  /* Borders */
-
-  /* Shadows */
-
-  /* Focus rings */
-
-  /* Easing functions from https://easings.net/ */
-
-  /* Layout */
-
-  /* Z-index */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-danger: #dc2626;
+  --color-success: #16a34a;
+  --color-muted: #6b7280;
+  --color-bg: #f9fafb;
+  --color-border: #e5e7eb;
 }

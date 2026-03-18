@@ -1,28 +1,102 @@
-/*
- * Form input styles.
- * Text inputs, selects, textareas, checkboxes, switches.
- */
 @layer components {
-  /* Text inputs */
-  /* .input {
-    border-radius: 0.5em;
-    border: 1px solid var(--color-ink-medium);
-    font-size: max(16px, 1em);
-    padding: 0.5em 0.8em;
+  .field {
+    margin-bottom: 1rem;
+  }
+
+  .field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .field input[type="text"],
+  .field select {
     width: 100%;
-  } */
+    max-width: 400px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+  }
 
-  /* .input:focus {
-    outline: var(--focus-ring);
-    outline-offset: -1px;
-  } */
+  /* Toggle switch */
+  .toggle-field {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-  /* Select dropdowns */
-  /* .input--select {} */
+  .toggle-field > label {
+    margin-bottom: 0;
+  }
 
-  /* Textareas */
-  /* .input--textarea {} */
+  .toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+  }
 
-  /* Switches/toggles */
-  /* .switch {} */
+  .toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--color-border);
+    border-radius: 9999px;
+    transition: background 0.2s;
+  }
+
+  .toggle-slider::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+
+  .toggle-input:checked + .toggle-slider {
+    background: var(--color-primary);
+  }
+
+  .toggle-input:checked + .toggle-slider::before {
+    transform: translateX(20px);
+  }
+
+  .toggle-input:focus-visible + .toggle-slider {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Errors */
+  .errors {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .errors h2 {
+    font-size: 0.875rem;
+    color: #991b1b;
+    margin-bottom: 0.5rem;
+  }
+
+  .errors ul {
+    margin-left: 1.25rem;
+    font-size: 0.875rem;
+    color: #991b1b;
+  }
 }

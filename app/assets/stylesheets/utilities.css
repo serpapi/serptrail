@@ -1,27 +1,20 @@
 @layer utilities {
-  /* Text */
+  .muted { color: var(--color-muted); }
+  .url-cell { max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-  /* Flexbox and Grid */
+  .change-up { color: var(--color-success); font-weight: 600; }
+  .change-down { color: var(--color-danger); font-weight: 600; }
 
-  /* Sizing */
+  .status { font-size: 0.75rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 500; }
+  .status-success { background: #ecfdf5; color: #065f46; }
+  .status-failed { background: #fef2f2; color: #991b1b; }
+  .status-pending { background: #fffbeb; color: #92400e; }
 
-  /* Overflow */
+  .breadcrumb { font-size: 0.875rem; margin-bottom: 1rem; }
+  .breadcrumb a { color: var(--color-primary); text-decoration: none; }
 
-  /* Padding */
+  .site-meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 1.5rem; }
 
-  /* Margins */
-
-  /* Position */
-
-  /* Fills */
-
-  /* Borders */
-
-  /* Shadows */
-
-  /* Lists */
-
-  /* Accessibility */
-
-  /* Visibility */
+  .back-link { display: inline-block; margin-top: 1.5rem; font-size: 0.875rem; color: var(--color-muted); text-decoration: none; }
+  .back-link:hover { color: #111827; }
 }

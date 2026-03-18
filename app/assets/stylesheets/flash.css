@@ -1,16 +1,20 @@
-/*
- * Rails flash message styles.
- * Typically used for notice/alert messages.
- */
 @layer components {
-  /* .flash {
-    inset-block-start: 1rem;
-    inset-inline-start: 50%;
-    position: fixed;
-    transform: translateX(-50%);
-    z-index: var(--z-flash);
-  } */
+  .flash {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+  }
 
-  /* .flash--notice {} */
-  /* .flash--alert {} */
+  .flash-notice {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+
+  .flash-alert {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+  }
 }
