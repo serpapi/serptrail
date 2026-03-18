@@ -1,0 +1,36 @@
+<p class="breadcrumb">
+  <%= link_to @site.name, @site %> &rsaquo;
+  <strong><%= @keyword.query %></strong>
+</p>
+
+<h1>Check History</h1>
+
+<% if @checks.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Position</th>
+        <th>URL</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @checks.each do |check| %>
+        <tr>
+          <td><%= check.checked_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= check.position || "Not ranked" %></td>
+          <td class="url-cell"><%= check.url %></td>
+          <td>
+            <span class="status status-<%= check.status %>"><%= check.status.capitalize %></span>
+            <% if check.failed? && check.error_message.present? %>
+              <br><small class="muted"><%= check.error_message %></small>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No checks recorded yet.</p>
+<% end %>

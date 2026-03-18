@@ -1,0 +1,34 @@
+<%= form_with(model: site) do |form| %>
+  <% if site.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(site.errors.count, "error") %> prohibited this site from being saved:</h2>
+      <ul>
+        <% site.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :domain %>
+    <%= form.text_field :domain, required: true, placeholder: "example.com" %>
+  </div>
+
+  <div class="field toggle-field">
+    <%= form.label :tracking_enabled, "Enable tracking" %>
+    <label class="toggle">
+      <%= form.check_box :tracking_enabled, class: "toggle-input" %>
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn" %>
+  </div>
+<% end %>

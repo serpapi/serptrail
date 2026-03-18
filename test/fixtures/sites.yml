@@ -1,0 +1,9 @@
+example:
+  name: Example
+  domain: example.com
+  tracking_enabled: true
+
+disabled:
+  name: Disabled Site
+  domain: disabled.com
+  tracking_enabled: false

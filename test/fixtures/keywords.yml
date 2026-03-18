@@ -1,0 +1,23 @@
+ruby:
+  site: example
+  query: best ruby gems
+  check_frequency: daily
+  last_checked_at: <%= 2.days.ago.to_fs(:db) %>
+
+rails:
+  site: example
+  query: rails tutorial
+  check_frequency: weekly
+  last_checked_at: <%= 1.day.ago.to_fs(:db) %>
+
+disabled_keyword:
+  site: disabled
+  query: disabled query
+  check_frequency: daily
+  last_checked_at: <%= 2.days.ago.to_fs(:db) %>
+
+never_checked:
+  site: example
+  query: new keyword
+  check_frequency: daily
+  last_checked_at: null

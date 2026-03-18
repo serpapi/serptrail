@@ -1,0 +1,21 @@
+ruby_latest:
+  keyword: ruby
+  position: 5
+  url: https://example.com/gems
+  status: success
+  checked_at: <%= 2.days.ago.to_fs(:db) %>
+
+ruby_previous:
+  keyword: ruby
+  position: 8
+  url: https://example.com/gems
+  status: success
+  checked_at: <%= 4.days.ago.to_fs(:db) %>
+
+ruby_failed:
+  keyword: ruby
+  position:
+  url:
+  status: failed
+  error_message: API rate limit exceeded
+  checked_at: <%= 3.days.ago.to_fs(:db) %>

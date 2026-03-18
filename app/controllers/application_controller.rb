@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  http_basic_authenticate_with name: ENV.fetch("HTTP_AUTH_USERNAME"), password: ENV.fetch("HTTP_AUTH_PASSWORD")
 end
