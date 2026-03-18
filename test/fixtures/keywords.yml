@@ -10,6 +10,30 @@ rails:
   check_frequency: weekly
   last_checked_at: <%= 1.day.ago.to_fs(:db) %>
 
+acme_ruby:
+  site: acme
+  query: best ruby gems
+  check_frequency: weekly
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+acme_rails:
+  site: acme
+  query: rails tutorial
+  check_frequency: weekly
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+shopwise_ruby:
+  site: shopwise
+  query: best ruby gems
+  check_frequency: weekly
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+shopwise_rails:
+  site: shopwise
+  query: rails tutorial
+  check_frequency: weekly
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
 disabled_keyword:
   site: disabled
   query: disabled query

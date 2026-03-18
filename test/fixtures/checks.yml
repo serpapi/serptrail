@@ -1,3 +1,6 @@
+<% rng = Random.new(42) %>
+
+# === example / best ruby gems ===
 ruby_latest:
   keyword: ruby
   position: 5
@@ -19,3 +22,62 @@ ruby_failed:
   status: failed
   error_message: API rate limit exceeded
   checked_at: <%= 3.days.ago.to_fs(:db) %>
+
+<% 5.times do |i| %>
+ruby_week_<%= i %>:
+  keyword: ruby
+  position: <%= rng.rand(1..20) %>
+  url: https://example.com/gems
+  status: success
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === example / rails tutorial ===
+<% 5.times do |i| %>
+rails_week_<%= i %>:
+  keyword: rails
+  position: <%= rng.rand(1..20) %>
+  url: https://example.com/tutorial
+  status: success
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === acme / best ruby gems ===
+<% 5.times do |i| %>
+acme_ruby_week_<%= i %>:
+  keyword: acme_ruby
+  position: <%= rng.rand(1..20) %>
+  url: https://acme.io/ruby
+  status: success
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === acme / rails tutorial ===
+<% 5.times do |i| %>
+acme_rails_week_<%= i %>:
+  keyword: acme_rails
+  position: <%= rng.rand(1..20) %>
+  url: https://acme.io/rails
+  status: success
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === shopwise / best ruby gems ===
+<% 5.times do |i| %>
+shopwise_ruby_week_<%= i %>:
+  keyword: shopwise_ruby
+  position: <%= rng.rand(1..20) %>
+  url: https://shopwise.com/ruby
+  status: success
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === shopwise / rails tutorial ===
+<% 5.times do |i| %>
+shopwise_rails_week_<%= i %>:
+  keyword: shopwise_rails
+  position: <%= rng.rand(1..20) %>
+  url: https://shopwise.com/rails
+  status: success
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>

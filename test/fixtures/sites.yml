@@ -3,6 +3,16 @@ example:
   domain: example.com
   tracking_enabled: true
 
+acme:
+  name: Acme Corp
+  domain: acme.io
+  tracking_enabled: true
+
+shopwise:
+  name: ShopWise
+  domain: shopwise.com
+  tracking_enabled: true
+
 disabled:
   name: Disabled Site
   domain: disabled.com
