@@ -1,0 +1,34 @@
+@layer components {
+  .sparkline-hitarea {
+    fill: transparent;
+    cursor: pointer;
+  }
+
+  .sparkline-dot {
+    fill: #2563eb;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .sparkline-label {
+    fill: #111827;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-anchor: middle;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .sparkline-point:hover .sparkline-dot,
+  .sparkline-point:hover .sparkline-label {
+    opacity: 1;
+  }
+
+  .sparkline-axis-label {
+    fill: var(--color-muted);
+    font-size: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
