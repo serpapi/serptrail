@@ -1,0 +1,12 @@
+access-key-id: $LITESTREAM_ACCESS_KEY_ID
+secret-access-key: $LITESTREAM_SECRET_ACCESS_KEY
+
+dbs:
+  - path: /rails/storage/production.sqlite3
+    replicas:
+      - type: s3
+        endpoint: https://05f7153ee69759e20a5c0820526d5bff.r2.cloudflarestorage.com
+        bucket: serptrail-db-replication
+        path: storage/production.sqlite3
+        retention: 24h
+        snapshot-interval: 5m

@@ -5,7 +5,7 @@
 service: serptrail
 
 # Name of the container image (use your-user/app-name on external registries).
-image: serptrail
+image: strzibnyj/serptrail
 
 # Deploy to these servers.
 servers:
@@ -22,10 +22,9 @@ servers:
 # Using an SSL proxy like this requires turning on config.assume_ssl and config.force_ssl in production.rb!
 #
 # Don't use this when deploying to multiple web servers (then you have to terminate SSL at your load balancer).
-#
-# proxy:
-#   ssl: true
-#   host: app.example.com
+proxy:
+  ssl: true
+  host: serptrail.strzibny.name
 
 # Where you keep your container images.
 registry:
@@ -68,6 +67,8 @@ aliases:
   shell: app exec --interactive --reuse "bash"
   logs: app logs -f
   dbc: app exec --interactive --reuse "bin/rails dbconsole --include-password"
+  apps: server exec docker exec kamal-proxy kamal-proxy list
+  envs: app exec --reuse "env"
 
 # Use a persistent storage volume for sqlite database files and local Active Storage files.
 # Recommended to change this to a mounted volume path that is backed up off server.
@@ -94,8 +95,24 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: paas_admin
+
+accessories:
+  litestream:
+    image: litestream/litestream:latest
+    host: 46.62.130.206
+    env:
+      clear:
+        LITESTREAM_LOG_LEVEL: debug
+      secret:
+        - LITESTREAM_ACCESS_KEY_ID
+        - LITESTREAM_SECRET_ACCESS_KEY
+    files:
+      - config/litestream.yml:/etc/litestream.yml
+    volumes:
+      - "serptrail_storage:/rails/storage"
+    cmd: replicate -config /etc/litestream.yml
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
