@@ -39,6 +39,8 @@ gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
+
+# Use SerpApi for keyword search results
 gem "serpapi"
 
 group :development, :test do
