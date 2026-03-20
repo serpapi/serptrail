@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Seotrack" %></title>
+    <title><%= content_for(:title) || "SerpTrail" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Seotrack">
+    <meta name="application-name" content="SerpTrail">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -22,7 +22,7 @@
   <body>
     <nav class="navbar">
       <div class="container">
-        <%= link_to "Seotrack", root_path, class: "navbar-brand" %>
+        <%= link_to "SerpTrail", root_path, class: "navbar-brand" %>
         <%= link_to "Sites", sites_path, class: "navbar-link" %>
       </div>
     </nav>
