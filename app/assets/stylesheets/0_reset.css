@@ -1,8 +1,7 @@
 @layer reset {
   /*
-  * CSS Reset
-  * Based on Fizzy's reset: https://github.com/basecamp/fizzy/blob/main/app/assets/stylesheets/web/reset.css
-  * Which is based on: https://github.com/hankchizljaw/modern-css-reset
+  * Modern CSS Reset
+  * @link https://github.com/hankchizljaw/modern-css-reset
   */
 
   /* Box sizing rules */
