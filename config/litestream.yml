@@ -5,7 +5,7 @@ dbs:
   - path: /rails/storage/production.sqlite3
     replicas:
       - type: s3
-        endpoint: https://05f7153ee69759e20a5c0820526d5bff.r2.cloudflarestorage.com
+        endpoint: https://05f7153ee69759e20a5c0820526d5bff.eu.r2.cloudflarestorage.com
         bucket: serptrail-db-replication
         path: storage/production.sqlite3
         retention: 24h
