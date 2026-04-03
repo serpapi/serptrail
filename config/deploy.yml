@@ -101,7 +101,7 @@ ssh:
 accessories:
   litestream:
     image: litestream/litestream:latest
-    host: 46.62.130.206
+    host: 192.168.0.1
     env:
       clear:
         LITESTREAM_LOG_LEVEL: debug
