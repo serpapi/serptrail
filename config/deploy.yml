@@ -10,10 +10,10 @@ image: strzibnyj/serptrail
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 159.223.26.18
   job:
     hosts:
-      - 192.168.0.1
+      - 159.223.26.18
     cmd: bin/jobs
 
 # Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
@@ -104,7 +104,7 @@ ssh:
 accessories:
   litestream:
     image: litestream/litestream:latest
-    host: 192.168.0.1
+    host: 159.223.26.18
     env:
       clear:
         LITESTREAM_LOG_LEVEL: debug
