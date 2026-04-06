@@ -43,6 +43,9 @@ gem "image_processing", "~> 1.2"
 # Use SerpApi for keyword search results
 gem "serpapi"
 
+# LLM integration
+gem "ruby_llm"
+
 group :development, :test do
   gem "dotenv-rails"
 
