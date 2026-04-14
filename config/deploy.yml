@@ -116,6 +116,8 @@ accessories:
     volumes:
       - "serptrail_storage:/rails/storage"
     cmd: replicate -config /etc/litestream.yml
+    options:
+      user: "1000:1000"
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:

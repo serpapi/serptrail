@@ -31,17 +31,36 @@ kamal accessory exec litestream generations /rails/storage/production.sqlite3
 
 ### Restores
 
-Here's how to restore the database. Start the maintainance mode and stop the application before continuing.
+Here's how to restore the database. Start the maintainance mode and stop Litestream before continuing.
 
 ```bash
 kamal accessory exec litestream snapshots /rails/storage/production.sqlite3
 kamal app maintenance
-kamal app exec "rm /rails/storage/production.sqlite3"
+kamal accessory stop litestream
+```
+
+Now let's delete the database so we can put the restore:
+
+```bash
+kamal shell
+> rm storage/production.sqlite3*
+```
+
+Restore the db files, restart litestream, and restart the application:
+
+```bash
+kamal app stop
 kamal accessory exec litestream restore /rails/storage/production.sqlite3
+kamal accessory start litestream
+kamal app boot
 kamal app live
 ```
 
-To restore with point-in-time, add `-timestamp TIMESTAMP` to `restore`.
+To restore with point-in-time, add `-timestamp TIMESTAMP` to `restore` like this:
+
+```bash
+kamal accessory exec litestream "restore -timestamp 2026-04-13T14:50:24Z /rails/storage/production.sqlite3"
+```
 
 ### Audits
 
