@@ -6,7 +6,9 @@ This is a demo for Wroclowe.rb featuring a small SerpApi-powered application for
 
 ### Initial setup
 
-To deploy the applications with Kamal, run `kamal setup`:
+First, create a VPS server on Digital Ocean with the cloud-init configuration from `config/cloud-init.sh`. Then update `config/deploy.yml` and create `.env` with your environment.
+
+To deploy the application with Kamal, run `kamal setup`:
 
 ```bash
 kamal setup
@@ -46,6 +48,8 @@ kamal shell
 > rm storage/production.sqlite3*
 ```
 
+(Or delete the files directly from `/var/lib/docker/volumes/serptrail_storage/_data` if the app container is not available.)
+
 Restore the db files, restart litestream, and restart the application:
 
 ```bash
@@ -60,6 +64,19 @@ To restore with point-in-time, add `-timestamp TIMESTAMP` to `restore` like this
 
 ```bash
 kamal accessory exec litestream "restore -timestamp 2026-04-13T14:50:24Z /rails/storage/production.sqlite3"
+```
+
+#### Restores to a new server
+
+If you want to run a copy of the app on a new server with the latest backup, you might need to restore from Litestream before Rails creates an empty database.
+
+```bash
+kamal server bootstrap
+kamal accessory boot litestream
+# Update permissions for /rails/storage
+kamal server exec "docker run --rm -v serptrail_storage:/rails/storage alpine chown -R 1000:1000 /rails/storage"
+kamal accessory exec litestream restore /rails/storage/production.sqlite3
+kamal setup
 ```
 
 ### Audits
