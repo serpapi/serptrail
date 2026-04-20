@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_18_115316) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_20_125507) do
   create_table "checks", force: :cascade do |t|
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
@@ -44,6 +44,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_115316) do
     t.index ["domain"], name: "index_sites_on_domain", unique: true
   end
 
-  add_foreign_key "checks", "keywords"
-  add_foreign_key "keywords", "sites"
+  add_foreign_key "checks", "keywords", on_delete: :cascade
+  add_foreign_key "keywords", "sites", on_delete: :cascade
 end
