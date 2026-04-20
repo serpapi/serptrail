@@ -33,7 +33,7 @@
             <span class="card-stat-label">Position</span>
             <span class="card-stat-value">
               <% if latest %>
-                <%= link_to(latest.position || "N/R", keyword_checks_path(keyword)) %>
+                <%= link_to(latest.position || "N/R", site_keyword_checks_path(@site, keyword)) %>
               <% else %>
                 <span class="muted">--</span>
               <% end %>

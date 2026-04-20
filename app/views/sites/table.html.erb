@@ -34,7 +34,7 @@
           <td><%= keyword.check_frequency.capitalize %></td>
           <td>
             <% if latest %>
-              <%= link_to(latest.position || "Not ranked", keyword_checks_path(keyword)) %>
+              <%= link_to(latest.position || "Not ranked", site_keyword_checks_path(@site, keyword)) %>
             <% else %>
               <span class="muted">--</span>
             <% end %>

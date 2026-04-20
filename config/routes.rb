@@ -5,11 +5,8 @@ Rails.application.routes.draw do
     get :table, on: :member
     resources :keywords, except: [ :index, :show ] do
       post :check, on: :member
+      resources :checks, only: [ :index ]
     end
-  end
-
-  resources :keywords, only: [] do
-    resources :checks, only: [ :index ]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
