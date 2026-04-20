@@ -2,7 +2,7 @@ class Keyword < ApplicationRecord
   belongs_to :site
   has_many :checks, dependent: :destroy
 
-  validates :query, presence: true, uniqueness: { scope: :site_id }
+  validates :query, presence: true, uniqueness: { scope: :site_id }, length: { maximum: 255 }
   validates :check_frequency, presence: true
 
   enum :check_frequency, { daily: "daily", weekly: "weekly", biweekly: "biweekly", monthly: "monthly" }

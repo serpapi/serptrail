@@ -38,4 +38,34 @@ class SiteTest < ActiveSupport::TestCase
     site = Site.create!(name: "Test", domain: "new.com")
     assert site.tracking_enabled?
   end
+
+  test "rejects invalid domain formats" do
+    invalid_domains = [
+      "foo bar.com",
+      "-foo.com",
+      "foo-.com",
+      "foo..com",
+      ".foo.com",
+      "foo.com.",
+      "foo",
+      "foo.c",
+      "foo.com:8080",
+      "foo.com/path"
+    ]
+
+    invalid_domains.each do |domain|
+      site = Site.new(name: "Test", domain: domain)
+      assert_not site.valid?, "expected #{domain.inspect} to be invalid"
+      assert_includes site.errors[:domain], "must be a valid domain"
+    end
+  end
+
+  test "accepts valid domain formats" do
+    valid_domains = [ "foo.com", "sub.foo.com", "foo-bar.co.uk", "xn--example.com", "a.photography" ]
+
+    valid_domains.each do |domain|
+      site = Site.new(name: "Test", domain: domain)
+      assert site.valid?, "expected #{domain.inspect} to be valid, got #{site.errors.full_messages}"
+    end
+  end
 end
