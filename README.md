@@ -1,6 +1,14 @@
 # README
 
-This is a demo for Wroclowe.rb featuring a small SerpApi-powered application for tracking keywords and Kamal configuration for simple VPS deployment.
+This is a demo for my talk _Kamal is not harder than your PaaS_ for Wroclowe.rb featuring a small SerpApi-powered application for tracking keywords and Kamal configuration for simple VPS deployment. Just plain Rails, SQLite, Litestream, and Kamal.
+
+## Requirements
+
+This demo requires a small VPS and a couple of ENV variables in `.env` populating `.kamal/secrets`. To get your SerpApi key, [sign up](https://serpapi.com/users/sign_up) for a free account. To set up backups, you'll need S3-compatible storage. You can copy the `.env.example` for a quickstart:
+
+```bash
+cp .env.example .env
+```
 
 ## Kamal
 
