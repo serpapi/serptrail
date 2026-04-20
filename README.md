@@ -1,4 +1,4 @@
-# README
+# Kamal is not harder than your PaaS Demo
 
 This is a demo for my talk _Kamal is not harder than your PaaS_ for Wroclowe.rb featuring a small SerpApi-powered application for tracking keywords and Kamal configuration for simple VPS deployment. Just plain Rails, SQLite, Litestream, and Kamal.
 
