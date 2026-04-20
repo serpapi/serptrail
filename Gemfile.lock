@@ -360,7 +360,7 @@ GEM
     ruby_llm-schema (0.3.0)
     rubyzip (3.2.2)
     securerandom (0.4.1)
-    selenium-webdriver (4.41.0)
+    selenium-webdriver (4.43.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -604,7 +604,7 @@ CHECKSUMS
   ruby_llm-schema (0.3.0) sha256=a591edc5ca1b7f0304f0e2261de61ba4b3bea17be09f5cf7558153adfda3dec6
   rubyzip (3.2.2) sha256=c0ed99385f0625415c8f05bcae33fe649ed2952894a95ff8b08f26ca57ea5b3c
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  selenium-webdriver (4.41.0) sha256=cdc1173cd55cf186022cea83156cc2d0bec06d337e039b02ad25d94e41bedd22
+  selenium-webdriver (4.43.0) sha256=a634377b964b701c6ac0a009ce3a08fa34ec1e1e7fe9a6d57e3088d14529a65c
   serpapi (1.0.3) sha256=abec708769a9527583597984b310608f565c72687e0a3d42615f4d3cfda83634
   solid_cable (3.0.12) sha256=a168a54731a455d5627af48d8441ea3b554b8c1f6e6cd6074109de493e6b0460
   solid_cache (1.0.10) sha256=bc05a2fb3ac78a6f43cbb5946679cf9db67dd30d22939ededc385cb93e120d41
