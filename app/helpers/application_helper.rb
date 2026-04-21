@@ -1,9 +1,10 @@
 module ApplicationHelper
   def position_sparkline(checks, width: 280, height: 80)
-    points = checks.select(&:position).sort_by(&:checked_at)
-    return nil if points.size < 2
+    points = checks.sort_by(&:checked_at)
+    ranked = points.select(&:position)
+    return nil if points.size < 2 || ranked.empty?
 
-    positions = points.map(&:position)
+    positions = ranked.map(&:position)
     min_pos = positions.min
     max_pos = positions.max
     range = max_pos - min_pos
@@ -14,33 +15,43 @@ module ApplicationHelper
     padding_bottom = 24
     plot_w = width - (padding_x * 2)
     plot_h = height - padding_top - padding_bottom
+    unranked_y = (padding_top + plot_h).round(1)
 
     plot_points = points.each_with_index.map do |check, i|
       x = padding_x + (i.to_f / (points.size - 1) * plot_w)
-      y = padding_top + ((check.position - min_pos).to_f / range * plot_h)
-      { x: x.round(1), y: y.round(1), check: check }
+      y = if check.position
+        padding_top + ((check.position - min_pos).to_f / range * plot_h)
+      else
+        unranked_y
+      end
+      { x: x.round(1), y: y.round(1), check: check, ranked: !check.position.nil? }
     end
 
-    coords = plot_points.map { |p| "#{p[:x]},#{p[:y]}" }
-
     tag.svg(width: width, height: height, class: "sparkline", viewBox: "0 0 #{width} #{height}") do
-      line = tag.polyline(
-        points: coords.join(" "),
-        fill: "none",
-        stroke: "#2563eb",
-        stroke_width: 2,
-        stroke_linejoin: "round",
-        stroke_linecap: "round"
-      )
+      # Draw per-pair segments: solid between ranked points, dashed when either end is unranked
+      lines = safe_join(plot_points.each_cons(2).map { |a, b|
+        dashed = !(a[:ranked] && b[:ranked])
+        attrs = {
+          x1: a[:x], y1: a[:y], x2: b[:x], y2: b[:y],
+          stroke: "#2563eb",
+          stroke_width: 2,
+          stroke_linecap: "round"
+        }
+        attrs[:stroke_dasharray] = "4 3" if dashed
+        tag.line(**attrs)
+      })
 
       dots = safe_join(plot_points.map { |p|
         # Show label below the dot if too close to the top
         label_y = p[:y] > 20 ? p[:y] - 10 : p[:y] + 18
+        label_text = p[:ranked] ? p[:check].position.to_s : "N/R"
+        dot_class = p[:ranked] ? "sparkline-dot" : "sparkline-dot sparkline-dot-unranked"
+        label_class = p[:ranked] ? "sparkline-label" : "sparkline-label sparkline-label-unranked"
 
         tag.g(class: "sparkline-point") do
           tag.circle(cx: p[:x], cy: p[:y], r: 16, class: "sparkline-hitarea") +
-          tag.circle(cx: p[:x], cy: p[:y], r: 4, class: "sparkline-dot") +
-          tag.text(p[:check].position, x: p[:x], y: label_y, class: "sparkline-label")
+          tag.circle(cx: p[:x], cy: p[:y], r: 4, class: dot_class) +
+          tag.text(label_text, x: p[:x], y: label_y, class: label_class)
         end
       })
 
@@ -57,7 +68,7 @@ module ApplicationHelper
         )
       })
 
-      line + dots + labels
+      lines + dots + labels
     end
   end
 end

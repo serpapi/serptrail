@@ -26,6 +26,16 @@
     opacity: 1;
   }
 
+  .sparkline-dot-unranked {
+    fill: #dc2626;
+    opacity: 1;
+  }
+
+  .sparkline-label-unranked {
+    fill: #dc2626;
+    opacity: 1;
+  }
+
   .sparkline-axis-label {
     fill: var(--color-muted);
     font-size: 10px;

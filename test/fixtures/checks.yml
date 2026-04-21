@@ -32,15 +32,41 @@ ruby_week_<%= i %>:
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === example / rails tutorial ===
-<% 5.times do |i| %>
-rails_week_<%= i %>:
+# === example / rails tutorial (week 2 is unranked to demo line break) ===
+rails_week_0:
   keyword: rails
-  position: <%= rng.rand(1..20) %>
+  position: 12
   url: https://example.com/tutorial
   status: success
-  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
-<% end %>
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+
+rails_week_1:
+  keyword: rails
+  position: 9
+  url: https://example.com/tutorial
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+
+rails_week_2:
+  keyword: rails
+  position:
+  url:
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+
+rails_week_3:
+  keyword: rails
+  position: 15
+  url: https://example.com/tutorial
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+
+rails_week_4:
+  keyword: rails
+  position: 11
+  url: https://example.com/tutorial
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
 
 # === acme / best ruby gems ===
 <% 5.times do |i| %>
