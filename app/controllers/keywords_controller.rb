@@ -48,6 +48,6 @@ class KeywordsController < ApplicationController
   end
 
   def keyword_params
-    params.expect(keyword: [ :query, :check_frequency ])
+    params.expect(keyword: [ :query, :check_frequency, :location ])
   end
 end

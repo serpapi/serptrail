@@ -4,6 +4,7 @@ class Keyword < ApplicationRecord
 
   validates :query, presence: true, uniqueness: { scope: :site_id }, length: { maximum: 255 }
   validates :check_frequency, presence: true
+  validates :location, presence: true
 
   enum :check_frequency, { daily: "daily", weekly: "weekly", biweekly: "biweekly", monthly: "monthly" }
 

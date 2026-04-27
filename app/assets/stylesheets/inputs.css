@@ -1,5 +1,6 @@
 @layer components {
   .field {
+    position: relative;
     margin-bottom: 1rem;
   }
 
@@ -18,6 +19,52 @@
     border: 1px solid var(--color-border);
     border-radius: 6px;
     font-size: 0.875rem;
+  }
+
+  /* Location select combobox */
+  .location-select-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+
+  .location-select-input:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -1px;
+  }
+
+  .location-select-dropdown {
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    max-width: 400px;
+    max-height: 240px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 2px;
+  }
+
+  .location-select-option {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #111827;
+  }
+
+  .location-select-option:hover {
+    background: #f3f4f6;
   }
 
   /* Toggle switch */

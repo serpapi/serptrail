@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_20_125507) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_27_140140) do
   create_table "checks", force: :cascade do |t|
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_20_125507) do
     t.string "check_frequency", default: "daily", null: false
     t.datetime "created_at", null: false
     t.datetime "last_checked_at"
+    t.string "location", default: "us", null: false
     t.string "query", null: false
     t.integer "site_id", null: false
     t.datetime "updated_at", null: false

@@ -5,7 +5,7 @@ class KeywordCheckJob < ApplicationJob
 
   def perform(keyword)
     client = SerpApiClient.new
-    result = client.check_position(keyword.query, keyword.site.domain)
+    result = client.check_position(keyword.query, keyword.site.domain, location: keyword.location)
 
     keyword.checks.create!(
       position: result[:position],

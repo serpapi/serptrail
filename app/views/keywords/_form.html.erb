@@ -15,6 +15,18 @@
     <%= form.text_field :query, required: true, placeholder: "e.g. best ruby gems" %>
   </div>
 
+  <div class="field" data-controller="location-select">
+    <%= form.label :location, "Location" %>
+    <%= form.hidden_field :location, data: { "location-select-target": "hidden" } %>
+    <input type="text"
+           class="location-select-input"
+           autocomplete="off"
+           spellcheck="false"
+           data-location-select-target="input"
+           data-action="focus->location-select#open input->location-select#filter">
+    <div class="location-select-dropdown" data-location-select-target="dropdown" hidden></div>
+  </div>
+
   <div class="field">
     <%= form.label :check_frequency, "Check frequency" %>
     <div class="btn-group">

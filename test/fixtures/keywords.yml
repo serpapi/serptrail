@@ -2,46 +2,54 @@ ruby:
   site: example
   query: best ruby gems
   check_frequency: daily
+  location: us
   last_checked_at: <%= 2.days.ago.to_fs(:db) %>
 
 rails:
   site: example
   query: rails tutorial
   check_frequency: weekly
+  location: us
   last_checked_at: <%= 1.day.ago.to_fs(:db) %>
 
 acme_ruby:
   site: acme
   query: best ruby gems
   check_frequency: weekly
+  location: gb
   last_checked_at: <%= 1.week.ago.to_fs(:db) %>
 
 acme_rails:
   site: acme
   query: rails tutorial
   check_frequency: weekly
+  location: gb
   last_checked_at: <%= 1.week.ago.to_fs(:db) %>
 
 shopwise_ruby:
   site: shopwise
   query: best ruby gems
   check_frequency: weekly
+  location: de
   last_checked_at: <%= 1.week.ago.to_fs(:db) %>
 
 shopwise_rails:
   site: shopwise
   query: rails tutorial
   check_frequency: weekly
+  location: de
   last_checked_at: <%= 1.week.ago.to_fs(:db) %>
 
 disabled_keyword:
   site: disabled
   query: disabled query
   check_frequency: daily
+  location: us
   last_checked_at: <%= 2.days.ago.to_fs(:db) %>
 
 never_checked:
   site: example
   query: new keyword
   check_frequency: daily
+  location: us
   last_checked_at: null
