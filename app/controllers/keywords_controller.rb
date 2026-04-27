@@ -20,7 +20,7 @@ class KeywordsController < ApplicationController
   end
 
   def update
-    if @keyword.update(keyword_params)
+    if @keyword.update(keyword_update_params)
       redirect_to @site, notice: "Keyword was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -49,5 +49,9 @@ class KeywordsController < ApplicationController
 
   def keyword_params
     params.expect(keyword: [ :query, :check_frequency, :location ])
+  end
+
+  def keyword_update_params
+    params.expect(keyword: [ :check_frequency ])
   end
 end
