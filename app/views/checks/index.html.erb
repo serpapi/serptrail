@@ -1,6 +1,6 @@
 <p class="breadcrumb">
   <%= link_to @site.name, @site %> &rsaquo;
-  <strong><%= @keyword.query %></strong>
+  <strong><%= @keyword.query %></strong> <%= country_flag(@keyword.location) %>
 </p>
 
 <div class="header">

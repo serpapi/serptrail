@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def country_flag(code)
+    code.to_s.upcase.chars.map { |c| (0x1F1E6 + (c.ord - "A".ord)).chr(Encoding::UTF_8) }.join
+  end
+
   def position_sparkline(checks, width: 280, height: 80)
     points = checks.sort_by(&:checked_at)
     ranked = points.select(&:position)
