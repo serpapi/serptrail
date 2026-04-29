@@ -12,6 +12,7 @@
   }
 
   .field input[type="text"],
+  .field input[type="password"],
   .field select {
     width: 100%;
     max-width: 400px;
