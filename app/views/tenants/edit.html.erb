@@ -16,7 +16,7 @@
 
   <div class="field">
     <%= form.label :serpapi_key, "SerpAPI Key" %>
-    <%= form.password_field :serpapi_key, placeholder: "Enter SerpAPI key" %>
+    <%= form.password_field :serpapi_key, value: @tenant.serpapi_key, placeholder: "Enter SerpAPI key" %>
   </div>
 
   <div class="actions">
