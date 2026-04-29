@@ -12,6 +12,21 @@
     gap: 1.5rem;
   }
 
+  .navbar-end {
+    margin-left: auto;
+  }
+
+  .navbar-icon-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+
+  .navbar-icon-link:hover {
+    color: #111827;
+  }
+
   .navbar-brand {
     font-weight: 700;
     font-size: 1.125rem;
