@@ -3,6 +3,8 @@
 :root {
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
+  --color-link: #2563eb;
+  --color-link-hover: #1e3a8a;
   --color-danger: #dc2626;
   --color-success: #16a34a;
   --color-muted: #6b7280;

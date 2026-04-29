@@ -59,6 +59,11 @@
     max-inline-size: 100%;
   }
 
+  /* Visited links keep their default color */
+  a:visited {
+    color: inherit;
+  }
+
   /* Inherit fonts for inputs and buttons */
   input,
   button,

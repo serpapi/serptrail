@@ -37,6 +37,10 @@
     font-size: 0.875rem;
   }
 
+  .actions a:hover {
+    color: var(--color-link-hover);
+  }
+
   .actions form {
     display: inline;
   }
