@@ -7,7 +7,7 @@ class SearchGoogle < RubyLLM::Tool
   end
 
   def execute(query:, num: 10)
-    client = SerpApi::Client.new(engine: "google", api_key: ENV.fetch("SERPAPI_API_KEY"))
+    client = SerpApi::Client.new(engine: "google", api_key: Tenant.instance.serpapi_key)
     results = client.search(q: query, num: [num, 100].min)
     client.close
 

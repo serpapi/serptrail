@@ -1,0 +1,25 @@
+<div class="header">
+  <h1>Settings</h1>
+</div>
+
+<%= form_with(model: @tenant, url: settings_path) do |form| %>
+  <% if @tenant.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(@tenant.errors.count, "error") %> prohibited settings from being saved:</h2>
+      <ul>
+        <% @tenant.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :serpapi_key, "SerpAPI Key" %>
+    <%= form.password_field :serpapi_key, placeholder: "Enter SerpAPI key" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save settings", class: "btn" %>
+  </div>
+<% end %>

@@ -1,7 +1,6 @@
 ENV["RAILS_ENV"] ||= "test"
 ENV["HTTP_AUTH_USERNAME"] ||= "test"
 ENV["HTTP_AUTH_PASSWORD"] ||= "test"
-ENV["SERPAPI_API_KEY"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "mocha/minitest"

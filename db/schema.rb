@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_27_140140) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_28_094634) do
   create_table "checks", force: :cascade do |t|
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
@@ -43,6 +43,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_27_140140) do
     t.boolean "tracking_enabled", default: true, null: false
     t.datetime "updated_at", null: false
     t.index ["domain"], name: "index_sites_on_domain", unique: true
+  end
+
+  create_table "tenants", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "serpapi_key", default: "", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "checks", "keywords", on_delete: :cascade

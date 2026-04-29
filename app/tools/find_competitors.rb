@@ -8,7 +8,7 @@ class FindCompetitors < RubyLLM::Tool
   end
 
   def execute(query:, exclude_domain:, top_n: 20)
-    client = SerpApi::Client.new(engine: "google", api_key: ENV.fetch("SERPAPI_API_KEY"))
+    client = SerpApi::Client.new(engine: "google", api_key: Tenant.instance.serpapi_key)
     results = client.search(q: query, num: top_n)
     client.close
 
