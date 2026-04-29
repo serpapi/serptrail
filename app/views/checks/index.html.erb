@@ -33,8 +33,8 @@
           <td class="url-cell"><%= check.url %></td>
           <td>
             <span class="status status-<%= check.status %>"><%= check.status.capitalize %></span>
-            <% if check.failed? && check.error_message.present? %>
-              <br><small class="muted"><%= check.error_message %></small>
+            <% if (summary = check.error_summary) %>
+              <br><small class="muted"><%= summary %></small>
             <% end %>
           </td>
         </tr>
