@@ -29,15 +29,20 @@
 
   .navbar-brand {
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 1.5rem;
+    line-height: 1;
     color: var(--color-primary);
     text-decoration: none;
+    position: relative;
+    top: -1px;
+    padding: 0.5rem 0;
   }
 
   .navbar-link {
     color: var(--color-muted);
     text-decoration: none;
     font-size: 0.875rem;
+    line-height: 1;
   }
 
   .navbar-link:hover {
