@@ -22,6 +22,7 @@
         <th>Date</th>
         <th>Position</th>
         <th>URL</th>
+        <th>SerpApi</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -31,6 +32,11 @@
           <td><%= check.checked_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= check.position || "Not ranked" %></td>
           <td class="url-cell"><%= check.url %></td>
+          <td>
+            <% if check.serpapi_search_id.present? %>
+              <%= link_to "Open", "https://serpapi.com/searches/#{check.serpapi_search_id}/inspect", title: "Open in SerpApi", target: "_blank", rel: "noopener", class: "serpapi-link" %>
+            <% end %>
+          </td>
           <td>
             <span class="status status-<%= check.status %>"><%= check.status.capitalize %></span>
             <% if (summary = check.error_summary) %>

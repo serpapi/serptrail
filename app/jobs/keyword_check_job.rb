@@ -10,6 +10,7 @@ class KeywordCheckJob < ApplicationJob
     keyword.checks.create!(
       position: result[:position],
       url: result[:url],
+      serpapi_search_id: result[:serpapi_search_id],
       status: :success,
       checked_at: Time.current
     )
