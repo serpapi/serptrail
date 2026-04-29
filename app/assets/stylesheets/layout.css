@@ -28,7 +28,13 @@
   }
 
   td.actions {
-    justify-content: flex-end;
+    display: table-cell;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  td.actions > * + * {
+    margin-left: 0.5rem;
   }
 
   .actions a {
