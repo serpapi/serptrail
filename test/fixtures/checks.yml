@@ -257,6 +257,17 @@ gsma_iphone18_pro_specs_gb_week_<%= i %>:
   checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
 <% end %>
 
+# === Apple / apple intelligence — US ===
+<% [8, 6, 4, 3, 2].each_with_index do |pos, i| %>
+apple_intelligence_us_week_<%= i %>:
+  keyword: never_checked
+  position: <%= pos %>
+  url: https://apple.com/apple-intelligence
+  status: success
+  location: us
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
 # === GSMArena / iphone 18 pro max specs — DE ===
 <% [10, 9, 8, 7, 6].each_with_index do |pos, i| %>
 gsma_iphone18_pro_specs_de_week_<%= i %>:

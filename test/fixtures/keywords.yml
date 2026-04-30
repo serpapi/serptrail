@@ -102,7 +102,7 @@ never_checked:
   check_frequency: daily
   locations:
     - us
-  last_checked_at: null
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
 
 disabled_keyword:
   site: disabled
