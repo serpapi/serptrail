@@ -95,6 +95,8 @@
   .card-chart {
     border-top: 1px solid var(--color-border);
     padding-top: 0.75rem;
+    height: 9rem;
+    overflow: hidden;
   }
 
   .card-chart .sparkline {
@@ -104,7 +106,7 @@
   }
 
   .card-no-data {
-    height: 80px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

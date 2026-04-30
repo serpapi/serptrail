@@ -19,6 +19,6 @@ gsmarena:
   tracking_enabled: true
 
 disabled:
-  name: Paused Store
-  domain: paused-store.com
+  name: Amazon
+  domain: amazon.com
   tracking_enabled: false

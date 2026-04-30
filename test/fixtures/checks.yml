@@ -27,7 +27,7 @@ apple_iphone18_us_week_<%= i %>:
 <% end %>
 
 # === Apple / iphone 18 — GB ===
-<% [3, 2, 2, 1, 2].each_with_index do |pos, i| %>
+<% [3, 3, 2, 2, 1].each_with_index do |pos, i| %>
 apple_iphone18_gb_week_<%= i %>:
   keyword: apple_iphone18
   position: <%= pos %>
@@ -49,7 +49,7 @@ apple_iphone18_es_week_<%= i %>:
 <% end %>
 
 # === Apple / iphone 18 pro — US ===
-<% [2, 2, 1, 2, 1].each_with_index do |pos, i| %>
+<% [3, 2, 2, 2, 1].each_with_index do |pos, i| %>
 apple_iphone18_pro_us_week_<%= i %>:
   keyword: apple_iphone18_pro
   position: <%= pos %>
@@ -60,7 +60,7 @@ apple_iphone18_pro_us_week_<%= i %>:
 <% end %>
 
 # === Apple / iphone 18 pro — GB ===
-<% [3, 2, 2, 1, 2].each_with_index do |pos, i| %>
+<% [3, 3, 2, 2, 1].each_with_index do |pos, i| %>
 apple_iphone18_pro_gb_week_<%= i %>:
   keyword: apple_iphone18_pro
   position: <%= pos %>
@@ -82,7 +82,7 @@ apple_iphone18_pro_es_week_<%= i %>:
 <% end %>
 
 # === Apple / buy iphone 18 — US ===
-<% [2, 1, 2, 1, 1].each_with_index do |pos, i| %>
+<% [3, 2, 2, 2, 1].each_with_index do |pos, i| %>
 apple_buy_iphone18_us_week_<%= i %>:
   keyword: apple_buy_iphone18
   position: <%= pos %>
@@ -137,7 +137,7 @@ bestbuy_iphone18_gb_week_<%= i %>:
 <% end %>
 
 # === Best Buy / iphone 18 pro — US ===
-<% [6, 5, 5, 4, 5].each_with_index do |pos, i| %>
+<% [7, 6, 5, 5, 4].each_with_index do |pos, i| %>
 bestbuy_iphone18_pro_us_week_<%= i %>:
   keyword: bestbuy_iphone18_pro
   position: <%= pos %>
@@ -148,7 +148,7 @@ bestbuy_iphone18_pro_us_week_<%= i %>:
 <% end %>
 
 # === Best Buy / iphone 18 pro — GB ===
-<% [13, 11, 10, 9, 9].each_with_index do |pos, i| %>
+<% [14, 13, 11, 10, 9].each_with_index do |pos, i| %>
 bestbuy_iphone18_pro_gb_week_<%= i %>:
   keyword: bestbuy_iphone18_pro
   position: <%= pos %>
