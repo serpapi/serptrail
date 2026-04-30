@@ -1,12 +1,14 @@
 @layer components {
   .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 0.5rem 1rem;
     background: var(--color-primary);
     color: #fff;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 6px;
     font-size: 0.875rem;
+    line-height: 1;
     text-decoration: none;
     cursor: pointer;
   }
