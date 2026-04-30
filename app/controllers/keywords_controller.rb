@@ -1,6 +1,24 @@
 class KeywordsController < ApplicationController
   before_action :set_site
-  before_action :set_keyword, only: %i[edit update destroy check]
+  before_action :set_keyword, only: %i[show edit update destroy check]
+
+  def show
+    @checks_by_location = @keyword.checks
+      .where(status: "success")
+      .where.not(location: nil)
+      .order(checked_at: :asc)
+      .group_by(&:location)
+
+    @location_stats = @keyword.locations.map do |location|
+      checks = (@checks_by_location[location] || []).sort_by(&:checked_at).reverse
+      latest   = checks.first
+      previous = checks.second
+      change   = if latest&.position && previous&.position
+        previous.position - latest.position
+      end
+      { location: location, latest: latest, change: change }
+    end
+  end
 
   def new
     @keyword = @site.keywords.new

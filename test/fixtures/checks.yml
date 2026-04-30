@@ -1,11 +1,12 @@
 <% rng = Random.new(42) %>
 
-# === example / best ruby gems ===
+# === example / best ruby gems — US ===
 ruby_latest:
   keyword: ruby
   position: 5
   url: https://example.com/gems
   status: success
+  location: us
   checked_at: <%= 2.days.ago.to_fs(:db) %>
 
 ruby_previous:
@@ -13,6 +14,7 @@ ruby_previous:
   position: 8
   url: https://example.com/gems
   status: success
+  location: us
   checked_at: <%= 4.days.ago.to_fs(:db) %>
 
 ruby_failed:
@@ -21,6 +23,7 @@ ruby_failed:
   url:
   status: failed
   error_message: API rate limit exceeded
+  location: us
   checked_at: <%= 3.days.ago.to_fs(:db) %>
 
 <% 5.times do |i| %>
@@ -29,15 +32,28 @@ ruby_week_<%= i %>:
   position: <%= rng.rand(1..20) %>
   url: https://example.com/gems
   status: success
+  location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === example / rails tutorial (week 2 is unranked to demo line break) ===
+# === example / best ruby gems — GB ===
+<% 5.times do |i| %>
+ruby_gb_week_<%= i %>:
+  keyword: ruby
+  position: <%= rng.rand(5..25) %>
+  url: https://example.com/gems
+  status: success
+  location: gb
+  checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+<% end %>
+
+# === example / rails tutorial — US (week 2 is unranked to demo line break) ===
 rails_week_0:
   keyword: rails
   position: 12
   url: https://example.com/tutorial
   status: success
+  location: us
   checked_at: <%= 5.weeks.ago.to_fs(:db) %>
 
 rails_week_1:
@@ -45,6 +61,7 @@ rails_week_1:
   position: 9
   url: https://example.com/tutorial
   status: success
+  location: us
   checked_at: <%= 4.weeks.ago.to_fs(:db) %>
 
 rails_week_2:
@@ -52,6 +69,7 @@ rails_week_2:
   position:
   url:
   status: success
+  location: us
   checked_at: <%= 3.weeks.ago.to_fs(:db) %>
 
 rails_week_3:
@@ -59,6 +77,7 @@ rails_week_3:
   position: 15
   url: https://example.com/tutorial
   status: success
+  location: us
   checked_at: <%= 2.weeks.ago.to_fs(:db) %>
 
 rails_week_4:
@@ -66,44 +85,60 @@ rails_week_4:
   position: 11
   url: https://example.com/tutorial
   status: success
+  location: us
   checked_at: <%= 1.week.ago.to_fs(:db) %>
 
-# === acme / best ruby gems ===
+# === example / rails tutorial — DE ===
+<% 5.times do |i| %>
+rails_de_week_<%= i %>:
+  keyword: rails
+  position: <%= rng.rand(8..30) %>
+  url: https://example.com/tutorial
+  status: success
+  location: de
+  checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+<% end %>
+
+# === acme / best ruby gems — GB ===
 <% 5.times do |i| %>
 acme_ruby_week_<%= i %>:
   keyword: acme_ruby
   position: <%= rng.rand(1..20) %>
   url: https://acme.io/ruby
   status: success
+  location: gb
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === acme / rails tutorial ===
+# === acme / rails tutorial — GB ===
 <% 5.times do |i| %>
 acme_rails_week_<%= i %>:
   keyword: acme_rails
   position: <%= rng.rand(1..20) %>
   url: https://acme.io/rails
   status: success
+  location: gb
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === shopwise / best ruby gems ===
+# === shopwise / best ruby gems — DE ===
 <% 5.times do |i| %>
 shopwise_ruby_week_<%= i %>:
   keyword: shopwise_ruby
   position: <%= rng.rand(1..20) %>
   url: https://shopwise.com/ruby
   status: success
+  location: de
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === shopwise / rails tutorial ===
+# === shopwise / rails tutorial — DE ===
 <% 5.times do |i| %>
 shopwise_rails_week_<%= i %>:
   keyword: shopwise_rails
   position: <%= rng.rand(1..20) %>
   url: https://shopwise.com/rails
   status: success
+  location: de
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>

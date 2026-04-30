@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :sites do
     get :table, on: :member
-    resources :keywords, except: [ :index, :show ] do
+    resources :keywords, except: [ :index ] do
       post :check, on: :member
       resources :checks, only: [ :index ]
     end

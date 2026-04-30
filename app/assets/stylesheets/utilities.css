@@ -21,6 +21,28 @@
   .back-link { display: inline-block; margin-top: 1.5rem; font-size: 0.875rem; color: var(--color-muted); text-decoration: none; }
   .back-link:hover { color: #111827; }
 
+  .location-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .location-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .location-legend-swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
   .history-chart {
     background: #fff;
     border: 1px solid var(--color-border);

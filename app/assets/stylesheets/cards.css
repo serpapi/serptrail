@@ -25,6 +25,15 @@
     color: #111827;
   }
 
+  .card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-title a:hover {
+    color: var(--color-link-hover);
+  }
+
   .card-actions {
     display: flex;
     gap: 0.5rem;

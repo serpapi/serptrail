@@ -4,6 +4,7 @@ ruby:
   check_frequency: daily
   locations:
     - us
+    - gb
   last_checked_at: <%= 2.days.ago.to_fs(:db) %>
 
 rails:
@@ -12,6 +13,7 @@ rails:
   check_frequency: weekly
   locations:
     - us
+    - de
   last_checked_at: <%= 1.day.ago.to_fs(:db) %>
 
 acme_ruby:
