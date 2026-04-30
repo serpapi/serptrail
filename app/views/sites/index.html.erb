@@ -16,7 +16,7 @@
     </thead>
     <tbody>
       <% @sites.each do |site| %>
-        <tr>
+        <tr class="<%= 'row-disabled' unless site.tracking_enabled? %>">
           <td><%= link_to site.name, site %></td>
           <td><%= site.domain %></td>
           <td><%= site.tracking_enabled? ? "Enabled" : "Disabled" %></td>

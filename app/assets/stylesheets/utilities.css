@@ -1,5 +1,6 @@
 @layer utilities {
   .muted { color: var(--color-muted); }
+  .row-disabled { background: #f9fafb; color: var(--color-muted); }
   .url-cell { max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
   .change-up { color: var(--color-success); font-weight: 600; }
