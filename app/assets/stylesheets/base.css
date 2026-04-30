@@ -22,9 +22,6 @@
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
   }
 
   th, td {
@@ -34,17 +31,17 @@
     font-size: 0.875rem;
   }
 
-  tr {
+  tbody tr {
     border-bottom: 1px solid var(--color-border);
-  }
-
-  th {
-    background: #f9fafb;
-    font-weight: 600;
-    color: #374151;
   }
 
   tbody tr:last-child {
     border-bottom: none;
+  }
+
+  th {
+    background: var(--color-bg);
+    font-weight: 600;
+    color: #374151;
   }
 }
