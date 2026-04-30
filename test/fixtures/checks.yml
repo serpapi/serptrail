@@ -1,144 +1,269 @@
-<% rng = Random.new(42) %>
-
-# === example / best ruby gems — US ===
-ruby_latest:
-  keyword: ruby
-  position: 5
-  url: https://example.com/gems
+# === Apple / iphone 18 — US ===
+# position_change test: latest=1, previous=4 → change=3
+apple_iphone18_us_latest:
+  keyword: apple_iphone18
+  position: 1
+  url: https://apple.com/iphone-18
   status: success
   location: us
   checked_at: <%= 2.days.ago.to_fs(:db) %>
 
-ruby_previous:
-  keyword: ruby
-  position: 8
-  url: https://example.com/gems
+apple_iphone18_us_previous:
+  keyword: apple_iphone18
+  position: 4
+  url: https://apple.com/iphone-18
   status: success
   location: us
   checked_at: <%= 4.days.ago.to_fs(:db) %>
 
-ruby_failed:
-  keyword: ruby
-  position:
-  url:
-  status: failed
-  error_message: API rate limit exceeded
-  location: us
-  checked_at: <%= 3.days.ago.to_fs(:db) %>
-
-<% 5.times do |i| %>
-ruby_week_<%= i %>:
-  keyword: ruby
-  position: <%= rng.rand(1..20) %>
-  url: https://example.com/gems
+<% [4, 3, 3, 2, 2].each_with_index do |pos, i| %>
+apple_iphone18_us_week_<%= i %>:
+  keyword: apple_iphone18
+  position: <%= pos %>
+  url: https://apple.com/iphone-18
   status: success
   location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === example / best ruby gems — GB ===
-<% 5.times do |i| %>
-ruby_gb_week_<%= i %>:
-  keyword: ruby
-  position: <%= rng.rand(5..25) %>
-  url: https://example.com/gems
+# === Apple / iphone 18 — GB ===
+<% [3, 2, 2, 1, 2].each_with_index do |pos, i| %>
+apple_iphone18_gb_week_<%= i %>:
+  keyword: apple_iphone18
+  position: <%= pos %>
+  url: https://apple.com/uk/iphone-18
   status: success
   location: gb
   checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
 <% end %>
 
-# === example / rails tutorial — US (week 2 is unranked to demo line break) ===
-rails_week_0:
-  keyword: rails
-  position: 12
-  url: https://example.com/tutorial
+# === Apple / iphone 18 — ES ===
+<% [6, 5, 4, 3, 3].each_with_index do |pos, i| %>
+apple_iphone18_es_week_<%= i %>:
+  keyword: apple_iphone18
+  position: <%= pos %>
+  url: https://apple.com/es/iphone-18
+  status: success
+  location: es
+  checked_at: <%= ((5 - i).weeks.ago + 2.hours).to_fs(:db) %>
+<% end %>
+
+# === Apple / iphone 18 pro — US ===
+<% [2, 2, 1, 2, 1].each_with_index do |pos, i| %>
+apple_iphone18_pro_us_week_<%= i %>:
+  keyword: apple_iphone18_pro
+  position: <%= pos %>
+  url: https://apple.com/iphone-18-pro
   status: success
   location: us
-  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
 
-rails_week_1:
-  keyword: rails
-  position: 9
-  url: https://example.com/tutorial
+# === Apple / iphone 18 pro — GB ===
+<% [3, 2, 2, 1, 2].each_with_index do |pos, i| %>
+apple_iphone18_pro_gb_week_<%= i %>:
+  keyword: apple_iphone18_pro
+  position: <%= pos %>
+  url: https://apple.com/uk/iphone-18-pro
   status: success
-  location: us
-  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
-
-rails_week_2:
-  keyword: rails
-  position:
-  url:
-  status: success
-  location: us
-  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
-
-rails_week_3:
-  keyword: rails
-  position: 15
-  url: https://example.com/tutorial
-  status: success
-  location: us
-  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
-
-rails_week_4:
-  keyword: rails
-  position: 11
-  url: https://example.com/tutorial
-  status: success
-  location: us
-  checked_at: <%= 1.week.ago.to_fs(:db) %>
-
-# === example / rails tutorial — DE ===
-<% 5.times do |i| %>
-rails_de_week_<%= i %>:
-  keyword: rails
-  position: <%= rng.rand(8..30) %>
-  url: https://example.com/tutorial
-  status: success
-  location: de
+  location: gb
   checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
 <% end %>
 
-# === acme / best ruby gems — GB ===
-<% 5.times do |i| %>
-acme_ruby_week_<%= i %>:
-  keyword: acme_ruby
-  position: <%= rng.rand(1..20) %>
-  url: https://acme.io/ruby
+# === Apple / iphone 18 pro — ES ===
+<% [5, 4, 3, 3, 2].each_with_index do |pos, i| %>
+apple_iphone18_pro_es_week_<%= i %>:
+  keyword: apple_iphone18_pro
+  position: <%= pos %>
+  url: https://apple.com/es/iphone-18-pro
+  status: success
+  location: es
+  checked_at: <%= ((5 - i).weeks.ago + 2.hours).to_fs(:db) %>
+<% end %>
+
+# === Apple / buy iphone 18 — US ===
+<% [2, 1, 2, 1, 1].each_with_index do |pos, i| %>
+apple_buy_iphone18_us_week_<%= i %>:
+  keyword: apple_buy_iphone18
+  position: <%= pos %>
+  url: https://apple.com/shop/buy-iphone/iphone-18
+  status: success
+  location: us
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === Apple / buy iphone 18 — GB ===
+<% [4, 3, 3, 2, 2].each_with_index do |pos, i| %>
+apple_buy_iphone18_gb_week_<%= i %>:
+  keyword: apple_buy_iphone18
+  position: <%= pos %>
+  url: https://apple.com/uk/shop/buy-iphone/iphone-18
   status: success
   location: gb
+  checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+<% end %>
+
+# === Apple / buy iphone 18 — ES ===
+<% [8, 7, 6, 5, 4].each_with_index do |pos, i| %>
+apple_buy_iphone18_es_week_<%= i %>:
+  keyword: apple_buy_iphone18
+  position: <%= pos %>
+  url: https://apple.com/es/shop/buy-iphone/iphone-18
+  status: success
+  location: es
+  checked_at: <%= ((5 - i).weeks.ago + 2.hours).to_fs(:db) %>
+<% end %>
+
+# === Best Buy / iphone 18 — US ===
+<% [8, 7, 6, 5, 5].each_with_index do |pos, i| %>
+bestbuy_iphone18_us_week_<%= i %>:
+  keyword: bestbuy_iphone18
+  position: <%= pos %>
+  url: https://bestbuy.com/iphone-18
+  status: success
+  location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === acme / rails tutorial — GB ===
-<% 5.times do |i| %>
-acme_rails_week_<%= i %>:
-  keyword: acme_rails
-  position: <%= rng.rand(1..20) %>
-  url: https://acme.io/rails
+# === Best Buy / iphone 18 — GB ===
+<% [14, 12, 11, 9, 8].each_with_index do |pos, i| %>
+bestbuy_iphone18_gb_week_<%= i %>:
+  keyword: bestbuy_iphone18
+  position: <%= pos %>
+  url: https://bestbuy.com/iphone-18
   status: success
   location: gb
+  checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+<% end %>
+
+# === Best Buy / iphone 18 pro — US ===
+<% [6, 5, 5, 4, 5].each_with_index do |pos, i| %>
+bestbuy_iphone18_pro_us_week_<%= i %>:
+  keyword: bestbuy_iphone18_pro
+  position: <%= pos %>
+  url: https://bestbuy.com/iphone-18-pro
+  status: success
+  location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === shopwise / best ruby gems — DE ===
-<% 5.times do |i| %>
-shopwise_ruby_week_<%= i %>:
-  keyword: shopwise_ruby
-  position: <%= rng.rand(1..20) %>
-  url: https://shopwise.com/ruby
+# === Best Buy / iphone 18 pro — GB ===
+<% [13, 11, 10, 9, 9].each_with_index do |pos, i| %>
+bestbuy_iphone18_pro_gb_week_<%= i %>:
+  keyword: bestbuy_iphone18_pro
+  position: <%= pos %>
+  url: https://bestbuy.com/iphone-18-pro
   status: success
-  location: de
+  location: gb
+  checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+<% end %>
+
+# === Best Buy / buy iphone 18 — US ===
+<% [4, 3, 3, 3, 2].each_with_index do |pos, i| %>
+bestbuy_buy_iphone18_us_week_<%= i %>:
+  keyword: bestbuy_buy_iphone18
+  position: <%= pos %>
+  url: https://bestbuy.com/buy-iphone-18
+  status: success
+  location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
 <% end %>
 
-# === shopwise / rails tutorial — DE ===
-<% 5.times do |i| %>
-shopwise_rails_week_<%= i %>:
-  keyword: shopwise_rails
-  position: <%= rng.rand(1..20) %>
-  url: https://shopwise.com/rails
+# === Best Buy / buy iphone 18 — GB ===
+<% [11, 10, 9, 8, 7].each_with_index do |pos, i| %>
+bestbuy_buy_iphone18_gb_week_<%= i %>:
+  keyword: bestbuy_buy_iphone18
+  position: <%= pos %>
+  url: https://bestbuy.com/buy-iphone-18
+  status: success
+  location: gb
+  checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+<% end %>
+
+# === 9to5Mac / iphone 18 review — US ===
+<% [5, 3, 2, 2, 1].each_with_index do |pos, i| %>
+mac_iphone18_review_us_week_<%= i %>:
+  keyword: mac_iphone18_review
+  position: <%= pos %>
+  url: https://9to5mac.com/iphone-18-review
+  status: success
+  location: us
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === 9to5Mac / iphone 18 vs iphone 17 — US ===
+<% [8, 6, 5, 4, 3].each_with_index do |pos, i| %>
+mac_iphone18_vs_us_week_<%= i %>:
+  keyword: mac_iphone18_vs
+  position: <%= pos %>
+  url: https://9to5mac.com/iphone-18-vs-iphone-17
+  status: success
+  location: us
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === GSMArena / iphone 18 specs — US ===
+<% [6, 5, 4, 3, 2].each_with_index do |pos, i| %>
+gsma_iphone18_specs_us_week_<%= i %>:
+  keyword: gsma_iphone18_specs
+  position: <%= pos %>
+  url: https://gsmarena.com/apple_iphone_18-specs.php
+  status: success
+  location: us
+  checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === GSMArena / iphone 18 specs — GB ===
+<% [8, 7, 6, 5, 4].each_with_index do |pos, i| %>
+gsma_iphone18_specs_gb_week_<%= i %>:
+  keyword: gsma_iphone18_specs
+  position: <%= pos %>
+  url: https://gsmarena.com/apple_iphone_18-specs.php
+  status: success
+  location: gb
+  checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+<% end %>
+
+# === GSMArena / iphone 18 specs — DE ===
+<% [12, 10, 9, 8, 7].each_with_index do |pos, i| %>
+gsma_iphone18_specs_de_week_<%= i %>:
+  keyword: gsma_iphone18_specs
+  position: <%= pos %>
+  url: https://gsmarena.com/apple_iphone_18-specs.php
   status: success
   location: de
+  checked_at: <%= ((5 - i).weeks.ago + 2.hours).to_fs(:db) %>
+<% end %>
+
+# === GSMArena / iphone 18 pro max specs — US ===
+<% [4, 3, 3, 2, 2].each_with_index do |pos, i| %>
+gsma_iphone18_pro_specs_us_week_<%= i %>:
+  keyword: gsma_iphone18_pro_specs
+  position: <%= pos %>
+  url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php
+  status: success
+  location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+<% end %>
+
+# === GSMArena / iphone 18 pro max specs — GB ===
+<% [6, 5, 5, 4, 3].each_with_index do |pos, i| %>
+gsma_iphone18_pro_specs_gb_week_<%= i %>:
+  keyword: gsma_iphone18_pro_specs
+  position: <%= pos %>
+  url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php
+  status: success
+  location: gb
+  checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+<% end %>
+
+# === GSMArena / iphone 18 pro max specs — DE ===
+<% [10, 9, 8, 7, 6].each_with_index do |pos, i| %>
+gsma_iphone18_pro_specs_de_week_<%= i %>:
+  keyword: gsma_iphone18_pro_specs
+  position: <%= pos %>
+  url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php
+  status: success
+  location: de
+  checked_at: <%= ((5 - i).weeks.ago + 2.hours).to_fs(:db) %>
 <% end %>

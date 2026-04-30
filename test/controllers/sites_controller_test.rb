@@ -2,7 +2,7 @@ require "test_helper"
 
 class SitesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @site = sites(:example)
+    @site = sites(:apple)
     @headers = auth_headers
   end
 

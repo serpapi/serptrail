@@ -1,65 +1,113 @@
-ruby:
-  site: example
-  query: best ruby gems
+# === Apple (apple.com) ===
+apple_iphone18:
+  site: apple
+  query: iphone 18
   check_frequency: daily
   locations:
     - us
     - gb
+    - es
   last_checked_at: <%= 2.days.ago.to_fs(:db) %>
 
-rails:
-  site: example
-  query: rails tutorial
+apple_iphone18_pro:
+  site: apple
+  query: iphone 18 pro
   check_frequency: weekly
   locations:
     - us
-    - de
+    - gb
+    - es
   last_checked_at: <%= 1.day.ago.to_fs(:db) %>
 
-acme_ruby:
-  site: acme
-  query: best ruby gems
+apple_buy_iphone18:
+  site: apple
+  query: buy iphone 18
   check_frequency: weekly
-  locations:
-    - gb
-  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
-
-acme_rails:
-  site: acme
-  query: rails tutorial
-  check_frequency: weekly
-  locations:
-    - gb
-  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
-
-shopwise_ruby:
-  site: shopwise
-  query: best ruby gems
-  check_frequency: weekly
-  locations:
-    - de
-  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
-
-shopwise_rails:
-  site: shopwise
-  query: rails tutorial
-  check_frequency: weekly
-  locations:
-    - de
-  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
-
-disabled_keyword:
-  site: disabled
-  query: disabled query
-  check_frequency: daily
   locations:
     - us
-  last_checked_at: <%= 2.days.ago.to_fs(:db) %>
+    - gb
+    - es
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
 
+# === Best Buy (bestbuy.com) ===
+bestbuy_iphone18:
+  site: bestbuy
+  query: iphone 18
+  check_frequency: weekly
+  locations:
+    - us
+    - gb
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+bestbuy_iphone18_pro:
+  site: bestbuy
+  query: iphone 18 pro
+  check_frequency: weekly
+  locations:
+    - us
+    - gb
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+bestbuy_buy_iphone18:
+  site: bestbuy
+  query: buy iphone 18
+  check_frequency: weekly
+  locations:
+    - us
+    - gb
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+# === 9to5Mac (9to5mac.com) ===
+mac_iphone18_review:
+  site: nintyfivemac
+  query: iphone 18 review
+  check_frequency: weekly
+  locations:
+    - us
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+mac_iphone18_vs:
+  site: nintyfivemac
+  query: iphone 18 vs iphone 17
+  check_frequency: weekly
+  locations:
+    - us
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+# === GSMArena (gsmarena.com) ===
+gsma_iphone18_specs:
+  site: gsmarena
+  query: iphone 18 specs
+  check_frequency: weekly
+  locations:
+    - us
+    - gb
+    - de
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+gsma_iphone18_pro_specs:
+  site: gsmarena
+  query: iphone 18 pro max specs
+  check_frequency: weekly
+  locations:
+    - us
+    - gb
+    - de
+  last_checked_at: <%= 1.week.ago.to_fs(:db) %>
+
+# === Misc ===
 never_checked:
-  site: example
-  query: new keyword
+  site: apple
+  query: apple intelligence
   check_frequency: daily
   locations:
     - us
   last_checked_at: null
+
+disabled_keyword:
+  site: disabled
+  query: refurbished iphone
+  check_frequency: daily
+  locations:
+    - us
+  last_checked_at: <%= 2.days.ago.to_fs(:db) %>

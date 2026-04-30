@@ -1,19 +1,24 @@
-example:
-  name: Example
-  domain: example.com
+apple:
+  name: Apple
+  domain: apple.com
   tracking_enabled: true
 
-acme:
-  name: Acme Corp
-  domain: acme.io
+bestbuy:
+  name: Best Buy
+  domain: bestbuy.com
   tracking_enabled: true
 
-shopwise:
-  name: ShopWise
-  domain: shopwise.com
+nintyfivemac:
+  name: 9to5Mac
+  domain: 9to5mac.com
+  tracking_enabled: true
+
+gsmarena:
+  name: GSMArena
+  domain: gsmarena.com
   tracking_enabled: true
 
 disabled:
-  name: Disabled Site
-  domain: disabled.com
+  name: Paused Store
+  domain: paused-store.com
   tracking_enabled: false

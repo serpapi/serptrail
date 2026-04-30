@@ -2,7 +2,7 @@ require "test_helper"
 
 class KeywordCheckJobTest < ActiveJob::TestCase
   test "creates a check record on success" do
-    keyword = keywords(:ruby)
+    keyword = keywords(:apple_iphone18)
 
     SerpApiClient.any_instance.stubs(:check_position).returns({ position: 3, url: "https://example.com/page" })
 
@@ -18,7 +18,7 @@ class KeywordCheckJobTest < ActiveJob::TestCase
   end
 
   test "creates a failed check record on error" do
-    keyword = keywords(:ruby)
+    keyword = keywords(:apple_iphone18)
 
     SerpApiClient.any_instance.stubs(:check_position).raises(StandardError.new("API error"))
 

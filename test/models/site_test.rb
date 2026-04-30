@@ -19,7 +19,7 @@ class SiteTest < ActiveSupport::TestCase
   end
 
   test "domain must be unique" do
-    site = Site.new(name: "Duplicate", domain: "example.com")
+    site = Site.new(name: "Duplicate", domain: "apple.com")
     assert_not site.valid?
     assert_includes site.errors[:domain], "has already been taken"
   end

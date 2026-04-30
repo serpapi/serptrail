@@ -2,8 +2,8 @@ require "test_helper"
 
 class KeywordsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @site = sites(:example)
-    @keyword = keywords(:ruby)
+    @site = sites(:apple)
+    @keyword = keywords(:apple_iphone18)
     @headers = auth_headers
   end
 
