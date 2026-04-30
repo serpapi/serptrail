@@ -3,7 +3,7 @@ class SerpApiClient
     @api_key = api_key
   end
 
-  def check_position(query, domain, location: "us")
+  def check_position(query, domain, location:)
     api_key = @api_key || Tenant.instance.serpapi_key
     client = SerpApi::Client.new(engine: "google", api_key: api_key)
     results = client.search(q: query, num: 100, gl: location)

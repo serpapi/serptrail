@@ -5,7 +5,6 @@ class KeywordsController < ApplicationController
   def show
     @checks_by_location = @keyword.checks
       .where(status: "success")
-      .where.not(location: nil)
       .order(checked_at: :asc)
       .group_by(&:location)
 

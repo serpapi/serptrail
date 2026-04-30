@@ -31,7 +31,7 @@
       <% @checks.each do |check| %>
         <tr>
           <td><%= check.checked_at.strftime("%Y-%m-%d %H:%M") %></td>
-          <td><%= check.location ? country_flag(check.location) : "" %></td>
+          <td><%= country_flag(check.location) %></td>
           <td><%= check.position || "Not ranked" %></td>
           <td class="url-cell"><%= check.url %></td>
           <td>
