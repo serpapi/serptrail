@@ -29,6 +29,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn" %>
+    <%= form.submit(site.new_record? ? "Create" : "Update", class: "btn") %>
   </div>
 <% end %>
