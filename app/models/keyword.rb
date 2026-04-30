@@ -4,7 +4,9 @@ class Keyword < ApplicationRecord
 
   validates :query, presence: true, uniqueness: { scope: :site_id }, length: { maximum: 255 }
   validates :check_frequency, presence: true
-  validates :location, presence: true
+  validates :locations, presence: true
+
+  before_validation :set_default_locations
 
   enum :check_frequency, { daily: "daily", weekly: "weekly", biweekly: "biweekly", monthly: "monthly" }
 
@@ -36,5 +38,11 @@ class Keyword < ApplicationRecord
     return nil unless latest&.position && previous&.position
 
     previous.position - latest.position
+  end
+
+  private
+
+  def set_default_locations
+    self.locations = [ "us" ] if locations.blank?
   end
 end

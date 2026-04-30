@@ -55,10 +55,13 @@ const COUNTRIES = [
 ]
 
 export default class extends Controller {
-  static targets = ["input", "hidden", "dropdown"]
+  static targets = ["input", "tags", "dropdown", "hiddenInputs"]
 
   connect() {
-    this.initDisplay()
+    const initial = JSON.parse(this.element.dataset.locationSelectInitialValue || "[]")
+    this.selectedCodes = new Set(initial)
+    this.renderTags()
+    this.renderHiddenInputs()
     this.onDocumentClick = this.closeIfOutside.bind(this)
     document.addEventListener("click", this.onDocumentClick)
   }
@@ -69,44 +72,79 @@ export default class extends Controller {
 
   open() {
     this.inputTarget.select()
-    this.renderOptions(COUNTRIES)
+    this.renderDropdown(this.available())
     this.dropdownTarget.removeAttribute("hidden")
   }
 
   filter() {
     const q = this.inputTarget.value.toLowerCase().trim()
     const matches = q
-      ? COUNTRIES.filter(c => c.name.toLowerCase().includes(q) || c.code === q)
-      : COUNTRIES
-    this.renderOptions(matches)
+      ? this.available().filter(c => c.name.toLowerCase().includes(q) || c.code === q)
+      : this.available()
+    this.renderDropdown(matches)
     this.dropdownTarget.removeAttribute("hidden")
   }
 
-  select(event) {
+  add(event) {
     const option = event.target.closest("[data-code]")
     if (!option) return
-    const country = COUNTRIES.find(c => c.code === option.dataset.code)
-    if (!country) return
-    this.hiddenTarget.value = country.code
-    this.inputTarget.value = `${country.flag} ${country.name}`
-    this.dropdownTarget.setAttribute("hidden", "")
+    this.selectedCodes.add(option.dataset.code)
+    this.renderTags()
+    this.renderHiddenInputs()
+    this.inputTarget.value = ""
+    this.filter()
+    this.inputTarget.focus()
+  }
+
+  remove(event) {
+    this.selectedCodes.delete(event.currentTarget.dataset.code)
+    this.renderTags()
+    this.renderHiddenInputs()
+    if (!this.dropdownTarget.hidden) this.filter()
+  }
+
+  focusInput() {
+    this.inputTarget.focus()
   }
 
   closeIfOutside(event) {
     if (!this.element.contains(event.target)) {
       this.dropdownTarget.setAttribute("hidden", "")
-      this.initDisplay()
+      this.inputTarget.value = ""
     }
   }
 
-  initDisplay() {
-    const country = COUNTRIES.find(c => c.code === this.hiddenTarget.value)
-    if (country) this.inputTarget.value = `${country.flag} ${country.name}`
+  available() {
+    return COUNTRIES.filter(c => !this.selectedCodes.has(c.code))
   }
 
-  renderOptions(countries) {
-    this.dropdownTarget.innerHTML = countries
-      .map(c => `<button type="button" class="location-select-option" data-action="click->location-select#select" data-code="${c.code}">${c.flag} ${c.name}</button>`)
+  renderTags() {
+    this.tagsTarget.innerHTML = Array.from(this.selectedCodes).map(code => {
+      const c = COUNTRIES.find(c => c.code === code)
+      if (!c) return ""
+      return `<span class="location-tag">
+        ${c.flag} ${c.name}
+        <button type="button" class="location-tag-remove"
+                data-action="click->location-select#remove"
+                data-code="${code}"
+                aria-label="Remove ${c.name}">×</button>
+      </span>`
+    }).join("")
+  }
+
+  renderHiddenInputs() {
+    this.hiddenInputsTarget.innerHTML = Array.from(this.selectedCodes)
+      .map(code => `<input type="hidden" name="keyword[locations][]" value="${code}">`)
       .join("")
+  }
+
+  renderDropdown(countries) {
+    if (countries.length === 0) {
+      this.dropdownTarget.innerHTML = `<div class="location-select-empty">No results</div>`
+    } else {
+      this.dropdownTarget.innerHTML = countries
+        .map(c => `<button type="button" class="location-select-option" data-action="click->location-select#add" data-code="${c.code}">${c.flag} ${c.name}</button>`)
+        .join("")
+    }
   }
 }

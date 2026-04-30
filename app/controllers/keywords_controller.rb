@@ -28,7 +28,7 @@ class KeywordsController < ApplicationController
   end
 
   def check
-    KeywordCheckJob.perform_later(@keyword)
+    @keyword.locations.each { |location| KeywordCheckJob.perform_later(@keyword, location) }
     redirect_to @site, notice: "Ranking check queued for \"#{@keyword.query}\"."
   end
 
@@ -48,7 +48,7 @@ class KeywordsController < ApplicationController
   end
 
   def keyword_params
-    params.expect(keyword: [ :query, :check_frequency, :location ])
+    params.expect(keyword: [ :query, :check_frequency, locations: [] ])
   end
 
   def keyword_update_params

@@ -1,6 +1,6 @@
 <p class="breadcrumb">
   <%= link_to @site.name, @site %> &rsaquo;
-  <strong><%= @keyword.query %></strong> <%= country_flag(@keyword.location) %>
+  <strong><%= @keyword.query %></strong> <%= @keyword.locations.map { |l| country_flag(l) }.join(" ") %>
 </p>
 
 <div class="header">
@@ -20,6 +20,7 @@
     <thead>
       <tr>
         <th>Date</th>
+        <th>Location</th>
         <th>Position</th>
         <th>URL</th>
         <th>SerpApi</th>
@@ -30,6 +31,7 @@
       <% @checks.each do |check| %>
         <tr>
           <td><%= check.checked_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= check.location ? country_flag(check.location) : "" %></td>
           <td><%= check.position || "Not ranked" %></td>
           <td class="url-cell"><%= check.url %></td>
           <td>

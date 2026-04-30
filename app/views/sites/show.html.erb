@@ -20,7 +20,7 @@
       <% success_checks = keyword.checks.select(&:success?) %>
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title"><%= keyword.query %> <span class="keyword-flag"><%= country_flag(keyword.location) %></span></h2>
+          <h2 class="card-title"><%= keyword.query %> <span class="keyword-flag"><%= keyword.locations.map { |l| country_flag(l) }.join(" ") %></span></h2>
           <div class="card-actions">
             <%= button_to "Check", check_site_keyword_path(@site, keyword), method: :post %>
             <%= link_to "Edit", edit_site_keyword_path(@site, keyword) %>

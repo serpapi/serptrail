@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_29_115122) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_29_144909) do
   create_table "checks", force: :cascade do |t|
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
     t.string "error_message"
     t.integer "keyword_id", null: false
+    t.string "location"
     t.integer "position"
     t.string "serpapi_search_id"
     t.string "status", default: "pending", null: false
@@ -29,7 +30,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_29_115122) do
     t.string "check_frequency", default: "daily", null: false
     t.datetime "created_at", null: false
     t.datetime "last_checked_at"
-    t.string "location", default: "us", null: false
+    t.json "locations"
     t.string "query", null: false
     t.integer "site_id", null: false
     t.datetime "updated_at", null: false

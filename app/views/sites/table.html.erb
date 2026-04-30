@@ -30,7 +30,7 @@
         <% latest = keyword.latest_check %>
         <% change = keyword.position_change %>
         <tr>
-          <td><%= keyword.query %></td>
+          <td><%= keyword.query %> <span class="keyword-flag"><%= keyword.locations.map { |l| country_flag(l) }.join(" ") %></span></td>
           <td><%= keyword.check_frequency.capitalize %></td>
           <td>
             <% if latest %>

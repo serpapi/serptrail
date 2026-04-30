@@ -38,7 +38,7 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "check enqueues job" do
-    assert_enqueued_with(job: KeywordCheckJob, args: [@keyword]) do
+    assert_enqueued_with(job: KeywordCheckJob, args: [@keyword, "us"]) do
       post check_site_keyword_url(@site, @keyword), headers: @headers
     end
     assert_redirected_to site_url(@site)

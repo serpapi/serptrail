@@ -3,7 +3,9 @@ class KeywordCheckDispatchJob < ApplicationJob
 
   def perform
     Keyword.due_for_check.find_each do |keyword|
-      KeywordCheckJob.perform_later(keyword)
+      keyword.locations.each do |location|
+        KeywordCheckJob.perform_later(keyword, location)
+      end
     end
   end
 end
