@@ -1,26 +1,17 @@
-<%= form_with(model: [site, keyword]) do |form| %>
-  <% if keyword.errors.any? %>
-    <div class="errors">
-      <h2><%= pluralize(keyword.errors.count, "error") %> prohibited this keyword from being saved:</h2>
-      <ul>
-        <% keyword.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="header">
+  <h1>Import Keywords for <%= @site.name %></h1>
+</div>
 
+<%= form_with url: import_site_keywords_path(@site), scope: :keyword do |form| %>
   <div class="field">
-    <%= form.label :query %>
-    <%= form.text_field :query, required: true, placeholder: "e.g. best ruby gems", autocomplete: "off" %>
-    <% if keyword.new_record? %>
-      <small class="import-prompt"><%= link_to "Adding more keywords at once?", import_site_keywords_path(site) %></small>
-    <% end %>
+    <%= form.label :queries, "Keywords" %>
+    <%= form.text_area :queries, rows: 10, placeholder: "iphone 18\nbuy iphone 18\niphone 18 review", autocomplete: "off" %>
+    <small class="field-hint">One keyword per line</small>
   </div>
 
   <div class="field"
        data-controller="location-select"
-       data-location-select-initial-value="<%= keyword.locations.to_json %>">
+       data-location-select-initial-value="<%= @keyword.locations.to_json %>">
     <label>Locations</label>
     <div class="location-select-control" data-action="click->location-select#focusInput">
       <div data-location-select-target="tags"></div>
@@ -49,6 +40,8 @@
   </div>
 
   <div class="actions">
-    <%= form.submit(keyword.new_record? ? "Create" : "Update", class: "btn") %>
+    <%= form.submit "Import", class: "btn" %>
   </div>
 <% end %>
+
+<%= link_to "Back to site", @site, class: "back-link" %>

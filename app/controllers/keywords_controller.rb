@@ -24,6 +24,30 @@ class KeywordsController < ApplicationController
     @keyword = @site.keywords.new
   end
 
+  def import
+    @keyword = @site.keywords.new
+
+    if request.post?
+      queries = import_params[:queries].to_s.lines.map(&:strip).reject(&:blank?).uniq
+      locations = import_params[:locations] || [ "us" ]
+      check_frequency = import_params[:check_frequency].presence || "daily"
+
+      created = queries.count do |query|
+        keyword = @site.keywords.new(query: query, locations: locations, check_frequency: check_frequency)
+        if keyword.save
+          keyword.locations.each { |location| KeywordCheckJob.perform_later(keyword, location) }
+          keyword.update_column(:last_checked_at, Time.current)
+          true
+        end
+      end
+
+      skipped = queries.size - created
+      notice = "#{created} #{"keyword".pluralize(created)} imported."
+      notice += " #{skipped} skipped (already exist)." if skipped > 0
+      redirect_to @site, notice: notice
+    end
+  end
+
   def create
     @keyword = @site.keywords.new(keyword_params)
 
@@ -65,6 +89,10 @@ class KeywordsController < ApplicationController
 
   def set_keyword
     @keyword = @site.keywords.find(params[:id])
+  end
+
+  def import_params
+    params.expect(keyword: [ :queries, :check_frequency, locations: [] ])
   end
 
   def keyword_params

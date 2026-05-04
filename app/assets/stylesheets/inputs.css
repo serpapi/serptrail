@@ -4,6 +4,27 @@
     margin-bottom: 1rem;
   }
 
+  .field-hint {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  .import-prompt {
+    display: block;
+    margin-top: 0.375rem;
+  }
+
+  .import-prompt a {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+
+  .import-prompt a:hover {
+    color: var(--color-primary);
+  }
+
   .field label {
     display: block;
     font-weight: 500;
@@ -13,6 +34,7 @@
 
   .field input[type="text"],
   .field input[type="password"],
+  .field textarea,
   .field select {
     width: 100%;
     max-width: 400px;

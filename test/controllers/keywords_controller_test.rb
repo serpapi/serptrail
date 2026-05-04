@@ -46,6 +46,20 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to site_url(@site)
   end
 
+  test "import creates a keyword per line" do
+    assert_difference("Keyword.count", 3) do
+      post import_site_keywords_url(@site), params: {
+        keyword: {
+          queries: "bulk keyword one\nbulk keyword two\nbulk keyword three",
+          check_frequency: "daily",
+          locations: [ "us" ]
+        }
+      }, headers: @headers
+    end
+    assert_redirected_to site_url(@site)
+    assert_match "3 keywords imported", flash[:notice]
+  end
+
   test "destroy keyword" do
     assert_difference("Keyword.count", -1) do
       delete site_keyword_url(@site, @keyword), headers: @headers

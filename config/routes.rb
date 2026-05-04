@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resources :keywords, except: [ :index ] do
       post :check, on: :member
       resources :checks, only: [ :index ]
+      collection do
+        get  :import
+        post :import
+      end
     end
   end
 
