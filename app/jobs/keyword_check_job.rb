@@ -4,6 +4,18 @@ class KeywordCheckJob < ApplicationJob
   retry_on StandardError, wait: :polynomially_longer, attempts: 3
 
   def perform(keyword, location)
+    if Tenant.instance.serpapi_key.blank?
+      keyword.checks.create!(
+        query: keyword.query,
+        status: :failed,
+        error_message: "SerpApi key is not configured",
+        location: location,
+        checked_at: Time.current
+      )
+      broadcast_keyword_update(keyword)
+      return
+    end
+
     client = SerpApiClient.new
     result = client.check_position(keyword.query, keyword.site.domain, location: location)
 
