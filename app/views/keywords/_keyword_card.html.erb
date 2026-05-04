@@ -38,8 +38,7 @@
     </div>
     <div class="card-stat">
       <span class="card-stat-label">Frequency</span>
-      <% next_check = keyword.next_check_at if site.tracking_enabled? %>
-      <span class="card-stat-value" <%= "title=\"Next check in #{distance_of_time_in_words_to_now(next_check)}\"".html_safe if next_check&.future? %>><%= keyword.check_frequency.capitalize %></span>
+      <span class="card-stat-value"<%= " title=\"#{next_check_label(keyword)}\"".html_safe if site.tracking_enabled? %>><%= keyword.check_frequency.capitalize %></span>
     </div>
   </div>
 

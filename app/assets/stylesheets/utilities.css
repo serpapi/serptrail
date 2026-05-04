@@ -11,6 +11,8 @@
   .status-failed { background: #fef2f2; color: #991b1b; }
   .status-pending { background: #fffbeb; color: #92400e; }
 
+  .next-check-note { font-size: 0.75rem; color: var(--color-muted); text-align: right; margin-bottom: 1rem; }
+
   .breadcrumb { font-size: 0.875rem; margin-bottom: 1rem; }
   .breadcrumb a { color: var(--color-primary); text-decoration: none; }
 

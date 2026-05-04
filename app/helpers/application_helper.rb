@@ -21,6 +21,17 @@ module ApplicationHelper
     "ar" => "Argentina",       "cl" => "Chile",            "co" => "Colombia"
   }.freeze
 
+  def next_check_label(keyword)
+    next_check = keyword.next_check_at
+    if next_check.nil?
+      "Checking soon"
+    elsif next_check.future?
+      "Next check in #{distance_of_time_in_words_to_now(next_check)}"
+    else
+      "Check due"
+    end
+  end
+
   def country_flag(code)
     code.to_s.upcase.chars.map { |c| (0x1F1E6 + (c.ord - "A".ord)).chr(Encoding::UTF_8) }.join
   end

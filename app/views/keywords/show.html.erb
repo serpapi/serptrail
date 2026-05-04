@@ -13,6 +13,10 @@
   </div>
 </div>
 
+<% if @site.tracking_enabled? %>
+  <p class="next-check-note"><%= @keyword.check_frequency.capitalize %> | <%= next_check_label(@keyword) %></p>
+<% end %>
+
 <%= render "keywords/keyword_data",
       keyword: @keyword,
       checks_by_location: @checks_by_location,
