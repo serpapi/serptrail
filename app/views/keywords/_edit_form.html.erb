@@ -11,6 +11,29 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :query %>
+    <%= form.text_field :query, required: true, placeholder: "e.g. best ruby gems" %>
+  </div>
+
+  <div class="field"
+       data-controller="location-select"
+       data-location-select-initial-value="<%= keyword.locations.to_json %>">
+    <label>Locations</label>
+    <div class="location-select-control" data-action="click->location-select#focusInput">
+      <div data-location-select-target="tags"></div>
+      <input type="text"
+             class="location-select-search"
+             autocomplete="off"
+             spellcheck="false"
+             placeholder="Add location..."
+             data-location-select-target="input"
+             data-action="focus->location-select#open input->location-select#filter">
+    </div>
+    <div class="location-select-dropdown" data-location-select-target="dropdown" hidden></div>
+    <div data-location-select-target="hiddenInputs"></div>
+  </div>
+
+  <div class="field">
     <%= form.label :check_frequency, "Check frequency" %>
     <div class="btn-group">
       <% Keyword.check_frequencies.each_key do |freq| %>
