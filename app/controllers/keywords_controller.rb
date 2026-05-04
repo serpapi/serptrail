@@ -30,7 +30,7 @@ class KeywordsController < ApplicationController
     if @keyword.save
       @keyword.locations.each { |location| KeywordCheckJob.perform_later(@keyword, location) }
       @keyword.update_column(:last_checked_at, Time.current)
-      redirect_to @site, notice: "Keyword was successfully added."
+      redirect_to @site
     else
       render :new, status: :unprocessable_entity
     end

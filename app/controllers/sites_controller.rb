@@ -21,7 +21,7 @@ class SitesController < ApplicationController
     @site = Site.new(site_params)
 
     if @site.save
-      redirect_to @site, notice: "Site was successfully created."
+      redirect_to @site
     else
       render :new, status: :unprocessable_entity
     end

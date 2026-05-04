@@ -37,10 +37,10 @@
 
     <main class="container">
       <% if notice %>
-        <div class="flash flash-notice"><%= notice %></div>
+        <div class="flash flash-notice" data-controller="flash"><%= notice %></div>
       <% end %>
       <% if alert %>
-        <div class="flash flash-alert"><%= alert %></div>
+        <div class="flash flash-alert" data-controller="flash"><%= alert %></div>
       <% end %>
 
       <%= yield %>

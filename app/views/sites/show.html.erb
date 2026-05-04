@@ -1,3 +1,5 @@
+<%= turbo_stream_from @site, :keywords %>
+
 <div class="header">
   <h1><%= @site.name %></h1>
   <div class="header-actions">
@@ -15,59 +17,7 @@
 <% if @keywords.any? %>
   <div class="card-grid">
     <% @keywords.each do |keyword| %>
-      <% latest = keyword.latest_check %>
-      <% change = keyword.position_change %>
-      <% success_checks = keyword.checks.select(&:success?) %>
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title"><%= link_to site_keyword_path(@site, keyword) do %><%= keyword.query %> <span class="keyword-flag"><%= keyword.locations.map { |l| country_flag(l) }.join(" ") %></span><% end %></h2>
-          <div class="card-actions">
-            <%= button_to "Check", check_site_keyword_path(@site, keyword), method: :post %>
-            <%= link_to "Edit", edit_site_keyword_path(@site, keyword) %>
-            <%= button_to "Delete", site_keyword_path(@site, keyword), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-          </div>
-        </div>
-
-        <div class="card-stats">
-          <div class="card-stat">
-            <span class="card-stat-label">Position</span>
-            <span class="card-stat-value">
-              <% if latest %>
-                <%= link_to(latest.position || "N/R", site_keyword_checks_path(@site, keyword)) %>
-              <% else %>
-                <span class="muted">--</span>
-              <% end %>
-            </span>
-          </div>
-          <div class="card-stat">
-            <span class="card-stat-label">Change</span>
-            <span class="card-stat-value">
-              <% if change && change != 0 %>
-                <% if change > 0 %>
-                  <span class="change-up">+<%= change %></span>
-                <% else %>
-                  <span class="change-down"><%= change %></span>
-                <% end %>
-              <% else %>
-                <span class="muted">--</span>
-              <% end %>
-            </span>
-          </div>
-          <div class="card-stat">
-            <span class="card-stat-label">Frequency</span>
-            <span class="card-stat-value"><%= keyword.check_frequency.capitalize %></span>
-          </div>
-        </div>
-
-        <div class="card-chart">
-          <% sparkline = position_sparkline(success_checks, width: 440, height: 120) %>
-          <% if sparkline %>
-            <%= sparkline %>
-          <% else %>
-            <div class="card-no-data"><%= keyword.checks.empty? ? "Checking..." : "Not enough data" %></div>
-          <% end %>
-        </div>
-      </div>
+      <%= render "keywords/keyword_card", keyword: keyword, site: @site %>
     <% end %>
   </div>
 <% else %>

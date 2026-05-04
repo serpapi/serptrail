@@ -1,3 +1,5 @@
+<%= turbo_stream_from @keyword %>
+
 <p class="breadcrumb">
   <%= link_to @site.name, @site %> &rsaquo;
   <strong><%= @keyword.query %></strong>
@@ -11,58 +13,8 @@
   </div>
 </div>
 
-<% sparkline = multi_location_sparkline(@checks_by_location, @keyword.locations, width: 960, height: 220) %>
-<% if sparkline %>
-  <div class="history-chart">
-    <%= sparkline %>
-  </div>
-
-  <div class="location-legend">
-    <% @keyword.locations.each_with_index do |location, i| %>
-      <span class="location-legend-item">
-        <span class="location-legend-swatch" style="background: <%= location_color(i) %>"></span>
-        <%= country_flag(location) %> <%= country_name(location) %>
-      </span>
-    <% end %>
-  </div>
-<% else %>
-  <p class="muted"><%= @has_checks ? "Not enough data yet." : "Checking..." %></p>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Position</th>
-      <th>Change</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @location_stats.each_with_index do |stat, i| %>
-      <tr>
-        <td>
-          <span class="location-legend-swatch" style="background: <%= location_color(i) %>"></span>
-          <%= country_flag(stat[:location]) %> <%= country_name(stat[:location]) %>
-        </td>
-        <td>
-          <% if stat[:latest] %>
-            <%= link_to(stat[:latest].position || "N/R", site_keyword_checks_path(@site, @keyword)) %>
-          <% else %>
-            <span class="muted">--</span>
-          <% end %>
-        </td>
-        <td>
-          <% if stat[:change] && stat[:change] != 0 %>
-            <% if stat[:change] > 0 %>
-              <span class="change-up">+<%= stat[:change] %></span>
-            <% else %>
-              <span class="change-down"><%= stat[:change] %></span>
-            <% end %>
-          <% else %>
-            <span class="muted">--</span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "keywords/keyword_data",
+      keyword: @keyword,
+      checks_by_location: @checks_by_location,
+      location_stats: @location_stats,
+      has_checks: @has_checks %>
