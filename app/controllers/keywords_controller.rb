@@ -3,6 +3,7 @@ class KeywordsController < ApplicationController
   before_action :set_keyword, only: %i[show edit update destroy check]
 
   def show
+    @has_checks = @keyword.checks.exists?
     @checks_by_location = @keyword.checks
       .where(status: "success")
       .order(checked_at: :asc)
@@ -27,6 +28,8 @@ class KeywordsController < ApplicationController
     @keyword = @site.keywords.new(keyword_params)
 
     if @keyword.save
+      @keyword.locations.each { |location| KeywordCheckJob.perform_later(@keyword, location) }
+      @keyword.update_column(:last_checked_at, Time.current)
       redirect_to @site, notice: "Keyword was successfully added."
     else
       render :new, status: :unprocessable_entity

@@ -26,7 +26,7 @@
     <% end %>
   </div>
 <% else %>
-  <p class="muted">No check data yet. Run a check to start seeing results here.</p>
+  <p class="muted"><%= @has_checks ? "Not enough data yet." : "Checking..." %></p>
 <% end %>
 
 <table>

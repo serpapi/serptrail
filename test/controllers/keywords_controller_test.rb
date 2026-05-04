@@ -14,7 +14,9 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
 
   test "create keyword" do
     assert_difference("Keyword.count") do
-      post site_keywords_url(@site), params: { keyword: { query: "new query", check_frequency: "daily" } }, headers: @headers
+      assert_enqueued_with(job: KeywordCheckJob) do
+        post site_keywords_url(@site), params: { keyword: { query: "new query", check_frequency: "daily", locations: [ "us" ] } }, headers: @headers
+      end
     end
     assert_redirected_to site_url(@site)
   end

@@ -64,7 +64,7 @@
           <% if sparkline %>
             <%= sparkline %>
           <% else %>
-            <div class="card-no-data">No data</div>
+            <div class="card-no-data"><%= keyword.checks.empty? ? "Checking..." : "Not enough data" %></div>
           <% end %>
         </div>
       </div>
