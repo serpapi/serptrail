@@ -12,12 +12,12 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, required: true %>
+    <%= form.text_field :name, required: true, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= form.label :domain %>
-    <%= form.text_field :domain, required: true, placeholder: "example.com" %>
+    <%= form.text_field :domain, required: true, placeholder: "example.com", autocomplete: "off" %>
   </div>
 
   <div class="field toggle-field">
