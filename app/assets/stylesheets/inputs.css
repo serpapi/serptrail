@@ -23,6 +23,10 @@
   }
 
   /* Location multi-select */
+  .field[data-controller="location-select"] {
+    max-width: 400px;
+  }
+
   .location-select-control {
     display: flex;
     flex-wrap: wrap;
