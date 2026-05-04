@@ -2,6 +2,7 @@
 # position_change test: latest=1, previous=4 → change=3
 apple_iphone18_us_latest:
   keyword: apple_iphone18
+  query: iphone 18
   position: 1
   url: https://apple.com/iphone-18
   status: success
@@ -10,6 +11,7 @@ apple_iphone18_us_latest:
 
 apple_iphone18_us_previous:
   keyword: apple_iphone18
+  query: iphone 18
   position: 4
   url: https://apple.com/iphone-18
   status: success
@@ -19,6 +21,7 @@ apple_iphone18_us_previous:
 <% [4, 3, 3, 2, 2].each_with_index do |pos, i| %>
 apple_iphone18_us_week_<%= i %>:
   keyword: apple_iphone18
+  query: iphone 18
   position: <%= pos %>
   url: https://apple.com/iphone-18
   status: success
@@ -30,6 +33,7 @@ apple_iphone18_us_week_<%= i %>:
 <% [3, 3, 2, 2, 1].each_with_index do |pos, i| %>
 apple_iphone18_gb_week_<%= i %>:
   keyword: apple_iphone18
+  query: iphone 18
   position: <%= pos %>
   url: https://apple.com/uk/iphone-18
   status: success
@@ -41,6 +45,7 @@ apple_iphone18_gb_week_<%= i %>:
 <% [6, 5, 4, 3, 3].each_with_index do |pos, i| %>
 apple_iphone18_es_week_<%= i %>:
   keyword: apple_iphone18
+  query: iphone 18
   position: <%= pos %>
   url: https://apple.com/es/iphone-18
   status: success
@@ -52,6 +57,7 @@ apple_iphone18_es_week_<%= i %>:
 <% [3, 2, 2, 2, 1].each_with_index do |pos, i| %>
 apple_iphone18_pro_us_week_<%= i %>:
   keyword: apple_iphone18_pro
+  query: iphone 18 pro
   position: <%= pos %>
   url: https://apple.com/iphone-18-pro
   status: success
@@ -63,6 +69,7 @@ apple_iphone18_pro_us_week_<%= i %>:
 <% [3, 3, 2, 2, 1].each_with_index do |pos, i| %>
 apple_iphone18_pro_gb_week_<%= i %>:
   keyword: apple_iphone18_pro
+  query: iphone 18 pro
   position: <%= pos %>
   url: https://apple.com/uk/iphone-18-pro
   status: success
@@ -74,6 +81,7 @@ apple_iphone18_pro_gb_week_<%= i %>:
 <% [5, 4, 3, 3, 2].each_with_index do |pos, i| %>
 apple_iphone18_pro_es_week_<%= i %>:
   keyword: apple_iphone18_pro
+  query: iphone 18 pro
   position: <%= pos %>
   url: https://apple.com/es/iphone-18-pro
   status: success
@@ -85,6 +93,7 @@ apple_iphone18_pro_es_week_<%= i %>:
 <% [3, 2, 2, 2, 1].each_with_index do |pos, i| %>
 apple_buy_iphone18_us_week_<%= i %>:
   keyword: apple_buy_iphone18
+  query: buy iphone 18
   position: <%= pos %>
   url: https://apple.com/shop/buy-iphone/iphone-18
   status: success
@@ -96,6 +105,7 @@ apple_buy_iphone18_us_week_<%= i %>:
 <% [4, 3, 3, 2, 2].each_with_index do |pos, i| %>
 apple_buy_iphone18_gb_week_<%= i %>:
   keyword: apple_buy_iphone18
+  query: buy iphone 18
   position: <%= pos %>
   url: https://apple.com/uk/shop/buy-iphone/iphone-18
   status: success
@@ -107,6 +117,7 @@ apple_buy_iphone18_gb_week_<%= i %>:
 <% [8, 7, 6, 5, 4].each_with_index do |pos, i| %>
 apple_buy_iphone18_es_week_<%= i %>:
   keyword: apple_buy_iphone18
+  query: buy iphone 18
   position: <%= pos %>
   url: https://apple.com/es/shop/buy-iphone/iphone-18
   status: success
@@ -118,6 +129,7 @@ apple_buy_iphone18_es_week_<%= i %>:
 <% [8, 7, 6, 5, 5].each_with_index do |pos, i| %>
 bestbuy_iphone18_us_week_<%= i %>:
   keyword: bestbuy_iphone18
+  query: iphone 18
   position: <%= pos %>
   url: https://bestbuy.com/iphone-18
   status: success
@@ -129,6 +141,7 @@ bestbuy_iphone18_us_week_<%= i %>:
 <% [14, 12, 11, 9, 8].each_with_index do |pos, i| %>
 bestbuy_iphone18_gb_week_<%= i %>:
   keyword: bestbuy_iphone18
+  query: iphone 18
   position: <%= pos %>
   url: https://bestbuy.com/iphone-18
   status: success
@@ -140,6 +153,7 @@ bestbuy_iphone18_gb_week_<%= i %>:
 <% [7, 6, 5, 5, 4].each_with_index do |pos, i| %>
 bestbuy_iphone18_pro_us_week_<%= i %>:
   keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
   position: <%= pos %>
   url: https://bestbuy.com/iphone-18-pro
   status: success
@@ -151,6 +165,7 @@ bestbuy_iphone18_pro_us_week_<%= i %>:
 <% [14, 13, 11, 10, 9].each_with_index do |pos, i| %>
 bestbuy_iphone18_pro_gb_week_<%= i %>:
   keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
   position: <%= pos %>
   url: https://bestbuy.com/iphone-18-pro
   status: success
@@ -162,6 +177,7 @@ bestbuy_iphone18_pro_gb_week_<%= i %>:
 <% [4, 3, 3, 3, 2].each_with_index do |pos, i| %>
 bestbuy_buy_iphone18_us_week_<%= i %>:
   keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
   position: <%= pos %>
   url: https://bestbuy.com/buy-iphone-18
   status: success
@@ -173,6 +189,7 @@ bestbuy_buy_iphone18_us_week_<%= i %>:
 <% [11, 10, 9, 8, 7].each_with_index do |pos, i| %>
 bestbuy_buy_iphone18_gb_week_<%= i %>:
   keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
   position: <%= pos %>
   url: https://bestbuy.com/buy-iphone-18
   status: success
@@ -184,6 +201,7 @@ bestbuy_buy_iphone18_gb_week_<%= i %>:
 <% [5, 3, 2, 2, 1].each_with_index do |pos, i| %>
 mac_iphone18_review_us_week_<%= i %>:
   keyword: mac_iphone18_review
+  query: iphone 18 review
   position: <%= pos %>
   url: https://9to5mac.com/iphone-18-review
   status: success
@@ -195,6 +213,7 @@ mac_iphone18_review_us_week_<%= i %>:
 <% [8, 6, 5, 4, 3].each_with_index do |pos, i| %>
 mac_iphone18_vs_us_week_<%= i %>:
   keyword: mac_iphone18_vs
+  query: iphone 18 vs iphone 17
   position: <%= pos %>
   url: https://9to5mac.com/iphone-18-vs-iphone-17
   status: success
@@ -206,6 +225,7 @@ mac_iphone18_vs_us_week_<%= i %>:
 <% [6, 5, 4, 3, 2].each_with_index do |pos, i| %>
 gsma_iphone18_specs_us_week_<%= i %>:
   keyword: gsma_iphone18_specs
+  query: iphone 18 specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18-specs.php
   status: success
@@ -217,6 +237,7 @@ gsma_iphone18_specs_us_week_<%= i %>:
 <% [8, 7, 6, 5, 4].each_with_index do |pos, i| %>
 gsma_iphone18_specs_gb_week_<%= i %>:
   keyword: gsma_iphone18_specs
+  query: iphone 18 specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18-specs.php
   status: success
@@ -228,6 +249,7 @@ gsma_iphone18_specs_gb_week_<%= i %>:
 <% [12, 10, 9, 8, 7].each_with_index do |pos, i| %>
 gsma_iphone18_specs_de_week_<%= i %>:
   keyword: gsma_iphone18_specs
+  query: iphone 18 specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18-specs.php
   status: success
@@ -239,6 +261,7 @@ gsma_iphone18_specs_de_week_<%= i %>:
 <% [4, 3, 3, 2, 2].each_with_index do |pos, i| %>
 gsma_iphone18_pro_specs_us_week_<%= i %>:
   keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php
   status: success
@@ -250,6 +273,7 @@ gsma_iphone18_pro_specs_us_week_<%= i %>:
 <% [6, 5, 5, 4, 3].each_with_index do |pos, i| %>
 gsma_iphone18_pro_specs_gb_week_<%= i %>:
   keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php
   status: success
@@ -261,6 +285,7 @@ gsma_iphone18_pro_specs_gb_week_<%= i %>:
 <% [8, 6, 4, 3, 2].each_with_index do |pos, i| %>
 apple_intelligence_us_week_<%= i %>:
   keyword: never_checked
+  query: apple intelligence
   position: <%= pos %>
   url: https://apple.com/apple-intelligence
   status: success
@@ -272,6 +297,7 @@ apple_intelligence_us_week_<%= i %>:
 <% [10, 9, 8, 7, 6].each_with_index do |pos, i| %>
 gsma_iphone18_pro_specs_de_week_<%= i %>:
   keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php
   status: success

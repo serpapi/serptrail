@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_30_075959) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_04_090929) do
   create_table "checks", force: :cascade do |t|
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_30_075959) do
     t.integer "keyword_id", null: false
     t.string "location", null: false
     t.integer "position"
+    t.string "query", null: false
     t.string "serpapi_search_id"
     t.string "status", default: "pending", null: false
     t.datetime "updated_at", null: false

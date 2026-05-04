@@ -8,6 +8,7 @@ class KeywordCheckJob < ApplicationJob
     result = client.check_position(keyword.query, keyword.site.domain, location: location)
 
     keyword.checks.create!(
+      query: keyword.query,
       position: result[:position],
       url: result[:url],
       serpapi_search_id: result[:serpapi_search_id],
@@ -19,6 +20,7 @@ class KeywordCheckJob < ApplicationJob
     keyword.update!(last_checked_at: Time.current)
   rescue StandardError => e
     keyword.checks.create!(
+      query: keyword.query,
       status: :failed,
       error_message: e.message,
       location: location,

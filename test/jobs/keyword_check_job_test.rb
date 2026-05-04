@@ -14,6 +14,7 @@ class KeywordCheckJobTest < ActiveJob::TestCase
     assert_equal "success", check.status
     assert_equal 3, check.position
     assert_equal "us", check.location
+    assert_equal keyword.query, check.query
     assert_not_nil keyword.reload.last_checked_at
   end
 
@@ -30,5 +31,6 @@ class KeywordCheckJobTest < ActiveJob::TestCase
     assert_equal "failed", check.status
     assert_equal "API error", check.error_message
     assert_equal "us", check.location
+    assert_equal keyword.query, check.query
   end
 end
