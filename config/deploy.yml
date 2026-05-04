@@ -45,6 +45,9 @@ env:
     - HTTP_AUTH_USERNAME
     - HTTP_AUTH_PASSWORD
     - SERPAPI_API_KEY
+    - AR_ENCRYPTION_PRIMARY_KEY
+    - AR_ENCRYPTION_DETERMINISTIC_KEY
+    - AR_ENCRYPTION_KEY_DERIVATION_SALT
   clear:
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
