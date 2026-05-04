@@ -24,6 +24,18 @@ class Keyword < ApplicationRecord
     )
   }
 
+  FREQUENCY_DURATION = {
+    "daily"    => 1.day,
+    "weekly"   => 1.week,
+    "biweekly" => 2.weeks,
+    "monthly"  => 1.month
+  }.freeze
+
+  def next_check_at
+    return nil unless last_checked_at
+    last_checked_at + FREQUENCY_DURATION[check_frequency]
+  end
+
   def latest_check
     checks.where(status: "success").order(checked_at: :desc).first
   end

@@ -30,8 +30,9 @@
         <% latest = keyword.latest_check %>
         <% change = keyword.position_change %>
         <tr>
-          <td><%= keyword.query %> <span class="keyword-flag"><%= keyword.locations.map { |l| country_flag(l) }.join(" ") %></span></td>
-          <td><%= keyword.check_frequency.capitalize %></td>
+          <td><%= link_to site_keyword_path(@site, keyword) do %><%= keyword.query %> <span class="keyword-flag"><%= keyword.locations.map { |l| country_flag(l) }.join(" ") %></span><% end %></td>
+          <% next_check = keyword.next_check_at if @site.tracking_enabled? %>
+          <td <%= "title=\"Next check in #{distance_of_time_in_words_to_now(next_check)}\"".html_safe if next_check&.future? %>><%= keyword.check_frequency.capitalize %></td>
           <td>
             <% if latest %>
               <%= link_to(latest.position || "Not ranked", site_keyword_checks_path(@site, keyword)) %>
