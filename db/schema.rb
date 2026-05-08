@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_04_090929) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_08_091722) do
   create_table "checks", force: :cascade do |t|
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
@@ -54,6 +54,25 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_04_090929) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "view_series", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "keyword_id", null: false
+    t.string "location", null: false
+    t.integer "position", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.integer "view_id", null: false
+    t.index ["keyword_id"], name: "index_view_series_on_keyword_id"
+    t.index ["view_id"], name: "index_view_series_on_view_id"
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "checks", "keywords", on_delete: :cascade
   add_foreign_key "keywords", "sites", on_delete: :cascade
+  add_foreign_key "view_series", "keywords"
+  add_foreign_key "view_series", "views"
 end

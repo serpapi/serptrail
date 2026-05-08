@@ -1,85 +1,49 @@
-<h1>Compare</h1>
-
-<form method="get" action="<%= views_path %>" class="compare-form">
-  <% [["s1", "Series 1", params[:s1]], ["s2", "Series 2", params[:s2]]].each do |key, label, current| %>
-    <fieldset class="compare-series" data-controller="series-select">
-      <legend><%= label %></legend>
-
-      <div class="form-group">
-        <label>Site</label>
-        <select name="<%= key %>[site_id]"
-                data-series-select-target="siteSelect"
-                data-action="change->series-select#siteChanged">
-          <option value="">Select site</option>
-          <% @sites.each do |site| %>
-            <option value="<%= site.id %>"
-                    <%= "selected" if current&.dig(:site_id) == site.id.to_s %>>
-              <%= site.name %> (<%= site.domain %>)
-            </option>
-          <% end %>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Keyword</label>
-        <select name="<%= key %>[keyword_id]"
-                data-series-select-target="keywordSelect"
-                data-action="change->series-select#keywordChanged">
-          <option value="">Select keyword</option>
-          <% @all_keywords.each do |keyword| %>
-            <option value="<%= keyword.id %>"
-                    data-site-id="<%= keyword.site_id %>"
-                    data-locations="<%= keyword.locations.to_json %>"
-                    <%= "selected" if current&.dig(:keyword_id) == keyword.id.to_s %>>
-              <%= keyword.query %>
-            </option>
-          <% end %>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Location</label>
-        <select name="<%= key %>[location]"
-                data-series-select-target="locationSelect">
-          <option value="">Select location</option>
-          <% if current&.dig(:location).present? && current&.dig(:keyword_id).present? %>
-            <% kw = @all_keywords.find { |k| k.id.to_s == current[:keyword_id] } %>
-            <% kw&.locations&.each do |code| %>
-              <option value="<%= code %>" <%= "selected" if current[:location] == code %>>
-                <%= country_flag(code) %> <%= country_name(code) %>
-              </option>
-            <% end %>
-          <% end %>
-        </select>
-      </div>
-    </fieldset>
-  <% end %>
-
-  <div class="compare-actions">
-    <%= submit_tag "Compare", class: "btn btn-primary" %>
+<div class="header">
+  <h1>Views</h1>
+  <div class="header-actions">
+    <%= link_to "+ Add", new_view_path, class: "btn" %>
   </div>
-</form>
+</div>
 
-<% if @series1 && @series2 %>
-  <% checks_by_series = { "s1" => @series1[:checks], "s2" => @series2[:checks] } %>
-  <% sparkline = multi_location_sparkline(checks_by_series, ["s1", "s2"], width: 960, height: 220) %>
-
-  <% if sparkline %>
-    <div class="history-chart">
-      <%= sparkline %>
-    </div>
-
-    <div class="location-legend">
-      <% [[@series1, 0], [@series2, 1]].each do |series, idx| %>
-        <span class="location-legend-item">
-          <span class="location-legend-swatch" style="background: <%= location_color(idx) %>"></span>
-          <strong><%= series[:site].domain %></strong>
-          &mdash; <%= series[:keyword].query %>
-          &mdash; <%= country_flag(series[:location]) %> <%= country_name(series[:location]) %>
-        </span>
+<% if @views.any? %>
+  <div class="card-grid">
+    <% @views.each do |saved_view| %>
+      <% checks_by_series = {} %>
+      <% compare_params = {} %>
+      <% saved_view.series.each_with_index do |s, idx| %>
+        <% key = "s#{idx + 1}" %>
+        <% checks_by_series[key] = s.keyword.checks.select { |c| c.success? && c.location == s.location }.sort_by(&:checked_at) %>
+        <% compare_params[key] = { keyword_id: s.keyword_id, location: s.location, site_id: s.keyword.site_id } %>
       <% end %>
-    </div>
-  <% else %>
-    <p class="muted">Not enough data yet to plot a chart. Make sure both series have at least 2 successful checks.</p>
-  <% end %>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title"><%= link_to saved_view.name, view_path(saved_view) %></h2>
+          <div class="card-actions">
+            <%= button_to "Delete", view_path(saved_view), method: :delete, data: { turbo_confirm: "Delete this view?" } %>
+          </div>
+        </div>
+
+        <div class="view-series">
+          <% saved_view.series.each_with_index do |s, idx| %>
+            <div class="view-series-row">
+              <span class="location-legend-swatch" style="background: <%= location_color(idx) %>"></span>
+              <span><strong><%= s.keyword.site.domain %></strong> &mdash; <%= s.keyword.query %> &mdash; <%= country_flag(s.location) %> <%= country_name(s.location) %></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="card-chart">
+          <% sparkline = multi_location_sparkline(checks_by_series, checks_by_series.keys, width: 440, height: 120) %>
+          <% if sparkline %>
+            <%= sparkline %>
+          <% else %>
+            <div class="card-no-data">Not enough data</div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="muted">No views yet. <%= link_to "Go to Compare", new_view_path %> to create one.</p>
 <% end %>

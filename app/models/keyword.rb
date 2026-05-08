@@ -1,6 +1,7 @@
 class Keyword < ApplicationRecord
   belongs_to :site
   has_many :checks, dependent: :destroy
+  has_many :view_series, dependent: :destroy
 
   validates :query, presence: true, uniqueness: { scope: :site_id }, length: { maximum: 255 }
   validates :check_frequency, presence: true

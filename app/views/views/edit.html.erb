@@ -1,0 +1,63 @@
+<% series = @view.series.to_a %>
+
+<div class="header">
+  <h1><%= @view.name %></h1>
+</div>
+
+<%= form_with url: view_path(@view), method: :patch, local: true, class: "compare-form" do %>
+  <% [["view[series][0]", "Series 1", series[0]], ["view[series][1]", "Series 2", series[1]]].each do |key, label, saved_series| %>
+    <fieldset class="compare-series" data-controller="series-select">
+      <legend><%= label %></legend>
+
+      <div class="form-group">
+        <label>Site</label>
+        <select name="<%= key %>[site_id]"
+                data-series-select-target="siteSelect"
+                data-action="change->series-select#siteChanged">
+          <option value="">Select site</option>
+          <% @sites.each do |site| %>
+            <option value="<%= site.id %>"
+                    <%= "selected" if saved_series&.keyword&.site_id == site.id %>>
+              <%= site.name %> (<%= site.domain %>)
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Keyword</label>
+        <select name="<%= key %>[keyword_id]"
+                data-series-select-target="keywordSelect"
+                data-action="change->series-select#keywordChanged">
+          <option value="">Select keyword</option>
+          <% @all_keywords.each do |keyword| %>
+            <option value="<%= keyword.id %>"
+                    data-site-id="<%= keyword.site_id %>"
+                    data-locations="<%= keyword.locations.to_json %>"
+                    <%= "selected" if saved_series&.keyword_id == keyword.id %>>
+              <%= keyword.query %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <select name="<%= key %>[location]"
+                data-series-select-target="locationSelect">
+          <option value="">Select location</option>
+          <% saved_series&.keyword&.locations&.each do |code| %>
+            <option value="<%= code %>" <%= "selected" if saved_series.location == code %>>
+              <%= country_flag(code) %> <%= country_name(code) %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+    </fieldset>
+  <% end %>
+
+  <div class="compare-actions">
+    <%= submit_tag "Update", class: "btn btn-primary" %>
+    <%= link_to "Cancel", view_path(@view), class: "btn btn-secondary" %>
+  </div>
+<% end %>
