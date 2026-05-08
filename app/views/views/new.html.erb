@@ -61,47 +61,32 @@
 </form>
 
 <% if @series1 && @series2 %>
-  <% checks_by_series = { "s1" => @series1[:checks], "s2" => @series2[:checks] } %>
-  <% sparkline = multi_location_sparkline(checks_by_series, ["s1", "s2"], width: 960, height: 220) %>
+  <% series = [
+    { label: "#{@series1[:site].domain} — #{@series1[:keyword].query} — #{country_flag(@series1[:location])} #{country_name(@series1[:location])}", checks: @series1[:checks] },
+    { label: "#{@series2[:site].domain} — #{@series2[:keyword].query} — #{country_flag(@series2[:location])} #{country_name(@series2[:location])}", checks: @series2[:checks] }
+  ] %>
+  <%= ranking_chart(series, empty_message: "Not enough data yet. Make sure both series have at least 2 successful checks.") %>
 
-  <% if sparkline %>
-    <div class="history-chart">
-      <%= sparkline %>
-    </div>
+  <div data-controller="modal" class="save-view-wrapper">
+    <button class="btn btn-secondary" data-action="click->modal#open">Save View</button>
 
-    <div class="location-legend">
-      <% [[@series1, 0], [@series2, 1]].each do |series, idx| %>
-        <span class="location-legend-item">
-          <span class="location-legend-swatch" style="background: <%= location_color(idx) %>"></span>
-          <strong><%= series[:site].domain %></strong>
-          &mdash; <%= series[:keyword].query %>
-          &mdash; <%= country_flag(series[:location]) %> <%= country_name(series[:location]) %>
-        </span>
-      <% end %>
-    </div>
-    <div data-controller="modal" class="save-view-wrapper">
-      <button class="btn btn-secondary" data-action="click->modal#open">Save View</button>
-
-      <dialog data-modal-target="dialog" data-action="click->modal#backdropClick" class="dialog">
-        <%= form_tag views_path, method: :post do %>
-          <% [[:s1, 0], [:s2, 1]].each do |key, idx| %>
-            <%= hidden_field_tag "view[series][#{idx}][keyword_id]", params.dig(key, :keyword_id) %>
-            <%= hidden_field_tag "view[series][#{idx}][location]",   params.dig(key, :location) %>
-          <% end %>
-
-          <h2 class="dialog-title">Save View</h2>
-          <div class="field">
-            <label for="view_name">Name</label>
-            <%= text_field_tag "view[name]", nil, id: "view_name", autofocus: true, placeholder: "e.g. My site vs Competitor", required: true %>
-          </div>
-          <div class="dialog-actions">
-            <%= submit_tag "Save", class: "btn btn-primary" %>
-            <button type="button" class="btn btn-secondary" data-action="click->modal#close">Cancel</button>
-          </div>
+    <dialog data-modal-target="dialog" data-action="click->modal#backdropClick" class="dialog">
+      <%= form_tag views_path, method: :post do %>
+        <% [[:s1, 0], [:s2, 1]].each do |key, idx| %>
+          <%= hidden_field_tag "view[series][#{idx}][keyword_id]", params.dig(key, :keyword_id) %>
+          <%= hidden_field_tag "view[series][#{idx}][location]",   params.dig(key, :location) %>
         <% end %>
-      </dialog>
-    </div>
-  <% else %>
-    <p class="muted">Not enough data yet to plot a chart. Make sure both series have at least 2 successful checks.</p>
-  <% end %>
+
+        <h2 class="dialog-title">Save View</h2>
+        <div class="field">
+          <label for="view_name">Name</label>
+          <%= text_field_tag "view[name]", nil, id: "view_name", autofocus: true, placeholder: "e.g. My site vs Competitor", required: true %>
+        </div>
+        <div class="dialog-actions">
+          <%= submit_tag "Save", class: "btn btn-primary" %>
+          <button type="button" class="btn btn-secondary" data-action="click->modal#close">Cancel</button>
+        </div>
+      <% end %>
+    </dialog>
+  </div>
 <% end %>

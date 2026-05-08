@@ -44,6 +44,12 @@ module ApplicationHelper
     LOCATION_COLORS[index % LOCATION_COLORS.size]
   end
 
+  # Renders the full chart component: sparkline + legend + empty state.
+  # series: array of { label: String, checks: Array }
+  def ranking_chart(series, width: 960, height: 220, empty_message: "Not enough data yet.")
+    render "shared/chart", series: series, width: width, height: height, empty_message: empty_message
+  end
+
   def multi_location_sparkline(checks_by_location, locations, width: 960, height: 200)
     all_checks = checks_by_location.values.flatten.sort_by(&:checked_at)
     return nil if all_checks.size < 2
@@ -58,15 +64,16 @@ module ApplicationHelper
     max_time   = all_checks.last.checked_at
     time_span  = [(max_time - min_time).to_f, 1.0].max
 
-    padding_x      = 8
+    padding_left   = 36
+    padding_right  = 8
     padding_top    = 8
     padding_bottom = 24
-    plot_w = width  - (padding_x * 2)
-    plot_h = height - padding_top - padding_bottom
+    plot_w = width  - padding_left - padding_right
+    plot_h = height - padding_top  - padding_bottom
     unranked_y = (padding_top + plot_h).round(1)
 
-    x_for = ->(t) { (padding_x + (t - min_time).to_f / time_span * plot_w).round(1) }
-    y_for = ->(p) { (padding_top + (p - min_pos).to_f / pos_range * plot_h).round(1) }
+    x_for = ->(t) { (padding_left + (t - min_time).to_f / time_span * plot_w).round(1) }
+    y_for = ->(p) { (padding_top  + (p - min_pos).to_f  / pos_range  * plot_h).round(1) }
 
     tag.svg(width: width, height: height, class: "sparkline", viewBox: "0 0 #{width} #{height}") do
       series = safe_join(locations.each_with_index.filter_map do |location, idx|
@@ -105,8 +112,9 @@ module ApplicationHelper
         lines + dots
       end)
 
+      # X-axis date labels
       all_times = all_checks.map(&:checked_at).uniq.sort
-      labels = safe_join(all_times.each_with_index.select { |_, i|
+      x_labels = safe_join(all_times.each_with_index.select { |_, i|
         all_times.size <= 6 || i == 0 || i == all_times.size - 1 ||
           (i % (all_times.size / 4.0).ceil == 0)
       }.map { |time, _|
@@ -114,7 +122,17 @@ module ApplicationHelper
                  "text-anchor": "middle", class: "sparkline-axis-label")
       })
 
-      series + labels
+      # Y-axis position labels
+      num_y_ticks = [pos_range, 4].min + 1
+      y_tick_values = (0...num_y_ticks).map { |i|
+        (min_pos + i.to_f * (max_pos - min_pos) / [num_y_ticks - 1, 1].max).round
+      }.uniq
+      y_labels = safe_join(y_tick_values.map { |pos|
+        tag.text(pos.to_s, x: padding_left - 4, y: y_for.call(pos) + 4,
+                 "text-anchor": "end", class: "sparkline-axis-label")
+      })
+
+      series + x_labels + y_labels
     end
   end
 
@@ -126,42 +144,36 @@ module ApplicationHelper
     positions = ranked.map(&:position)
     min_pos = positions.min
     max_pos = positions.max
-    range = max_pos - min_pos
-    range = 1 if range == 0
+    pos_range  = [max_pos - min_pos, 1].max
 
-    padding_x = 8
-    padding_top = 8
+    padding_left   = 32
+    padding_right  = 8
+    padding_top    = 8
     padding_bottom = 24
-    plot_w = width - (padding_x * 2)
-    plot_h = height - padding_top - padding_bottom
+    plot_w = width  - padding_left - padding_right
+    plot_h = height - padding_top  - padding_bottom
     unranked_y = (padding_top + plot_h).round(1)
 
+    y_for = ->(p) { (padding_top + (p - min_pos).to_f / pos_range * plot_h).round(1) }
+
     plot_points = points.each_with_index.map do |check, i|
-      x = padding_x + (i.to_f / (points.size - 1) * plot_w)
-      y = if check.position
-        padding_top + ((check.position - min_pos).to_f / range * plot_h)
-      else
-        unranked_y
-      end
+      x = padding_left + (i.to_f / (points.size - 1) * plot_w)
+      y = check.position ? y_for.call(check.position) : unranked_y
       { x: x.round(1), y: y.round(1), check: check, ranked: !check.position.nil? }
     end
 
     tag.svg(width: width, height: height, class: "sparkline", viewBox: "0 0 #{width} #{height}") do
-      # Draw per-pair segments: solid between ranked points, dashed when either end is unranked
       lines = safe_join(plot_points.each_cons(2).map { |a, b|
         dashed = !(a[:ranked] && b[:ranked])
         attrs = {
           x1: a[:x], y1: a[:y], x2: b[:x], y2: b[:y],
-          stroke: "#2563eb",
-          stroke_width: 2,
-          stroke_linecap: "round"
+          stroke: "#2563eb", stroke_width: 2, stroke_linecap: "round"
         }
         attrs[:stroke_dasharray] = "4 3" if dashed
         tag.line(**attrs)
       })
 
       dots = safe_join(plot_points.map { |p|
-        # Show label below the dot if too close to the top
         label_y = p[:y] > 20 ? p[:y] - 10 : p[:y] + 18
         label_text = p[:ranked] ? p[:check].position.to_s : "N/R"
         dot_class = p[:ranked] ? "sparkline-dot" : "sparkline-dot sparkline-dot-unranked"
@@ -175,19 +187,25 @@ module ApplicationHelper
       })
 
       # X-axis date labels
-      labels = safe_join(plot_points.select.with_index { |_, i|
-        # Show first, last, and evenly spaced labels
-        plot_points.size <= 6 || i == 0 || i == plot_points.size - 1 || (i % (plot_points.size / 4.0).ceil == 0)
+      x_labels = safe_join(plot_points.select.with_index { |_, i|
+        plot_points.size <= 6 || i == 0 || i == plot_points.size - 1 ||
+          (i % (plot_points.size / 4.0).ceil == 0)
       }.map { |p|
-        tag.text(
-          p[:check].checked_at.strftime("%b %-d"),
-          x: p[:x], y: height - 4,
-          text_anchor: "middle",
-          class: "sparkline-axis-label"
-        )
+        tag.text(p[:check].checked_at.strftime("%b %-d"), x: p[:x], y: height - 4,
+                 "text-anchor": "middle", class: "sparkline-axis-label")
       })
 
-      lines + dots + labels
+      # Y-axis position labels
+      num_y_ticks = [pos_range, 3].min + 1
+      y_tick_values = (0...num_y_ticks).map { |i|
+        (min_pos + i.to_f * (max_pos - min_pos) / [num_y_ticks - 1, 1].max).round
+      }.uniq
+      y_labels = safe_join(y_tick_values.map { |pos|
+        tag.text(pos.to_s, x: padding_left - 4, y: y_for.call(pos) + 4,
+                 "text-anchor": "end", class: "sparkline-axis-label")
+      })
+
+      lines + dots + x_labels + y_labels
     end
   end
 end

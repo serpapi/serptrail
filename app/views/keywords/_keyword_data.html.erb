@@ -1,21 +1,11 @@
 <div id="keyword_data">
-  <% sparkline = multi_location_sparkline(checks_by_location, keyword.locations, width: 960, height: 220) %>
-  <% if sparkline %>
-    <div class="history-chart">
-      <%= sparkline %>
-    </div>
-
-    <div class="location-legend">
-      <% keyword.locations.each_with_index do |location, i| %>
-        <span class="location-legend-item">
-          <span class="location-legend-swatch" style="background: <%= location_color(i) %>"></span>
-          <%= country_flag(location) %> <%= country_name(location) %>
-        </span>
-      <% end %>
-    </div>
-  <% else %>
-    <p class="muted"><%= has_checks ? "Not enough data yet." : "Checking..." %></p>
-  <% end %>
+  <% series = keyword.locations.map { |loc|
+    {
+      label: "#{country_flag(loc)} #{country_name(loc)}",
+      checks: (checks_by_location[loc] || []).sort_by(&:checked_at)
+    }
+  } %>
+  <%= ranking_chart(series, empty_message: has_checks ? "Not enough data yet." : "Checking...") %>
 
   <table>
     <thead>

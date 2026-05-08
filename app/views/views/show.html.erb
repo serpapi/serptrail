@@ -5,26 +5,10 @@
   </div>
 </div>
 
-<% checks_by_series = {} %>
-<% @view.series.each_with_index do |s, idx| %>
-  <% checks_by_series["s#{idx + 1}"] = s.keyword.checks.select { |c| c.success? && c.location == s.location }.sort_by(&:checked_at) %>
-<% end %>
-
-<% sparkline = multi_location_sparkline(checks_by_series, checks_by_series.keys, width: 960, height: 220) %>
-<% if sparkline %>
-  <div class="history-chart">
-    <%= sparkline %>
-  </div>
-  <div class="location-legend">
-    <% @view.series.each_with_index do |s, idx| %>
-      <span class="location-legend-item">
-        <span class="location-legend-swatch" style="background: <%= location_color(idx) %>"></span>
-        <strong><%= s.keyword.site.domain %></strong>
-        &mdash; <%= s.keyword.query %>
-        &mdash; <%= country_flag(s.location) %> <%= country_name(s.location) %>
-      </span>
-    <% end %>
-  </div>
-<% else %>
-  <p class="muted">Not enough data yet to plot a chart.</p>
-<% end %>
+<% series = @view.series.map { |s|
+  {
+    label: "#{s.keyword.site.domain} — #{s.keyword.query} — #{country_flag(s.location)} #{country_name(s.location)}",
+    checks: s.keyword.checks.select { |c| c.success? && c.location == s.location }.sort_by(&:checked_at)
+  }
+} %>
+<%= ranking_chart(series) %>
