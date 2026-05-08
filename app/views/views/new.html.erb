@@ -56,7 +56,7 @@
   <% end %>
 
   <div class="compare-actions">
-    <%= submit_tag "Create", class: "btn btn-primary" %>
+    <%= submit_tag "Show", class: "btn btn-primary" %>
   </div>
 </form>
 
@@ -68,7 +68,7 @@
   <%= ranking_chart(series, empty_message: "Not enough data yet. Make sure both series have at least 2 successful checks.") %>
 
   <div data-controller="modal" class="save-view-wrapper">
-    <button class="btn btn-secondary" data-action="click->modal#open">Save View</button>
+    <button class="btn btn-secondary" data-action="click->modal#open">Save</button>
 
     <dialog data-modal-target="dialog" data-action="click->modal#backdropClick" class="dialog">
       <%= form_tag views_path, method: :post do %>
