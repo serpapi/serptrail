@@ -17,6 +17,7 @@
   <div class="field">
     <%= form.label :serpapi_key, "SerpAPI Key" %>
     <%= form.password_field :serpapi_key, value: @tenant.serpapi_key, placeholder: "Enter SerpAPI key", autocomplete: "off" %>
+    <span class="field-hint">You can get your SerpApi key in your <%= link_to "SerpApi dashboard", "https://serpapi.com/manage-api-key", target: "_blank", rel: "noopener" %>.</span>
   </div>
 
   <div class="actions">
