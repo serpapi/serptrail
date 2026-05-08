@@ -1,4 +1,4 @@
-<h1>Compare</h1>
+<h2>New view</h2>
 
 <form method="get" action="<%= new_view_path %>" class="compare-form">
   <% [["s1", "Series 1", params[:s1]], ["s2", "Series 2", params[:s2]]].each do |key, label, current| %>
@@ -56,7 +56,7 @@
   <% end %>
 
   <div class="compare-actions">
-    <%= submit_tag "Compare", class: "btn btn-primary" %>
+    <%= submit_tag "Create", class: "btn btn-primary" %>
   </div>
 </form>
 
