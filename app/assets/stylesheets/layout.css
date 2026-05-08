@@ -1,3 +1,56 @@
+@layer components {
+  .compare-form {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .compare-series {
+    flex: 1;
+    min-width: 260px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: #fff;
+  }
+
+  .compare-series legend {
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0 0.375rem;
+    color: #374151;
+  }
+
+  .compare-form .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .compare-form .form-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .compare-form label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .compare-form select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    background: #fff;
+  }
+
+  .compare-actions {
+    flex-basis: 100%;
+  }
+}
+
 @layer base {
   .container {
     max-width: 960px;
