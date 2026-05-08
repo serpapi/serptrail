@@ -60,5 +60,5 @@
     </tbody>
   </table>
 <% else %>
-  <p>No keywords yet. Add one to start tracking.</p>
+  <%= empty_state("No keywords yet.", "Add the first keyword", new_site_keyword_path(@site)) %>
 <% end %>

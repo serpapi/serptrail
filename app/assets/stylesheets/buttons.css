@@ -27,6 +27,11 @@
     background: #f3f4f6;
   }
 
+  .btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+
   /* Button group (segmented control) */
   .btn-group {
     display: inline-flex;

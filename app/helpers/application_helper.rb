@@ -44,6 +44,13 @@ module ApplicationHelper
     LOCATION_COLORS[index % LOCATION_COLORS.size]
   end
 
+  def empty_state(message, link_label = nil, link_url = nil)
+    content_tag(:div, class: "empty-state") do
+      content_tag(:p, message, class: "empty-state-title") +
+        (link_label ? link_to(link_label, link_url, class: "btn btn-lg") : "".html_safe)
+    end
+  end
+
   # Renders the full chart component: sparkline + legend + empty state.
   # series: array of { label: String, checks: Array }
   def ranking_chart(series, width: 960, height: 220, empty_message: "Not enough data yet.")

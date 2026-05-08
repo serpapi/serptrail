@@ -30,5 +30,5 @@
     </tbody>
   </table>
 <% else %>
-  <p>No sites yet. Add one to get started.</p>
+  <%= empty_state("No sites yet.", "Add the first site", new_site_path) %>
 <% end %>

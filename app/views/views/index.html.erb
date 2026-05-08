@@ -45,5 +45,5 @@
     <% end %>
   </div>
 <% else %>
-  <p class="muted">No views yet. <%= link_to "Go to Compare", new_view_path %> to create one.</p>
+  <%= empty_state("No views yet.", "Add the first view", new_view_path) %>
 <% end %>

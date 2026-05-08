@@ -1,8 +1,29 @@
 @layer components {
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 4rem 2rem;
+    border: 1px solid #f0f1f3;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .empty-state-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    margin: 0;
+  }
+
   .compare-form {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
   }
 
