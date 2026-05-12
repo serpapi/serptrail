@@ -10,13 +10,14 @@ class KeywordsController < ApplicationController
       .group_by(&:location)
 
     @location_stats = @keyword.locations.map do |location|
-      checks = (@checks_by_location[location] || []).sort_by(&:checked_at).reverse
+      checks   = (@checks_by_location[location] || []).sort_by(&:checked_at).reverse
       latest   = checks.first
       previous = checks.second
       change   = if latest&.position && previous&.position
         previous.position - latest.position
       end
-      { location: location, latest: latest, change: change }
+      latest_ai = checks.find { |c| !c.ai_overview_present.nil? }
+      { location: location, latest: latest, change: change, latest_ai: latest_ai }
     end
   end
 

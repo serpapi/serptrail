@@ -6,6 +6,9 @@
   .change-up { color: var(--color-success); font-weight: 600; }
   .change-down { color: var(--color-danger); font-weight: 600; }
 
+  .ai-cited { color: var(--color-success); font-weight: 600; font-size: 0.875rem; }
+  .card-stat-ai { color: var(--color-success); }
+
   .status { font-size: 0.75rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 500; }
   .status-success { background: #ecfdf5; color: #065f46; }
   .status-failed { background: #fef2f2; color: #991b1b; }

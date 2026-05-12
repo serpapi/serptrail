@@ -40,6 +40,16 @@
       <span class="card-stat-label">Frequency</span>
       <span class="card-stat-value"<%= " title=\"#{next_check_label(keyword)}\"".html_safe if site.tracking_enabled? %>><%= keyword.check_frequency.capitalize %></span>
     </div>
+    <% cited_locations = keyword.locations.select { |loc|
+         success_checks.select { |c| c.location == loc && !c.ai_overview_present.nil? }
+                       .max_by(&:checked_at)&.ai_overview_cited?
+       } %>
+    <% if cited_locations.any? %>
+      <div class="card-stat">
+        <span class="card-stat-label">AI Overview</span>
+        <span class="card-stat-value card-stat-ai"><%= cited_locations.map { |l| country_flag(l) }.join(" ") %> Cited</span>
+      </div>
+    <% end %>
   </div>
 
   <div class="card-chart">

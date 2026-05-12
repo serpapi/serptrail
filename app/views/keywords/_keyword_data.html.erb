@@ -13,6 +13,7 @@
         <th>Location</th>
         <th>Position</th>
         <th>Change</th>
+        <th>AI Overview</th>
       </tr>
     </thead>
     <tbody>
@@ -36,6 +37,15 @@
               <% else %>
                 <span class="change-down"><%= stat[:change] %></span>
               <% end %>
+            <% else %>
+              <span class="muted">--</span>
+            <% end %>
+          </td>
+          <td>
+            <% if stat[:latest_ai]&.ai_overview_cited? %>
+              <span class="ai-cited">Cited</span>
+            <% elsif stat[:latest_ai] %>
+              <span class="muted">Not cited</span>
             <% else %>
               <span class="muted">--</span>
             <% end %>

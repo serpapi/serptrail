@@ -24,6 +24,10 @@ class KeywordCheckJob < ApplicationJob
       position: result[:position],
       url: result[:url],
       serpapi_search_id: result[:serpapi_search_id],
+      ai_overview_present: result[:ai_overview_present],
+      ai_overview_cited: result[:ai_overview_cited],
+      ai_overview_citation_position: result[:ai_overview_citation_position],
+      raw_response: result[:raw_response],
       location: location,
       status: :success,
       checked_at: Time.current
@@ -66,7 +70,8 @@ class KeywordCheckJob < ApplicationJob
       change   = if latest&.position && previous&.position
         previous.position - latest.position
       end
-      { location: loc, latest: latest, change: change }
+      latest_ai = checks.find { |c| !c.ai_overview_present.nil? }
+      { location: loc, latest: latest, change: change, latest_ai: latest_ai }
     end
 
     Turbo::StreamsChannel.broadcast_replace_to(

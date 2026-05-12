@@ -10,14 +10,27 @@ class SerpApiClient
     client.close
 
     search_id = results.dig(:search_metadata, :id)
-    organic = results[:organic_results] || []
-    match = organic.each_with_index.find { |result, _| result[:link]&.include?(domain) }
+    organic   = results[:organic_results] || []
+    match     = organic.each_with_index.find { |result, _| result[:link]&.include?(domain) }
 
-    if match
+    ao        = results[:ai_overview]
+    ao_source = ao&.dig(:sources)&.find { |s| s[:link]&.include?(domain) }
+
+    position, url = if match
       result, _ = match
-      { position: result[:position], url: result[:link], serpapi_search_id: search_id }
+      [ result[:position], result[:link] ]
     else
-      { position: nil, url: nil, serpapi_search_id: search_id }
+      [ nil, nil ]
     end
+
+    {
+      position: position,
+      url: url,
+      serpapi_search_id: search_id,
+      ai_overview_present: ao.present?,
+      ai_overview_cited: ao_source.present?,
+      ai_overview_citation_position: ao_source ? ao[:sources].index(ao_source) + 1 : nil,
+      raw_response: results.to_json
+    }
   end
 end

@@ -1,3 +1,7 @@
+# ai_overview_present/cited progression for Apple US: grows over time (i=0 oldest → i=4 newest)
+# iphone 18 / iphone 18 pro = informational → AI overview common + Apple cited
+# buy iphone 18 = transactional → AI overview present but Apple not cited
+
 # === Apple / iphone 18 — US ===
 # position_change test: latest=1, previous=4 → change=3
 apple_iphone18_us_latest:
@@ -8,6 +12,9 @@ apple_iphone18_us_latest:
   status: success
   location: us
   checked_at: <%= 2.days.ago.to_fs(:db) %>
+  ai_overview_present: true
+  ai_overview_cited: true
+  ai_overview_citation_position: 2
 
 apple_iphone18_us_previous:
   keyword: apple_iphone18
@@ -17,6 +24,8 @@ apple_iphone18_us_previous:
   status: success
   location: us
   checked_at: <%= 4.days.ago.to_fs(:db) %>
+  ai_overview_present: true
+  ai_overview_cited: false
 
 <% [4, 3, 3, 2, 2].each_with_index do |pos, i| %>
 apple_iphone18_us_week_<%= i %>:
@@ -27,6 +36,9 @@ apple_iphone18_us_week_<%= i %>:
   status: success
   location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+  ai_overview_present: <%= i >= 1 %>
+  ai_overview_cited: <%= i >= 2 %>
+  <% if i >= 2 %>ai_overview_citation_position: 1<% end %>
 <% end %>
 
 # === Apple / iphone 18 — GB ===
@@ -39,6 +51,9 @@ apple_iphone18_gb_week_<%= i %>:
   status: success
   location: gb
   checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+  ai_overview_present: <%= i >= 2 %>
+  ai_overview_cited: <%= i >= 3 %>
+  <% if i >= 3 %>ai_overview_citation_position: 2<% end %>
 <% end %>
 
 # === Apple / iphone 18 — ES ===
@@ -63,6 +78,9 @@ apple_iphone18_pro_us_week_<%= i %>:
   status: success
   location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+  ai_overview_present: <%= i >= 1 %>
+  ai_overview_cited: <%= i >= 2 %>
+  <% if i >= 2 %>ai_overview_citation_position: 1<% end %>
 <% end %>
 
 # === Apple / iphone 18 pro — GB ===
@@ -75,6 +93,9 @@ apple_iphone18_pro_gb_week_<%= i %>:
   status: success
   location: gb
   checked_at: <%= ((5 - i).weeks.ago + 1.hour).to_fs(:db) %>
+  ai_overview_present: <%= i >= 2 %>
+  ai_overview_cited: <%= i >= 3 %>
+  <% if i >= 3 %>ai_overview_citation_position: 2<% end %>
 <% end %>
 
 # === Apple / iphone 18 pro — ES ===
@@ -90,6 +111,7 @@ apple_iphone18_pro_es_week_<%= i %>:
 <% end %>
 
 # === Apple / buy iphone 18 — US ===
+# Transactional query: AI overview present but Apple not cited (shopping results dominate)
 <% [3, 2, 2, 2, 1].each_with_index do |pos, i| %>
 apple_buy_iphone18_us_week_<%= i %>:
   keyword: apple_buy_iphone18
@@ -99,6 +121,8 @@ apple_buy_iphone18_us_week_<%= i %>:
   status: success
   location: us
   checked_at: <%= (5 - i).weeks.ago.to_fs(:db) %>
+  ai_overview_present: <%= i >= 2 %>
+  ai_overview_cited: false
 <% end %>
 
 # === Apple / buy iphone 18 — GB ===

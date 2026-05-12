@@ -10,8 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_08_091722) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_11_125023) do
   create_table "checks", force: :cascade do |t|
+    t.integer "ai_overview_citation_position"
+    t.boolean "ai_overview_cited"
+    t.boolean "ai_overview_present"
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
     t.string "error_message"
@@ -19,6 +22,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_08_091722) do
     t.string "location", null: false
     t.integer "position"
     t.string "query", null: false
+    t.text "raw_response"
     t.string "serpapi_search_id"
     t.string "status", default: "pending", null: false
     t.datetime "updated_at", null: false

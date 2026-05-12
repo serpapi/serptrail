@@ -22,6 +22,7 @@
         <th>Date</th>
         <th>Location</th>
         <th>Position</th>
+        <th>AI Overview</th>
         <th>URL</th>
         <th>SerpApi</th>
         <th>Status</th>
@@ -33,6 +34,15 @@
           <td title="Ran for query <%= check.query %>"><%= check.checked_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= country_flag(check.location) %></td>
           <td><%= check.position || "Not ranked" %></td>
+          <td>
+            <% if check.ai_overview_cited? %>
+              <span class="ai-cited">Cited</span>
+            <% elsif check.ai_overview_present? %>
+              <span class="muted">Not cited</span>
+            <% elsif !check.ai_overview_present.nil? %>
+              <span class="muted">Not present</span>
+            <% end %>
+          </td>
           <td class="url-cell"><%= check.url %></td>
           <td>
             <% if check.serpapi_search_id.present? %>
