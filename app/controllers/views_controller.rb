@@ -53,7 +53,7 @@ class ViewsController < ApplicationController
   private
 
   def build_series(view, series_params, index)
-    target = KeywordTarget.find(series_params[:keyword_target_id] || series_params[:keyword_id])
+    target = KeywordTarget.find(series_params[:keyword_target_id])
     view.series.build(
       keyword_target: target,
       keyword: target.keyword,
@@ -72,11 +72,11 @@ class ViewsController < ApplicationController
   end
 
   def series_params_present?(params_hash)
-    (params_hash&.dig(:keyword_target_id).present? || params_hash&.dig(:keyword_id).present?) && params_hash&.dig(:location).present?
+    params_hash&.dig(:keyword_target_id).present? && params_hash&.dig(:location).present?
   end
 
   def fetch_series(p)
-    target = KeywordTarget.includes(:site, :keyword, checks: :search_run).find(p[:keyword_target_id] || p[:keyword_id])
+    target = KeywordTarget.includes(:site, :keyword, checks: :search_run).find(p[:keyword_target_id])
     checks = target.checks
       .where(status: "success", location: p[:location])
       .order(checked_at: :asc)

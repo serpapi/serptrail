@@ -2,52 +2,12 @@ class MissingChecksBackfillJob < ApplicationJob
   queue_as :default
 
   def perform(keyword: nil, keyword_target: nil)
-    repair_legacy_checks(keyword: keyword, keyword_target: keyword_target)
-
     search_runs_scope(keyword: keyword, keyword_target: keyword_target).find_each do |search_run|
       backfill_search_run(search_run, keyword_target: keyword_target)
     end
   end
 
   private
-
-  def repair_legacy_checks(keyword:, keyword_target:)
-    scope = Check.includes(:keyword, keyword: :site).where("keyword_target_id IS NULL OR search_run_id IS NULL")
-    scope = scope.where(keyword: keyword) if keyword
-    scope = scope.where(keyword: keyword_target.keyword) if keyword_target
-
-    scope.find_each do |check|
-      target = legacy_target_for(check, keyword_target: keyword_target)
-      next unless target
-
-      search_run = check.search_run || search_run_for_legacy_check(check)
-      updates = {}
-      updates[:keyword_target_id] = target.id if check.keyword_target_id.blank?
-      updates[:search_run_id] = search_run.id if check.search_run_id.blank?
-      updates[:updated_at] = Time.current if updates.any?
-      check.update_columns(updates) if updates.any?
-    end
-  end
-
-  def legacy_target_for(check, keyword_target:)
-    return keyword_target if keyword_target && keyword_target.keyword_id == check.keyword_id
-
-    site = check.keyword.site
-    return nil unless site
-
-    KeywordTarget.find_or_create_by!(keyword: check.keyword, site: site)
-  end
-
-  def search_run_for_legacy_check(check)
-    check.keyword.search_runs.find_or_create_by!(
-      query: check[:query],
-      location: check[:location],
-      checked_at: check[:checked_at]
-    ) do |search_run|
-      search_run.status = check[:status]
-      search_run.error_message = check[:error_message]
-    end
-  end
 
   def search_runs_scope(keyword:, keyword_target:)
     scope = SearchRun.includes(keyword: { keyword_targets: :site })

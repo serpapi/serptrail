@@ -54,34 +54,7 @@ class MissingChecksBackfillJobTest < ActiveJob::TestCase
     end
   end
 
-  test "repairs legacy checks missing keyword target and search run" do
-    keyword = Keyword.create!(site: sites(:apple), query: "legacy repaired keyword", locations: [ "us" ])
-    keyword.keyword_targets.destroy_all
-    legacy_check = Check.create!(
-      keyword: keyword,
-      query: keyword.query,
-      location: "us",
-      checked_at: 3.days.ago,
-      position: 6,
-      url: "https://apple.com/legacy-page",
-      status: :success
-    )
 
-    assert_difference("SearchRun.count", 1) do
-      assert_difference("KeywordTarget.count", 1) do
-        assert_no_difference("Check.count") do
-          MissingChecksBackfillJob.perform_now(keyword: keyword)
-        end
-      end
-    end
-
-    legacy_check.reload
-    assert_not_nil legacy_check.keyword_target
-    assert_not_nil legacy_check.search_run
-    assert_equal sites(:apple), legacy_check.keyword_target.site
-    assert_equal 6, legacy_check.position
-    assert_equal "https://apple.com/legacy-page", legacy_check.url
-  end
 
   test "creates failed checks for failed search runs" do
     keyword = Keyword.create!(query: "failed search run keyword", locations: [ "us" ])
