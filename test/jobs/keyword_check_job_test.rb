@@ -81,8 +81,10 @@ class KeywordCheckJobTest < ActiveJob::TestCase
       }.to_json
     )
 
+    target = keyword.keyword_targets.create!(site: sites(:apple))
+
     assert_difference("Check.count", 1) do
-      keyword.keyword_targets.create!(site: sites(:apple))
+      MissingChecksBackfillJob.perform_now(keyword_target: target)
     end
 
     check = keyword.checks.order(:created_at).last

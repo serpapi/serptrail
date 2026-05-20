@@ -5,7 +5,7 @@ class KeywordTarget < ApplicationRecord
 
   validates :keyword_id, uniqueness: { scope: :site_id }
 
-  after_create :backfill_checks_from_search_runs!
+  after_create_commit :backfill_checks_from_search_runs_later
 
   scope :tracked, -> { where(tracking_enabled: true).joins(:site).where(sites: { tracking_enabled: true }) }
 
@@ -27,34 +27,12 @@ class KeywordTarget < ApplicationRecord
     previous.position - latest.position
   end
 
-  def backfill_checks_from_search_runs!
-    client = SerpApiClient.new
+  private
 
-    keyword.search_runs.success.where.not(raw_response: [ nil, "" ]).find_each do |search_run|
-      next if checks.exists?(search_run: search_run)
-
-      results = JSON.parse(search_run.raw_response, symbolize_names: true)
-      result = client.extract_position(results, site.domain)
-
-      checks.create!(
-        keyword: keyword,
-        search_run: search_run,
-        query: search_run.query,
-        location: search_run.location,
-        checked_at: search_run.checked_at,
-        position: result[:position],
-        url: result[:url],
-        ai_overview_present: result[:ai_overview_present],
-        ai_overview_cited: result[:ai_overview_cited],
-        ai_overview_citation_position: result[:ai_overview_citation_position],
-        status: :success
-      )
-    rescue JSON::ParserError
-      next
-    end
+  def backfill_checks_from_search_runs_later
+    MissingChecksBackfillJob.perform_later(keyword_target: self)
   end
 
-  private
 
   def scoped_checks(location)
     scope = checks
