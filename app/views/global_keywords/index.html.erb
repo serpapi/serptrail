@@ -24,13 +24,7 @@
           <td><%= link_to keyword.query, keyword_path(keyword) %></td>
           <td><%= keyword.locations.map { |location| country_flag(location) }.join(" ") %></td>
           <td title="<%= next_check_label(keyword) %>"><%= keyword.check_frequency.capitalize %></td>
-          <td>
-            <% if keyword.keyword_targets.any? %>
-              <%= keyword.keyword_targets.map { |target| target.site.domain }.to_sentence %>
-            <% else %>
-              <span class="muted">No sites yet</span>
-            <% end %>
-          </td>
+          <td><%= pluralize(keyword.keyword_targets.size, "site") %></td>
           <td><%= keyword.search_runs.count %></td>
           <td><%= keyword.last_checked_at && time_ago_in_words(keyword.last_checked_at) + " ago" %></td>
           <td class="actions">
