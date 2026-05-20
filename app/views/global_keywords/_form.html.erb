@@ -1,0 +1,73 @@
+<%= form_with(model: keyword) do |form| %>
+  <% if keyword.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(keyword.errors.count, "error") %> prohibited this keyword from being saved:</h2>
+      <ul>
+        <% keyword.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :query %>
+    <%= form.text_field :query, required: true, placeholder: "e.g. best ruby gems", autocomplete: "off" %>
+  </div>
+
+  <div class="field"
+       data-controller="location-select"
+       data-location-select-initial-value="<%= (keyword.locations.presence || [ "us" ]).to_json %>">
+    <label>Locations</label>
+    <div class="location-select-control" data-action="click->location-select#focusInput">
+      <div data-location-select-target="tags"></div>
+      <input type="text"
+             class="location-select-search"
+             autocomplete="off"
+             spellcheck="false"
+             placeholder="Add location..."
+             data-location-select-target="input"
+             data-action="focus->location-select#open click->location-select#open input->location-select#filter">
+    </div>
+    <div class="location-select-dropdown" data-location-select-target="dropdown" hidden></div>
+    <div data-location-select-target="hiddenInputs"></div>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_frequency, "Check frequency" %>
+    <div class="btn-group">
+      <% Keyword.check_frequencies.each_key do |freq| %>
+        <label class="btn-group-option">
+          <%= form.radio_button :check_frequency, freq, class: "btn-group-input" %>
+          <span class="btn-group-label"><%= freq.capitalize %></span>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Sites to track</label>
+    <%= hidden_field_tag "keyword[site_ids][]", "" %>
+    <% selected_site_ids = keyword.keyword_targets.map(&:site_id) %>
+    <% if sites.any? %>
+      <div class="checkbox-grid">
+        <% sites.each do |site| %>
+          <label class="checkbox-card">
+            <%= check_box_tag "keyword[site_ids][]", site.id, selected_site_ids.include?(site.id), id: "keyword_site_ids_#{site.id}" %>
+            <span>
+              <span class="checkbox-card-title"><%= site.name %></span>
+              <span class="checkbox-card-meta"><%= site.domain %></span>
+            </span>
+          </label>
+        <% end %>
+      </div>
+      <small class="field-hint">Optional. You can track this keyword now and attach sites later.</small>
+    <% else %>
+      <p class="muted">No sites yet. You can still create this keyword and attach sites later.</p>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit(keyword.new_record? ? "Create keyword" : "Update keyword", class: "btn") %>
+  </div>
+<% end %>

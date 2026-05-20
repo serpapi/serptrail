@@ -1,0 +1,59 @@
+apple_iphone18:
+  keyword: apple_iphone18
+  site: apple
+  tracking_enabled: true
+
+apple_iphone18_pro:
+  keyword: apple_iphone18_pro
+  site: apple
+  tracking_enabled: true
+
+apple_buy_iphone18:
+  keyword: apple_buy_iphone18
+  site: apple
+  tracking_enabled: true
+
+bestbuy_iphone18:
+  keyword: bestbuy_iphone18
+  site: bestbuy
+  tracking_enabled: true
+
+bestbuy_iphone18_pro:
+  keyword: bestbuy_iphone18_pro
+  site: bestbuy
+  tracking_enabled: true
+
+bestbuy_buy_iphone18:
+  keyword: bestbuy_buy_iphone18
+  site: bestbuy
+  tracking_enabled: true
+
+mac_iphone18_review:
+  keyword: mac_iphone18_review
+  site: nintyfivemac
+  tracking_enabled: true
+
+mac_iphone18_vs:
+  keyword: mac_iphone18_vs
+  site: nintyfivemac
+  tracking_enabled: true
+
+gsma_iphone18_specs:
+  keyword: gsma_iphone18_specs
+  site: gsmarena
+  tracking_enabled: true
+
+gsma_iphone18_pro_specs:
+  keyword: gsma_iphone18_pro_specs
+  site: gsmarena
+  tracking_enabled: true
+
+never_checked:
+  keyword: never_checked
+  site: apple
+  tracking_enabled: true
+
+disabled_keyword:
+  keyword: disabled_keyword
+  site: disabled
+  tracking_enabled: true

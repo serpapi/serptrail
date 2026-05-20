@@ -1,4 +1,4 @@
-<%= turbo_stream_from @keyword %>
+<%= turbo_stream_from @keyword_target %>
 
 <p class="breadcrumb">
   <%= link_to @site.name, @site %> &rsaquo;
@@ -18,7 +18,9 @@
 <% end %>
 
 <%= render "keywords/keyword_data",
+      keyword_target: @keyword_target,
       keyword: @keyword,
+      site: @site,
       checks_by_location: @checks_by_location,
       location_stats: @location_stats,
       has_checks: @has_checks %>

@@ -21,6 +21,10 @@
 
   .site-meta { color: var(--color-muted); font-size: 0.875rem; margin-bottom: 1.5rem; }
 
+  .section-block { margin-top: 2rem; }
+  .section-block .header { margin-bottom: 1rem; }
+  .section-block h2 { font-size: 1.125rem; }
+
   .serpapi-link { font-size: 0.75rem; color: var(--color-muted); text-decoration: none; }
   .serpapi-link:hover { color: var(--color-primary); }
 

@@ -6,6 +6,12 @@ class KeywordTest < ActiveSupport::TestCase
     assert keyword.valid?
   end
 
+  test "valid keyword without a site" do
+    keyword = Keyword.new(query: "site-less query")
+    assert keyword.valid?
+  end
+
+
   test "requires query" do
     keyword = Keyword.new(site: sites(:apple), query: "")
     assert_not keyword.valid?
@@ -32,6 +38,12 @@ class KeywordTest < ActiveSupport::TestCase
     assert_includes due, keywords(:apple_iphone18)
     assert_includes due, keywords(:never_checked)
   end
+
+  test "due_for_check includes keywords without targets" do
+    keyword = Keyword.create!(query: "targetless due query", last_checked_at: 2.days.ago)
+    assert_includes Keyword.due_for_check, keyword
+  end
+
 
   test "due_for_check excludes disabled site keywords" do
     due = Keyword.due_for_check

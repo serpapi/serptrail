@@ -144,6 +144,44 @@
     color: var(--color-muted);
   }
 
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.5rem;
+    max-width: 720px;
+  }
+
+  .checkbox-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .field .checkbox-card {
+    margin-bottom: 0;
+  }
+
+  .checkbox-card input {
+    margin-top: 0.125rem;
+  }
+
+  .checkbox-card-title {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .checkbox-card-meta {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
   /* Toggle switch */
   .toggle-field {
     display: flex;

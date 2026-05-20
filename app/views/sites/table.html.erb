@@ -12,7 +12,7 @@
   <strong>Tracking:</strong> <%= @site.tracking_enabled? ? "Enabled" : "Disabled" %>
 </p>
 
-<% if @keywords.any? %>
+<% if @keyword_targets.any? %>
   <table>
     <thead>
       <tr>
@@ -26,12 +26,17 @@
       </tr>
     </thead>
     <tbody>
-      <% @keywords.each do |keyword| %>
-        <% latest = keyword.latest_check %>
-        <% change = keyword.position_change %>
+      <% @keyword_targets.each do |keyword_target| %>
+        <% keyword = keyword_target.keyword %>
+        <% latest = keyword_target.latest_check %>
+        <% change = keyword_target.position_change %>
         <tr>
           <td><%= link_to site_keyword_path(@site, keyword) do %><%= keyword.query %> <span class="keyword-flag"><%= keyword.locations.map { |l| country_flag(l) }.join(" ") %></span><% end %></td>
-          <td<%= " title=\"#{next_check_label(keyword)}\"".html_safe if @site.tracking_enabled? %>><%= keyword.check_frequency.capitalize %></td>
+          <% if @site.tracking_enabled? %>
+            <td title="<%= next_check_label(keyword) %>"><%= keyword.check_frequency.capitalize %></td>
+          <% else %>
+            <td><%= keyword.check_frequency.capitalize %></td>
+          <% end %>
           <td>
             <% if latest %>
               <%= link_to(latest.position || "Not ranked", site_keyword_checks_path(@site, keyword)) %>

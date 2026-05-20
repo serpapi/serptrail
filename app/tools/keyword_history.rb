@@ -8,15 +8,15 @@ class KeywordHistory < RubyLLM::Tool
   end
 
   def execute(domain:, query:, limit: 10)
-    keyword = Keyword.joins(:site).find_by(query: query, sites: { domain: domain })
-    return { error: "Keyword not tracked" } unless keyword
+    target = KeywordTarget.joins(:keyword, :site).find_by(keywords: { query: query }, sites: { domain: domain })
+    return { error: "Keyword not tracked" } unless target
 
-    checks = keyword.checks.where(status: "success").order(checked_at: :desc).limit(limit)
+    checks = target.checks.where(status: "success").order(checked_at: :desc).limit(limit)
     {
       keyword: query,
       domain: domain,
       current_position: checks.first&.position,
-      change: keyword.position_change,
+      change: target.position_change,
       history: checks.map { |c| { date: c.checked_at.to_date, position: c.position, url: c.url } }
     }
   end

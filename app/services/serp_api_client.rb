@@ -3,21 +3,24 @@ class SerpApiClient
     @api_key = api_key
   end
 
-  def check_position(query, domain, location:)
+  def search(query, location:)
     api_key = @api_key || Tenant.instance.serpapi_key
     client = SerpApi::Client.new(engine: "google", api_key: api_key)
-    results = client.search(q: query, num: 100, gl: location)
-    client.close
+    client.search(q: query, num: 100, gl: location)
+  ensure
+    client&.close
+  end
 
-    search_id = results.dig(:search_metadata, :id)
-    organic   = results[:organic_results] || []
-    match     = organic.each_with_index.find { |result, _| result[:link]&.include?(domain) }
+  def extract_position(results, domain)
+    organic = results[:organic_results] || []
+    match = organic.each_with_index.find { |result, _| result[:link]&.include?(domain) }
 
-    ao        = results[:ai_overview]
-    ao_source = ao&.dig(:sources)&.find { |s| s[:link]&.include?(domain) }
+    ao = results[:ai_overview]
+    ao_sources = ao&.dig(:sources) || []
+    ao_source = ao_sources.find { |source| source[:link]&.include?(domain) }
 
     position, url = if match
-      result, _ = match
+      result, = match
       [ result[:position], result[:link] ]
     else
       [ nil, nil ]
@@ -26,11 +29,17 @@ class SerpApiClient
     {
       position: position,
       url: url,
-      serpapi_search_id: search_id,
       ai_overview_present: ao.present?,
       ai_overview_cited: ao_source.present?,
-      ai_overview_citation_position: ao_source ? ao[:sources].index(ao_source) + 1 : nil,
-      raw_response: results.to_json
+      ai_overview_citation_position: ao_source ? ao_sources.index(ao_source) + 1 : nil
     }
+  end
+
+  def check_position(query, domain, location:)
+    results = search(query, location: location)
+    extract_position(results, domain).merge(
+      serpapi_search_id: results.dig(:search_metadata, :id),
+      raw_response: results.to_json
+    )
   end
 end

@@ -1,7 +1,8 @@
-<% latest = keyword.latest_check %>
-<% change = keyword.position_change %>
-<% success_checks = keyword.checks.select(&:success?) %>
-<div id="<%= dom_id(keyword) %>" class="card">
+<% keyword_target ||= keyword.target_for(site) %>
+<% latest = keyword_target.latest_check %>
+<% change = keyword_target.position_change %>
+<% success_checks = keyword_target.checks.select(&:success?) %>
+<div id="<%= dom_id(keyword_target) %>" class="card">
   <div class="card-header">
     <h2 class="card-title"><%= link_to site_keyword_path(site, keyword) do %><%= keyword.query %> <span class="keyword-flag"><%= keyword.locations.map { |l| country_flag(l) }.join(" ") %></span><% end %></h2>
     <div class="card-actions">
@@ -38,7 +39,11 @@
     </div>
     <div class="card-stat">
       <span class="card-stat-label">Frequency</span>
-      <span class="card-stat-value"<%= " title=\"#{next_check_label(keyword)}\"".html_safe if site.tracking_enabled? %>><%= keyword.check_frequency.capitalize %></span>
+      <% if site.tracking_enabled? %>
+        <span class="card-stat-value" title="<%= next_check_label(keyword) %>"><%= keyword.check_frequency.capitalize %></span>
+      <% else %>
+        <span class="card-stat-value"><%= keyword.check_frequency.capitalize %></span>
+      <% end %>
     </div>
     <% cited_locations = keyword.locations.select { |loc|
          success_checks.select { |c| c.location == loc && !c.ai_overview_present.nil? }
@@ -57,7 +62,7 @@
     <% if sparkline %>
       <%= sparkline %>
     <% else %>
-      <div class="card-no-data"><%= keyword.checks.empty? ? "Checking..." : "Not enough data" %></div>
+      <div class="card-no-data"><%= keyword_target.checks.empty? ? "Checking..." : "Not enough data" %></div>
     <% end %>
   </div>
 </div>

@@ -25,7 +25,7 @@
           </td>
           <td>
             <% if stat[:latest] %>
-              <%= link_to(stat[:latest].position || "N/R", site_keyword_checks_path(keyword.site, keyword)) %>
+              <%= link_to(stat[:latest].position || "N/R", site_keyword_checks_path(site, keyword)) %>
             <% else %>
               <span class="muted">--</span>
             <% end %>

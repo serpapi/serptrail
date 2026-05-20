@@ -1,10 +1,10 @@
 class KeywordsController < ApplicationController
   before_action :set_site
-  before_action :set_keyword, only: %i[show edit update destroy check]
+  before_action :set_keyword_target, only: %i[show edit update destroy check]
 
   def show
-    @has_checks = @keyword.checks.exists?
-    @checks_by_location = @keyword.checks
+    @has_checks = @keyword_target.checks.exists?
+    @checks_by_location = @keyword_target.checks
       .where(status: "success")
       .order(checked_at: :asc)
       .group_by(&:location)
@@ -22,11 +22,11 @@ class KeywordsController < ApplicationController
   end
 
   def new
-    @keyword = @site.keywords.new
+    @keyword = Keyword.new(site: @site)
   end
 
   def import
-    @keyword = @site.keywords.new
+    @keyword = Keyword.new(site: @site)
 
     if request.post?
       queries = import_params[:queries].to_s.lines.map(&:strip).reject(&:blank?).uniq
@@ -34,11 +34,16 @@ class KeywordsController < ApplicationController
       check_frequency = import_params[:check_frequency].presence || "daily"
 
       created = queries.count do |query|
-        keyword = @site.keywords.new(query: query, locations: locations, check_frequency: check_frequency)
+        keyword = find_or_initialize_keyword(query, locations: locations, check_frequency: check_frequency)
+        new_keyword = keyword.new_record?
         if keyword.save
-          keyword.locations.each { |location| KeywordCheckJob.perform_later(keyword, location) }
-          keyword.update_column(:last_checked_at, Time.current)
-          true
+          target = keyword.keyword_targets.find_or_create_by!(site: @site)
+          created_tracking = new_keyword || target.previously_new_record?
+          if created_tracking
+            keyword.locations.each { |location| KeywordCheckJob.perform_later(keyword, location) }
+            keyword.update_column(:last_checked_at, Time.current)
+          end
+          created_tracking
         end
       end
 
@@ -50,9 +55,10 @@ class KeywordsController < ApplicationController
   end
 
   def create
-    @keyword = @site.keywords.new(keyword_params)
+    @keyword = find_or_initialize_keyword(keyword_params[:query], locations: keyword_params[:locations], check_frequency: keyword_params[:check_frequency])
 
     if @keyword.save
+      @keyword_target = @keyword.keyword_targets.find_or_create_by!(site: @site)
       @keyword.locations.each { |location| KeywordCheckJob.perform_later(@keyword, location) }
       @keyword.update_column(:last_checked_at, Time.current)
       redirect_to @site
@@ -78,7 +84,8 @@ class KeywordsController < ApplicationController
   end
 
   def destroy
-    @keyword.destroy!
+    @keyword_target.destroy!
+    @keyword.destroy! if @keyword.keyword_targets.reload.none?
     redirect_to @site, notice: "Keyword was successfully deleted."
   end
 
@@ -88,8 +95,18 @@ class KeywordsController < ApplicationController
     @site = Site.find(params[:site_id])
   end
 
-  def set_keyword
-    @keyword = @site.keywords.find(params[:id])
+  def set_keyword_target
+    @keyword_target = @site.keyword_targets.includes(:keyword).find_by!(keyword_id: params[:id])
+    @keyword = @keyword_target.keyword
+  end
+
+  def find_or_initialize_keyword(query, locations:, check_frequency:)
+    existing_target = @site.keyword_targets.joins(:keyword).find_by(keywords: { query: query })
+    keyword = existing_target&.keyword || Keyword.find_by(query: query) || Keyword.new(query: query, site: @site)
+    keyword.site ||= @site
+    keyword.locations = locations if locations.present?
+    keyword.check_frequency = check_frequency if check_frequency.present?
+    keyword
   end
 
   def import_params

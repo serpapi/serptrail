@@ -12,8 +12,8 @@
       <% compare_params = {} %>
       <% saved_view.series.each_with_index do |s, idx| %>
         <% key = "s#{idx + 1}" %>
-        <% checks_by_series[key] = s.keyword.checks.select { |c| c.success? && c.location == s.location }.sort_by(&:checked_at) %>
-        <% compare_params[key] = { keyword_id: s.keyword_id, location: s.location, site_id: s.keyword.site_id } %>
+        <% checks_by_series[key] = s.tracked_checks.select { |c| c.success? && c.location == s.location }.sort_by(&:checked_at) %>
+        <% compare_params[key] = { keyword_target_id: s.keyword_target_id, location: s.location, site_id: s.tracked_site.id } %>
       <% end %>
 
       <div class="card">
@@ -28,7 +28,7 @@
           <% saved_view.series.each_with_index do |s, idx| %>
             <div class="view-series-row">
               <span class="location-legend-swatch" style="background: <%= location_color(idx) %>"></span>
-              <span><strong><%= s.keyword.site.domain %></strong> &mdash; <%= s.keyword.query %> &mdash; <%= country_flag(s.location) %> <%= country_name(s.location) %></span>
+              <span><strong><%= s.tracked_site.domain %></strong> &mdash; <%= s.tracked_keyword.query %> &mdash; <%= country_flag(s.location) %> <%= country_name(s.location) %></span>
             </div>
           <% end %>
         </div>

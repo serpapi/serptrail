@@ -10,30 +10,25 @@
         <select name="<%= key %>[site_id]"
                 data-series-select-target="siteSelect"
                 data-action="change->series-select#siteChanged">
-          <option value="">Select site</option>
-          <% @sites.each do |site| %>
-            <option value="<%= site.id %>"
-                    <%= "selected" if current&.dig(:site_id) == site.id.to_s %>>
-              <%= site.name %> (<%= site.domain %>)
-            </option>
-          <% end %>
+          <%= options_for_select(
+                @sites.map { |site| ["#{site.name} (#{site.domain})", site.id] },
+                current&.dig(:site_id)
+              ) %>
         </select>
       </div>
 
       <div class="form-group">
         <label>Keyword</label>
-        <select name="<%= key %>[keyword_id]"
+        <select name="<%= key %>[keyword_target_id]"
                 data-series-select-target="keywordSelect"
                 data-action="change->series-select#keywordChanged">
-          <option value="">Select keyword</option>
-          <% @all_keywords.each do |keyword| %>
-            <option value="<%= keyword.id %>"
-                    data-site-id="<%= keyword.site_id %>"
-                    data-locations="<%= keyword.locations.to_json %>"
-                    <%= "selected" if current&.dig(:keyword_id) == keyword.id.to_s %>>
-              <%= keyword.query %>
-            </option>
-          <% end %>
+          <%= options_for_select(
+                @all_keyword_targets.map { |keyword_target|
+                  keyword = keyword_target.keyword
+                  [ keyword.query, keyword_target.id, { data: { site_id: keyword_target.site_id, locations: keyword.locations.to_json } } ]
+                },
+                current&.dig(:keyword_target_id)
+              ) %>
         </select>
       </div>
 
@@ -41,14 +36,14 @@
         <label>Location</label>
         <select name="<%= key %>[location]"
                 data-series-select-target="locationSelect">
-          <option value="">Select location</option>
-          <% if current&.dig(:location).present? && current&.dig(:keyword_id).present? %>
-            <% kw = @all_keywords.find { |k| k.id.to_s == current[:keyword_id] } %>
-            <% kw&.locations&.each do |code| %>
-              <option value="<%= code %>" <%= "selected" if current[:location] == code %>>
-                <%= country_flag(code) %> <%= country_name(code) %>
-              </option>
-            <% end %>
+          <% if current&.dig(:location).present? && current&.dig(:keyword_target_id).present? %>
+            <% target = @all_keyword_targets.find { |t| t.id.to_s == current[:keyword_target_id] } %>
+            <%= options_for_select(
+                  target&.keyword&.locations.to_a.map { |code| ["#{country_flag(code)} #{country_name(code)}", code] },
+                  current[:location]
+                ) %>
+          <% else %>
+            <option value="">Select location</option>
           <% end %>
         </select>
       </div>
@@ -73,7 +68,7 @@
     <dialog data-modal-target="dialog" data-action="click->modal#backdropClick" class="dialog">
       <%= form_tag views_path, method: :post do %>
         <% [[:s1, 0], [:s2, 1]].each do |key, idx| %>
-          <%= hidden_field_tag "view[series][#{idx}][keyword_id]", params.dig(key, :keyword_id) %>
+          <%= hidden_field_tag "view[series][#{idx}][keyword_target_id]", params.dig(key, :keyword_target_id) %>
           <%= hidden_field_tag "view[series][#{idx}][location]",   params.dig(key, :location) %>
         <% end %>
 

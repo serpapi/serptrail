@@ -14,10 +14,10 @@
   <strong>Tracking:</strong> <%= @site.tracking_enabled? ? "Enabled" : "Disabled" %>
 </p>
 
-<% if @keywords.any? %>
+<% if @keyword_targets.any? %>
   <div class="card-grid">
-    <% @keywords.each do |keyword| %>
-      <%= render "keywords/keyword_card", keyword: keyword, site: @site %>
+    <% @keyword_targets.each do |keyword_target| %>
+      <%= render "keywords/keyword_card", keyword_target: keyword_target, keyword: keyword_target.keyword, site: @site %>
     <% end %>
   </div>
 <% else %>

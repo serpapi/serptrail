@@ -1,0 +1,47 @@
+<div class="header">
+  <h1>Keywords</h1>
+  <div class="header-actions">
+    <%= link_to "+ Add", new_keyword_path, class: "btn" %>
+  </div>
+</div>
+
+<% if @keywords.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Query</th>
+        <th>Locations</th>
+        <th>Frequency</th>
+        <th>Sites</th>
+        <th>Search runs</th>
+        <th>Last Checked</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @keywords.each do |keyword| %>
+        <tr>
+          <td><%= link_to keyword.query, keyword_path(keyword) %></td>
+          <td><%= keyword.locations.map { |location| country_flag(location) }.join(" ") %></td>
+          <td title="<%= next_check_label(keyword) %>"><%= keyword.check_frequency.capitalize %></td>
+          <td>
+            <% if keyword.keyword_targets.any? %>
+              <%= keyword.keyword_targets.map { |target| target.site.domain }.to_sentence %>
+            <% else %>
+              <span class="muted">No sites yet</span>
+            <% end %>
+          </td>
+          <td><%= keyword.search_runs.count %></td>
+          <td><%= keyword.last_checked_at && time_ago_in_words(keyword.last_checked_at) + " ago" %></td>
+          <td class="actions">
+            <%= button_to "Check", check_keyword_path(keyword), method: :post %>
+            <%= link_to "Edit", edit_keyword_path(keyword) %>
+            <%= button_to "Delete", keyword_path(keyword), method: :delete, data: { turbo_confirm: "Delete this keyword?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <%= empty_state("No keywords yet.", "Add the first keyword", new_keyword_path) %>
+<% end %>

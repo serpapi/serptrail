@@ -4,9 +4,10 @@ class CheckKeywordPosition < RubyLLM::Tool
   params do
     string :query, description: "The search query/keyword to check"
     string :domain, description: "The domain to find in results (e.g., example.com)"
+    string :location, description: "Google country code/location to search from (default: us)"
   end
 
-  def execute(query:, domain:)
-    SerpApiClient.new.check_position(query, domain)
+  def execute(query:, domain:, location: "us")
+    SerpApiClient.new.check_position(query, domain, location: location)
   end
 end

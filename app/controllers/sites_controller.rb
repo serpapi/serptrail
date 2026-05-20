@@ -6,11 +6,11 @@ class SitesController < ApplicationController
   end
 
   def show
-    @keywords = @site.keywords.includes(:checks).order(:query)
+    @keyword_targets = @site.keyword_targets.includes(:site, :keyword, checks: :search_run).joins(:keyword).order("keywords.query")
   end
 
   def table
-    @keywords = @site.keywords.order(:query)
+    @keyword_targets = @site.keyword_targets.includes(:site, :keyword, checks: :search_run).joins(:keyword).order("keywords.query")
   end
 
   def new

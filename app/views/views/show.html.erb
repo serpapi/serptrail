@@ -7,8 +7,8 @@
 
 <% series = @view.series.map { |s|
   {
-    label: "#{s.keyword.site.domain} — #{s.keyword.query} — #{country_flag(s.location)} #{country_name(s.location)}",
-    checks: s.keyword.checks.select { |c| c.success? && c.location == s.location }.sort_by(&:checked_at)
+    label: "#{s.tracked_site.domain} — #{s.tracked_keyword.query} — #{country_flag(s.location)} #{country_name(s.location)}",
+    checks: s.tracked_checks.select { |c| c.success? && c.location == s.location }.sort_by(&:checked_at)
   }
 } %>
 <%= ranking_chart(series) %>

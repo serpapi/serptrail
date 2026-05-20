@@ -45,12 +45,12 @@
           </td>
           <td class="url-cell"><%= check.url %></td>
           <td>
-            <% if check.serpapi_search_id.present? %>
-              <%= link_to "Open", "https://serpapi.com/searches/#{check.serpapi_search_id}/inspect", title: "Open in SerpApi", target: "_blank", rel: "noopener", class: "serpapi-link" %>
+            <% if check.search_run&.serpapi_search_id.present? %>
+              <%= link_to "Open", "https://serpapi.com/searches/#{check.search_run.serpapi_search_id}/inspect", title: "Open in SerpApi", target: "_blank", rel: "noopener", class: "serpapi-link" %>
             <% end %>
           </td>
           <td>
-            <span class="status status-<%= check.status %>"><%= check.status.capitalize %></span>
+            <%= tag.span check.status.capitalize, class: [ "status", "status-#{check.status}" ] %>
             <% if (summary = check.error_summary) %>
               <br><small class="muted"><%= summary %></small>
             <% end %>
