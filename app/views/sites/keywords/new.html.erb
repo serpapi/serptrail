@@ -1,0 +1,7 @@
+<div class="header">
+  <h1>New Keyword for <%= @site.name %></h1>
+</div>
+
+<%= render "form", keyword: @keyword, site: @site %>
+
+<%= link_to "Back to site", @site, class: "back-link" %>

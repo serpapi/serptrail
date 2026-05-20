@@ -91,7 +91,7 @@ class KeywordCheckJob < ApplicationJob
     Turbo::StreamsChannel.broadcast_replace_to(
       [ target.site, :keywords ],
       target: ActionView::RecordIdentifier.dom_id(target),
-      partial: "keywords/keyword_card",
+      partial: "sites/keywords/keyword_card",
       locals: { keyword_target: target, keyword: keyword, site: target.site }
     )
 
@@ -114,7 +114,7 @@ class KeywordCheckJob < ApplicationJob
     Turbo::StreamsChannel.broadcast_replace_to(
       target,
       target: "keyword_data",
-      partial: "keywords/keyword_data",
+      partial: "sites/keywords/keyword_data",
       locals: {
         keyword_target: target,
         keyword: keyword,

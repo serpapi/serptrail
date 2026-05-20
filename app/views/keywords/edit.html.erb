@@ -1,7 +1,7 @@
 <div class="header">
-  <h1>Edit Keyword for <%= @site.name %></h1>
+  <h1>Edit Keyword</h1>
 </div>
 
-<%= render "edit_form", keyword: @keyword, site: @site %>
+<%= render "form", keyword: @keyword, sites: @sites %>
 
-<%= link_to "Back to site", @site, class: "back-link" %>
+<%= link_to "Back to keyword", keyword_path(@keyword), class: "back-link" %>

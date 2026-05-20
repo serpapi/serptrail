@@ -17,7 +17,7 @@
 <% if @keyword_targets.any? %>
   <div class="card-grid">
     <% @keyword_targets.each do |keyword_target| %>
-      <%= render "keywords/keyword_card", keyword_target: keyword_target, keyword: keyword_target.keyword, site: @site %>
+      <%= render "sites/keywords/keyword_card", keyword_target: keyword_target, keyword: keyword_target.keyword, site: @site %>
     <% end %>
   </div>
 <% else %>

@@ -1,67 +1,28 @@
 class KeywordsController < ApplicationController
-  before_action :set_site
-  before_action :set_keyword_target, only: %i[show edit update destroy check]
+  before_action :set_keyword, only: %i[show edit update destroy check]
+  before_action :load_sites, only: %i[new edit create update]
+
+  def index
+    @keywords = Keyword.includes(keyword_targets: :site).order(:query)
+  end
 
   def show
-    @has_checks = @keyword_target.checks.exists?
-    @checks_by_location = @keyword_target.checks
-      .where(status: "success")
-      .order(checked_at: :asc)
-      .group_by(&:location)
-
-    @location_stats = @keyword.locations.map do |location|
-      checks   = (@checks_by_location[location] || []).sort_by(&:checked_at).reverse
-      latest   = checks.first
-      previous = checks.second
-      change   = if latest&.position && previous&.position
-        previous.position - latest.position
-      end
-      latest_ai = checks.find { |c| !c.ai_overview_present.nil? }
-      { location: location, latest: latest, change: change, latest_ai: latest_ai }
-    end
+    @keyword_targets = @keyword.keyword_targets.includes(:site, checks: :search_run).joins(:site).order("sites.name")
+    @search_runs = @keyword.search_runs.order(checked_at: :desc).limit(50)
   end
 
   def new
-    @keyword = Keyword.new(site: @site)
-  end
-
-  def import
-    @keyword = Keyword.new(site: @site)
-
-    if request.post?
-      queries = import_params[:queries].to_s.lines.map(&:strip).reject(&:blank?).uniq
-      locations = import_params[:locations] || [ "us" ]
-      check_frequency = import_params[:check_frequency].presence || "daily"
-
-      created = queries.count do |query|
-        keyword = find_or_initialize_keyword(query, locations: locations, check_frequency: check_frequency)
-        new_keyword = keyword.new_record?
-        if keyword.save
-          target = keyword.keyword_targets.find_or_create_by!(site: @site)
-          created_tracking = new_keyword || target.previously_new_record?
-          if created_tracking
-            keyword.locations.each { |location| KeywordCheckJob.perform_later(keyword, location) }
-            keyword.update_column(:last_checked_at, Time.current)
-          end
-          created_tracking
-        end
-      end
-
-      skipped = queries.size - created
-      notice = "#{created} #{"keyword".pluralize(created)} imported."
-      notice += " #{skipped} skipped (already exist)." if skipped > 0
-      redirect_to @site, notice: notice
-    end
+    @keyword = Keyword.new
   end
 
   def create
-    @keyword = find_or_initialize_keyword(keyword_params[:query], locations: keyword_params[:locations], check_frequency: keyword_params[:check_frequency])
+    @keyword = Keyword.find_by(query: keyword_params[:query]) || Keyword.new
+    @keyword.assign_attributes(keyword_attributes)
 
     if @keyword.save
-      @keyword_target = @keyword.keyword_targets.find_or_create_by!(site: @site)
-      @keyword.locations.each { |location| KeywordCheckJob.perform_later(@keyword, location) }
-      @keyword.update_column(:last_checked_at, Time.current)
-      redirect_to @site
+      sync_keyword_targets(@keyword, selected_site_ids)
+      queue_keyword_checks(@keyword)
+      redirect_to keyword_path(@keyword), notice: "Keyword was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -71,53 +32,64 @@ class KeywordsController < ApplicationController
   end
 
   def update
-    if @keyword.update(keyword_update_params)
-      redirect_to @site, notice: "Keyword was successfully updated."
+    @keyword.assign_attributes(keyword_attributes)
+
+    if @keyword.save
+      sync_keyword_targets(@keyword, selected_site_ids)
+      redirect_to keyword_path(@keyword), notice: "Keyword was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def check
-    @keyword.locations.each { |location| KeywordCheckJob.perform_later(@keyword, location) }
-    redirect_to @site, notice: "Ranking check queued for \"#{@keyword.query}\"."
+    queue_keyword_checks(@keyword)
+    redirect_to keyword_path(@keyword), notice: "Ranking check queued for \"#{@keyword.query}\"."
   end
 
   def destroy
-    @keyword_target.destroy!
-    @keyword.destroy! if @keyword.keyword_targets.reload.none?
-    redirect_to @site, notice: "Keyword was successfully deleted."
+    @keyword.destroy!
+    redirect_to keywords_path, notice: "Keyword was successfully deleted."
   end
 
   private
 
-  def set_site
-    @site = Site.find(params[:site_id])
+  def set_keyword
+    @keyword = Keyword.find(params[:id])
   end
 
-  def set_keyword_target
-    @keyword_target = @site.keyword_targets.includes(:keyword).find_by!(keyword_id: params[:id])
-    @keyword = @keyword_target.keyword
-  end
-
-  def find_or_initialize_keyword(query, locations:, check_frequency:)
-    existing_target = @site.keyword_targets.joins(:keyword).find_by(keywords: { query: query })
-    keyword = existing_target&.keyword || Keyword.find_by(query: query) || Keyword.new(query: query, site: @site)
-    keyword.site ||= @site
-    keyword.locations = locations if locations.present?
-    keyword.check_frequency = check_frequency if check_frequency.present?
-    keyword
-  end
-
-  def import_params
-    params.expect(keyword: [ :queries, :check_frequency, locations: [] ])
+  def load_sites
+    @sites = Site.order(:name)
   end
 
   def keyword_params
-    params.expect(keyword: [ :query, :check_frequency, locations: [] ])
+    params.expect(keyword: [ :query, :check_frequency, site_ids: [], locations: [] ])
   end
 
-  def keyword_update_params
-    params.expect(keyword: [ :query, :check_frequency, locations: [] ])
+  def keyword_attributes
+    keyword_params.except(:site_ids)
+  end
+
+  def selected_site_ids
+    keyword_params[:site_ids].to_a.reject(&:blank?).map(&:to_i)
+  end
+
+  def sync_keyword_targets(keyword, site_ids)
+    current_site_ids = keyword.keyword_targets.pluck(:site_id)
+
+    (current_site_ids - site_ids).each do |site_id|
+      keyword.keyword_targets.find_by(site_id: site_id)&.destroy!
+    end
+
+    (site_ids - current_site_ids).each do |site_id|
+      keyword.keyword_targets.find_or_create_by!(site_id: site_id)
+    end
+  end
+
+  def queue_keyword_checks(keyword)
+    keyword.locations.each do |location|
+      KeywordCheckJob.perform_later(keyword, location)
+    end
+    keyword.update_column(:last_checked_at, Time.current)
   end
 end

@@ -1,0 +1,26 @@
+<%= turbo_stream_from @keyword_target %>
+
+<p class="breadcrumb">
+  <%= link_to @site.name, @site %> &rsaquo;
+  <strong><%= @keyword.query %></strong>
+</p>
+
+<div class="header">
+  <h1><%= @keyword.query %></h1>
+  <div class="header-actions">
+    <%= link_to "History", site_keyword_checks_path(@site, @keyword), class: "btn btn-secondary" %>
+    <%= link_to "Edit", edit_site_keyword_path(@site, @keyword), class: "btn btn-secondary" %>
+  </div>
+</div>
+
+<% if @site.tracking_enabled? %>
+  <p class="next-check-note"><%= @keyword.check_frequency.capitalize %> | <%= next_check_label(@keyword) %></p>
+<% end %>
+
+<%= render "sites/keywords/keyword_data",
+      keyword_target: @keyword_target,
+      keyword: @keyword,
+      site: @site,
+      checks_by_location: @checks_by_location,
+      location_stats: @location_stats,
+      has_checks: @has_checks %>

@@ -1,4 +1,4 @@
-<%= form_with(model: [site, keyword]) do |form| %>
+<%= form_with(model: keyword) do |form| %>
   <% if keyword.errors.any? %>
     <div class="errors">
       <h2><%= pluralize(keyword.errors.count, "error") %> prohibited this keyword from being saved:</h2>
@@ -13,14 +13,11 @@
   <div class="field">
     <%= form.label :query %>
     <%= form.text_field :query, required: true, placeholder: "e.g. best ruby gems", autocomplete: "off" %>
-    <% if keyword.new_record? %>
-      <small class="import-prompt"><%= link_to "Adding more keywords at once?", import_site_keywords_path(site) %></small>
-    <% end %>
   </div>
 
   <div class="field"
        data-controller="location-select"
-       data-location-select-initial-value="<%= keyword.locations.to_json %>">
+       data-location-select-initial-value="<%= (keyword.locations.presence || [ "us" ]).to_json %>">
     <label>Locations</label>
     <div class="location-select-control" data-action="click->location-select#focusInput">
       <div data-location-select-target="tags"></div>
@@ -48,7 +45,29 @@
     </div>
   </div>
 
+  <div class="field">
+    <label>Sites to track</label>
+    <%= hidden_field_tag "keyword[site_ids][]", "" %>
+    <% selected_site_ids = keyword.keyword_targets.map(&:site_id) %>
+    <% if sites.any? %>
+      <div class="checkbox-grid">
+        <% sites.each do |site| %>
+          <label class="checkbox-card">
+            <%= check_box_tag "keyword[site_ids][]", site.id, selected_site_ids.include?(site.id), id: "keyword_site_ids_#{site.id}" %>
+            <span>
+              <span class="checkbox-card-title"><%= site.name %></span>
+              <span class="checkbox-card-meta"><%= site.domain %></span>
+            </span>
+          </label>
+        <% end %>
+      </div>
+      <small class="field-hint">Optional. You can track this keyword now and attach sites later.</small>
+    <% else %>
+      <p class="muted">No sites yet. You can still create this keyword and attach sites later.</p>
+    <% end %>
+  </div>
+
   <div class="actions">
-    <%= form.submit(keyword.new_record? ? "Create" : "Update", class: "btn") %>
+    <%= form.submit(keyword.new_record? ? "Create keyword" : "Update keyword", class: "btn") %>
   </div>
 <% end %>

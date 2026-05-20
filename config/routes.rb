@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   root "sites#index"
 
-  resources :keywords, controller: "global_keywords", only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
+  resources :keywords, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     post :check, on: :member
   end
 
   resources :sites do
     get :table, on: :member
-    resources :keywords, except: [ :index ] do
+    resources :keywords, controller: "sites/keywords", except: [ :index ] do
       post :check, on: :member
       resources :checks, only: [ :index ]
       collection do
