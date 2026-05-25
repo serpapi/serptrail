@@ -7,6 +7,7 @@
 apple_iphone18_us_latest:
   keyword: apple_iphone18
   keyword_target: apple_iphone18
+  search_run: apple_iphone18_us_latest
   query: iphone 18
   position: 1
   url: https://apple.com/iphone-18
@@ -20,6 +21,7 @@ apple_iphone18_us_latest:
 apple_iphone18_us_previous:
   keyword: apple_iphone18
   keyword_target: apple_iphone18
+  search_run: apple_iphone18_us_previous
   query: iphone 18
   position: 4
   url: https://apple.com/iphone-18
@@ -33,6 +35,7 @@ apple_iphone18_us_previous:
 apple_iphone18_us_week_<%= i %>:
   keyword: apple_iphone18
   keyword_target: apple_iphone18
+  search_run: apple_iphone18_us_week_<%= i %>
   query: iphone 18
   position: <%= pos %>
   url: https://apple.com/iphone-18
@@ -49,6 +52,7 @@ apple_iphone18_us_week_<%= i %>:
 apple_iphone18_gb_week_<%= i %>:
   keyword: apple_iphone18
   keyword_target: apple_iphone18
+  search_run: apple_iphone18_gb_week_<%= i %>
   query: iphone 18
   position: <%= pos %>
   url: https://apple.com/uk/iphone-18
@@ -65,6 +69,7 @@ apple_iphone18_gb_week_<%= i %>:
 apple_iphone18_es_week_<%= i %>:
   keyword: apple_iphone18
   keyword_target: apple_iphone18
+  search_run: apple_iphone18_es_week_<%= i %>
   query: iphone 18
   position: <%= pos %>
   url: https://apple.com/es/iphone-18
@@ -78,6 +83,7 @@ apple_iphone18_es_week_<%= i %>:
 apple_iphone18_pro_us_week_<%= i %>:
   keyword: apple_iphone18_pro
   keyword_target: apple_iphone18_pro
+  search_run: apple_iphone18_pro_us_week_<%= i %>
   query: iphone 18 pro
   position: <%= pos %>
   url: https://apple.com/iphone-18-pro
@@ -94,6 +100,7 @@ apple_iphone18_pro_us_week_<%= i %>:
 apple_iphone18_pro_gb_week_<%= i %>:
   keyword: apple_iphone18_pro
   keyword_target: apple_iphone18_pro
+  search_run: apple_iphone18_pro_gb_week_<%= i %>
   query: iphone 18 pro
   position: <%= pos %>
   url: https://apple.com/uk/iphone-18-pro
@@ -110,6 +117,7 @@ apple_iphone18_pro_gb_week_<%= i %>:
 apple_iphone18_pro_es_week_<%= i %>:
   keyword: apple_iphone18_pro
   keyword_target: apple_iphone18_pro
+  search_run: apple_iphone18_pro_es_week_<%= i %>
   query: iphone 18 pro
   position: <%= pos %>
   url: https://apple.com/es/iphone-18-pro
@@ -124,6 +132,7 @@ apple_iphone18_pro_es_week_<%= i %>:
 apple_buy_iphone18_us_week_<%= i %>:
   keyword: apple_buy_iphone18
   keyword_target: apple_buy_iphone18
+  search_run: apple_buy_iphone18_us_week_<%= i %>
   query: buy iphone 18
   position: <%= pos %>
   url: https://apple.com/shop/buy-iphone/iphone-18
@@ -139,6 +148,7 @@ apple_buy_iphone18_us_week_<%= i %>:
 apple_buy_iphone18_gb_week_<%= i %>:
   keyword: apple_buy_iphone18
   keyword_target: apple_buy_iphone18
+  search_run: apple_buy_iphone18_gb_week_<%= i %>
   query: buy iphone 18
   position: <%= pos %>
   url: https://apple.com/uk/shop/buy-iphone/iphone-18
@@ -152,6 +162,7 @@ apple_buy_iphone18_gb_week_<%= i %>:
 apple_buy_iphone18_es_week_<%= i %>:
   keyword: apple_buy_iphone18
   keyword_target: apple_buy_iphone18
+  search_run: apple_buy_iphone18_es_week_<%= i %>
   query: buy iphone 18
   position: <%= pos %>
   url: https://apple.com/es/shop/buy-iphone/iphone-18
@@ -165,6 +176,7 @@ apple_buy_iphone18_es_week_<%= i %>:
 bestbuy_iphone18_us_week_<%= i %>:
   keyword: bestbuy_iphone18
   keyword_target: bestbuy_iphone18
+  search_run: bestbuy_iphone18_us_week_<%= i %>
   query: iphone 18
   position: <%= pos %>
   url: https://bestbuy.com/iphone-18
@@ -178,6 +190,7 @@ bestbuy_iphone18_us_week_<%= i %>:
 bestbuy_iphone18_gb_week_<%= i %>:
   keyword: bestbuy_iphone18
   keyword_target: bestbuy_iphone18
+  search_run: bestbuy_iphone18_gb_week_<%= i %>
   query: iphone 18
   position: <%= pos %>
   url: https://bestbuy.com/iphone-18
@@ -191,6 +204,7 @@ bestbuy_iphone18_gb_week_<%= i %>:
 bestbuy_iphone18_pro_us_week_<%= i %>:
   keyword: bestbuy_iphone18_pro
   keyword_target: bestbuy_iphone18_pro
+  search_run: bestbuy_iphone18_pro_us_week_<%= i %>
   query: iphone 18 pro
   position: <%= pos %>
   url: https://bestbuy.com/iphone-18-pro
@@ -204,6 +218,7 @@ bestbuy_iphone18_pro_us_week_<%= i %>:
 bestbuy_iphone18_pro_gb_week_<%= i %>:
   keyword: bestbuy_iphone18_pro
   keyword_target: bestbuy_iphone18_pro
+  search_run: bestbuy_iphone18_pro_gb_week_<%= i %>
   query: iphone 18 pro
   position: <%= pos %>
   url: https://bestbuy.com/iphone-18-pro
@@ -217,6 +232,7 @@ bestbuy_iphone18_pro_gb_week_<%= i %>:
 bestbuy_buy_iphone18_us_week_<%= i %>:
   keyword: bestbuy_buy_iphone18
   keyword_target: bestbuy_buy_iphone18
+  search_run: bestbuy_buy_iphone18_us_week_<%= i %>
   query: buy iphone 18
   position: <%= pos %>
   url: https://bestbuy.com/buy-iphone-18
@@ -230,6 +246,7 @@ bestbuy_buy_iphone18_us_week_<%= i %>:
 bestbuy_buy_iphone18_gb_week_<%= i %>:
   keyword: bestbuy_buy_iphone18
   keyword_target: bestbuy_buy_iphone18
+  search_run: bestbuy_buy_iphone18_gb_week_<%= i %>
   query: buy iphone 18
   position: <%= pos %>
   url: https://bestbuy.com/buy-iphone-18
@@ -243,6 +260,7 @@ bestbuy_buy_iphone18_gb_week_<%= i %>:
 mac_iphone18_review_us_week_<%= i %>:
   keyword: mac_iphone18_review
   keyword_target: mac_iphone18_review
+  search_run: mac_iphone18_review_us_week_<%= i %>
   query: iphone 18 review
   position: <%= pos %>
   url: https://9to5mac.com/iphone-18-review
@@ -256,6 +274,7 @@ mac_iphone18_review_us_week_<%= i %>:
 mac_iphone18_vs_us_week_<%= i %>:
   keyword: mac_iphone18_vs
   keyword_target: mac_iphone18_vs
+  search_run: mac_iphone18_vs_us_week_<%= i %>
   query: iphone 18 vs iphone 17
   position: <%= pos %>
   url: https://9to5mac.com/iphone-18-vs-iphone-17
@@ -269,6 +288,7 @@ mac_iphone18_vs_us_week_<%= i %>:
 gsma_iphone18_specs_us_week_<%= i %>:
   keyword: gsma_iphone18_specs
   keyword_target: gsma_iphone18_specs
+  search_run: gsma_iphone18_specs_us_week_<%= i %>
   query: iphone 18 specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18-specs.php
@@ -282,6 +302,7 @@ gsma_iphone18_specs_us_week_<%= i %>:
 gsma_iphone18_specs_gb_week_<%= i %>:
   keyword: gsma_iphone18_specs
   keyword_target: gsma_iphone18_specs
+  search_run: gsma_iphone18_specs_gb_week_<%= i %>
   query: iphone 18 specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18-specs.php
@@ -295,6 +316,7 @@ gsma_iphone18_specs_gb_week_<%= i %>:
 gsma_iphone18_specs_de_week_<%= i %>:
   keyword: gsma_iphone18_specs
   keyword_target: gsma_iphone18_specs
+  search_run: gsma_iphone18_specs_de_week_<%= i %>
   query: iphone 18 specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18-specs.php
@@ -308,6 +330,7 @@ gsma_iphone18_specs_de_week_<%= i %>:
 gsma_iphone18_pro_specs_us_week_<%= i %>:
   keyword: gsma_iphone18_pro_specs
   keyword_target: gsma_iphone18_pro_specs
+  search_run: gsma_iphone18_pro_specs_us_week_<%= i %>
   query: iphone 18 pro max specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php
@@ -321,6 +344,7 @@ gsma_iphone18_pro_specs_us_week_<%= i %>:
 gsma_iphone18_pro_specs_gb_week_<%= i %>:
   keyword: gsma_iphone18_pro_specs
   keyword_target: gsma_iphone18_pro_specs
+  search_run: gsma_iphone18_pro_specs_gb_week_<%= i %>
   query: iphone 18 pro max specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php
@@ -334,6 +358,7 @@ gsma_iphone18_pro_specs_gb_week_<%= i %>:
 apple_intelligence_us_week_<%= i %>:
   keyword: never_checked
   keyword_target: never_checked
+  search_run: never_checked_us_week_<%= i %>
   query: apple intelligence
   position: <%= pos %>
   url: https://apple.com/apple-intelligence
@@ -347,6 +372,7 @@ apple_intelligence_us_week_<%= i %>:
 gsma_iphone18_pro_specs_de_week_<%= i %>:
   keyword: gsma_iphone18_pro_specs
   keyword_target: gsma_iphone18_pro_specs
+  search_run: gsma_iphone18_pro_specs_de_week_<%= i %>
   query: iphone 18 pro max specs
   position: <%= pos %>
   url: https://gsmarena.com/apple_iphone_18_pro_max-specs.php

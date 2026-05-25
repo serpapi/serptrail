@@ -1,10 +1,12 @@
+<% link_for = local_assigns.fetch(:link_for, nil) %>
+<% wrapper_data = local_assigns.fetch(:wrapper_data, {}) %>
 <% series_keys = series.each_with_index.map { |_, i| "s#{i + 1}" } %>
 <% checks_by_key = series.each_with_index.each_with_object({}) { |(s, i), h| h["s#{i + 1}"] = s[:checks] } %>
-<% sparkline = multi_location_sparkline(checks_by_key, series_keys, width: width, height: height) %>
+<% sparkline = multi_location_sparkline(checks_by_key, series_keys, width: width, height: height, link_for: link_for) %>
 <% if sparkline %>
-  <div class="history-chart">
+  <%= content_tag :div, class: "history-chart", data: wrapper_data do %>
     <%= sparkline %>
-  </div>
+  <% end %>
   <div class="location-legend">
     <% series.each_with_index do |s, idx| %>
       <span class="location-legend-item">

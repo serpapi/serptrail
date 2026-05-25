@@ -52,12 +52,74 @@ module ApplicationHelper
   end
 
   # Renders the full chart component: sparkline + legend + empty state.
-  # series: array of { label: String, checks: Array }
-  def ranking_chart(series, width: 960, height: 220, empty_message: "Not enough data yet.")
-    render "shared/chart", series: series, width: width, height: height, empty_message: empty_message
+  def search_runs_timeline(search_runs, link_for: nil, width: 960)
+    runs = search_runs.select(&:success?).sort_by(&:checked_at)
+    return nil if runs.empty?
+
+    locations = runs.map(&:location).uniq
+
+    padding_left   = 36
+    padding_right  = 8
+    padding_top    = 8
+    padding_bottom = 24
+    row_height     = 40
+    plot_w = width - padding_left - padding_right
+    height = padding_top + locations.size * row_height + padding_bottom
+
+    min_time  = runs.first.checked_at
+    max_time  = runs.last.checked_at
+    time_span = [(max_time - min_time).to_f, 1.0].max
+
+    x_for = ->(t) { (padding_left + (t - min_time).to_f / time_span * plot_w).round(1) }
+
+    tag.svg(width: width, height: height, class: "sparkline", viewBox: "0 0 #{width} #{height}") do
+      rows = safe_join(locations.each_with_index.map { |location, idx|
+        y     = padding_top + idx * row_height + row_height / 2
+        color = location_color(idx)
+
+        track     = tag.line(x1: padding_left, y1: y, x2: padding_left + plot_w, y2: y,
+                             stroke: "#e5e7eb", stroke_width: 1)
+        loc_label = tag.text(country_flag(location), x: padding_left - 4, y: y + 4,
+                             "text-anchor": "end", class: "sparkline-axis-label")
+
+        dots = safe_join(runs.select { |r| r.location == location }.map { |run|
+          x = x_for.call(run.checked_at)
+
+          g_attrs = { class: "sparkline-point" }
+          if link_for && (url = link_for.call(run))
+            g_attrs[:data] = { "search-run-url": url, action: "click->chart-nav#navigate" }
+          end
+
+          tag.g(**g_attrs) do
+            tag.circle(cx: x, cy: y, r: 16, class: "sparkline-hitarea") +
+            tag.circle(cx: x, cy: y, r: 5, style: "fill: #{color}; opacity: 1") +
+            tag.text(run.checked_at.strftime("%b %-d"), x: x, y: y - 12,
+                     class: "sparkline-label", "text-anchor": "middle")
+          end
+        })
+
+        track + loc_label + dots
+      })
+
+      all_times = runs.map(&:checked_at).sort
+      x_labels  = safe_join(all_times.each_with_index.select { |_, i|
+        all_times.size <= 6 || i == 0 || i == all_times.size - 1 ||
+          (i % (all_times.size / 4.0).ceil == 0)
+      }.map { |time, _|
+        tag.text(time.strftime("%b %-d"), x: x_for.call(time), y: height - 4,
+                 "text-anchor": "middle", class: "sparkline-axis-label")
+      })
+
+      rows + x_labels
+    end
   end
 
-  def multi_location_sparkline(checks_by_location, locations, width: 960, height: 200)
+  # series: array of { label: String, checks: Array }
+  def ranking_chart(series, width: 960, height: 220, empty_message: "Not enough data yet.", link_for: nil, wrapper_data: {})
+    render "shared/chart", series: series, width: width, height: height, empty_message: empty_message, link_for: link_for, wrapper_data: wrapper_data
+  end
+
+  def multi_location_sparkline(checks_by_location, locations, width: 960, height: 200, link_for: nil)
     all_checks = checks_by_location.values.flatten.sort_by(&:checked_at)
     return nil if all_checks.size < 2
 
@@ -108,7 +170,12 @@ module ApplicationHelper
           dot_class   = p[:ranked] ? "sparkline-dot" : "sparkline-dot sparkline-dot-unranked"
           label_class = p[:ranked] ? "sparkline-label" : "sparkline-label sparkline-label-unranked"
 
-          tag.g(class: "sparkline-point") do
+          g_attrs = { class: "sparkline-point" }
+          if link_for && (url = link_for.call(p[:check]))
+            g_attrs[:data] = { "search-run-url": url, action: "click->chart-nav#navigate" }
+          end
+
+          tag.g(**g_attrs) do
             tag.circle(cx: p[:x], cy: p[:y], r: 16, class: "sparkline-hitarea") +
             tag.circle(cx: p[:x], cy: p[:y], r: 4, class: dot_class,
                        style: p[:ranked] ? "fill: #{color}" : nil) +

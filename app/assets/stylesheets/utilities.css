@@ -61,4 +61,113 @@
     margin-bottom: 1.5rem;
   }
   .history-chart .sparkline { display: block; width: 100%; height: 200px; }
+  .sparkline-point[data-search-run-url] { cursor: pointer; }
+
+  .search-run-results {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .ai-overview {
+    background: #f0f4ff;
+    border: 1px solid #c7d7fd;
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .ai-overview-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+  }
+
+  .ai-overview-text {
+    margin: 0 0 0.5rem;
+    color: #1e1b4b;
+    line-height: 1.5;
+  }
+
+  .ai-overview-text:last-of-type { margin-bottom: 0; }
+
+  .ai-overview-sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 0.625rem;
+  }
+
+  .ai-source {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    background: #fff;
+    border: 1px solid #c7d7fd;
+    border-radius: 9999px;
+    color: #4f46e5;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
+
+  .ai-source:hover { background: #e0e7ff; }
+
+  .search-run-results-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .organic-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .organic-result {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.875rem;
+  }
+
+  .organic-result:last-child { border-bottom: none; }
+
+  .result-position {
+    flex-shrink: 0;
+    width: 2rem;
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.125rem;
+  }
+
+  .result-body { flex: 1; min-width: 0; }
+  .result-body a { font-weight: 500; text-decoration: none; }
+  .result-body a:hover { text-decoration: underline; }
+
+  .result-url {
+    font-size: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 0.125rem;
+  }
+
+  .result-snippet {
+    margin: 0.25rem 0 0;
+    color: #374151;
+    line-height: 1.4;
+  }
 }

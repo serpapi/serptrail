@@ -1,0 +1,999 @@
+# === Apple / iphone 18 — US ===
+apple_iphone18_us_latest:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 2.days.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"},{"link":"https://apple.com/iphone-18","title":"Apple iPhone 18","domain":"apple.com"}]}}'
+
+apple_iphone18_us_previous:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 4.days.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"},{"link":"https://samsung.com/us/smartphones/galaxy-s25/","title":"Samsung Galaxy S25","domain":"samsung.com"}]}}'
+
+apple_iphone18_us_week_0:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."}]}'
+
+apple_iphone18_us_week_1:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"},{"link":"https://samsung.com/us/smartphones/galaxy-s25/","title":"Samsung Galaxy S25","domain":"samsung.com"}]}}'
+
+apple_iphone18_us_week_2:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://apple.com/iphone-18","title":"Apple iPhone 18","domain":"apple.com"},{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"}]}}'
+
+apple_iphone18_us_week_3:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://apple.com/iphone-18","title":"Apple iPhone 18","domain":"apple.com"},{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"}]}}'
+
+apple_iphone18_us_week_4:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://apple.com/iphone-18","title":"Apple iPhone 18","domain":"apple.com"},{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"}]}}'
+
+# === Apple / iphone 18 — GB ===
+apple_iphone18_gb_week_0:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (5.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/uk/iphone-18","snippet":"Buy the new iPhone 18 from Apple UK."}]}'
+
+apple_iphone18_gb_week_1:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (4.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/uk/iphone-18","snippet":"Buy the new iPhone 18 from Apple UK."}]}'
+
+apple_iphone18_gb_week_2:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (3.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/uk/iphone-18","snippet":"Buy the new iPhone 18 from Apple UK."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"},{"link":"https://samsung.com/us/smartphones/galaxy-s25/","title":"Samsung Galaxy S25","domain":"samsung.com"}]}}'
+
+apple_iphone18_gb_week_3:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (2.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/uk/iphone-18","snippet":"Buy the new iPhone 18 from Apple UK."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"},{"link":"https://apple.com/uk/iphone-18","title":"Apple iPhone 18","domain":"apple.com"}]}}'
+
+apple_iphone18_gb_week_4:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (1.week.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/uk/iphone-18","snippet":"Buy the new iPhone 18 from Apple UK."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 features Apples A19 chip, a redesigned camera system with 48MP sensors, and up to 26 hours of video playback."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18-specs.php","title":"GSMArena iPhone 18 Specs","domain":"gsmarena.com"},{"link":"https://apple.com/uk/iphone-18","title":"Apple iPhone 18","domain":"apple.com"}]}}'
+
+# === Apple / iphone 18 — ES ===
+apple_iphone18_es_week_0:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: es
+  status: success
+  checked_at: <%= (5.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."}]}'
+
+apple_iphone18_es_week_1:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: es
+  status: success
+  checked_at: <%= (4.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."}]}'
+
+apple_iphone18_es_week_2:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: es
+  status: success
+  checked_at: <%= (3.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."}]}'
+
+apple_iphone18_es_week_3:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: es
+  status: success
+  checked_at: <%= (2.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/es/iphone-18","snippet":"El nuevo iPhone 18 con chip A19 disponible en Apple Spain."}]}'
+
+apple_iphone18_es_week_4:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: es
+  status: success
+  checked_at: <%= (1.week.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":2,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/es/iphone-18","snippet":"El nuevo iPhone 18 con chip A19 disponible en Apple Spain."}]}'
+
+# === Apple / iphone 18 pro — US ===
+apple_iphone18_pro_us_week_0:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."}]}'
+
+apple_iphone18_pro_us_week_1:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 Pro features the A19 Pro chip, a titanium build, ProMotion display, and a professional triple-camera system with 5x optical zoom."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","title":"GSMArena iPhone 18 Pro Specs","domain":"gsmarena.com"},{"link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","title":"Samsung Galaxy S25 Ultra","domain":"samsung.com"}]}}'
+
+apple_iphone18_pro_us_week_2:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 Pro features the A19 Pro chip, a titanium build, ProMotion display, and a professional triple-camera system with 5x optical zoom."}],"sources":[{"link":"https://apple.com/iphone-18-pro","title":"Apple iPhone 18 Pro","domain":"apple.com"},{"link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","title":"GSMArena iPhone 18 Pro Specs","domain":"gsmarena.com"}]}}'
+
+apple_iphone18_pro_us_week_3:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 Pro features the A19 Pro chip, a titanium build, ProMotion display, and a professional triple-camera system with 5x optical zoom."}],"sources":[{"link":"https://apple.com/iphone-18-pro","title":"Apple iPhone 18 Pro","domain":"apple.com"},{"link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","title":"GSMArena iPhone 18 Pro Specs","domain":"gsmarena.com"}]}}'
+
+apple_iphone18_pro_us_week_4:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 Pro features the A19 Pro chip, a titanium build, ProMotion display, and a professional triple-camera system with 5x optical zoom."}],"sources":[{"link":"https://apple.com/iphone-18-pro","title":"Apple iPhone 18 Pro","domain":"apple.com"},{"link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","title":"GSMArena iPhone 18 Pro Specs","domain":"gsmarena.com"}]}}'
+
+# === Apple / iphone 18 pro — GB ===
+apple_iphone18_pro_gb_week_0:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (5.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro","link":"https://apple.com/uk/iphone-18-pro","snippet":"Buy the new iPhone 18 Pro from Apple UK."}]}'
+
+apple_iphone18_pro_gb_week_1:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (4.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro","link":"https://apple.com/uk/iphone-18-pro","snippet":"Buy the new iPhone 18 Pro from Apple UK."}]}'
+
+apple_iphone18_pro_gb_week_2:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (3.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro","link":"https://apple.com/uk/iphone-18-pro","snippet":"Buy the new iPhone 18 Pro from Apple UK."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 Pro features the A19 Pro chip, a titanium build, ProMotion display, and a professional triple-camera system with 5x optical zoom."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","title":"GSMArena iPhone 18 Pro Specs","domain":"gsmarena.com"},{"link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","title":"Samsung Galaxy S25 Ultra","domain":"samsung.com"}]}}'
+
+apple_iphone18_pro_gb_week_3:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (2.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro","link":"https://apple.com/uk/iphone-18-pro","snippet":"Buy the new iPhone 18 Pro from Apple UK."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 Pro features the A19 Pro chip, a titanium build, ProMotion display, and a professional triple-camera system with 5x optical zoom."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","title":"GSMArena iPhone 18 Pro Specs","domain":"gsmarena.com"},{"link":"https://apple.com/uk/iphone-18-pro","title":"Apple iPhone 18 Pro","domain":"apple.com"}]}}'
+
+apple_iphone18_pro_gb_week_4:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (1.week.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/uk/iphone-18-pro","snippet":"Buy the new iPhone 18 Pro from Apple UK."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"The iPhone 18 Pro features the A19 Pro chip, a titanium build, ProMotion display, and a professional triple-camera system with 5x optical zoom."}],"sources":[{"link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","title":"GSMArena iPhone 18 Pro Specs","domain":"gsmarena.com"},{"link":"https://apple.com/uk/iphone-18-pro","title":"Apple iPhone 18 Pro","domain":"apple.com"}]}}'
+
+# === Apple / iphone 18 pro — ES ===
+apple_iphone18_pro_es_week_0:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: es
+  status: success
+  checked_at: <%= (5.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."},{"position":3,"title":"iPhone 18 Pro Review","link":"https://theverge.com/iphone-18-pro-review","snippet":"The iPhone 18 Pro is the best iPhone yet."}]}'
+
+apple_iphone18_pro_es_week_1:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: es
+  status: success
+  checked_at: <%= (4.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."},{"position":3,"title":"iPhone 18 Pro Review","link":"https://theverge.com/iphone-18-pro-review","snippet":"The iPhone 18 Pro is the best iPhone yet."}]}'
+
+apple_iphone18_pro_es_week_2:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: es
+  status: success
+  checked_at: <%= (3.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro","link":"https://apple.com/es/iphone-18-pro","snippet":"El nuevo iPhone 18 Pro disponible en Apple Spain."}]}'
+
+apple_iphone18_pro_es_week_3:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: es
+  status: success
+  checked_at: <%= (2.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro","link":"https://apple.com/es/iphone-18-pro","snippet":"El nuevo iPhone 18 Pro disponible en Apple Spain."}]}'
+
+apple_iphone18_pro_es_week_4:
+  keyword: apple_iphone18_pro
+  query: iphone 18 pro
+  location: es
+  status: success
+  checked_at: <%= (1.week.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro","link":"https://apple.com/es/iphone-18-pro","snippet":"El nuevo iPhone 18 Pro disponible en Apple Spain."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+# === Apple / buy iphone 18 — US ===
+apple_buy_iphone18_us_week_0:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."}]}'
+
+apple_buy_iphone18_us_week_1:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":3,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."}]}'
+
+apple_buy_iphone18_us_week_2:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":3,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"Buy the iPhone 18 starting at $799 from Apple, authorized carriers, and major retailers including Best Buy and Amazon."}],"sources":[{"link":"https://bestbuy.com/iphone-18","title":"Buy iPhone 18 at Best Buy","domain":"bestbuy.com"},{"link":"https://amazon.com/dp/iphone-18","title":"iPhone 18 on Amazon","domain":"amazon.com"}]}}'
+
+apple_buy_iphone18_us_week_3:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":3,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"Buy the iPhone 18 starting at $799 from Apple, authorized carriers, and major retailers including Best Buy and Amazon."}],"sources":[{"link":"https://bestbuy.com/iphone-18","title":"Buy iPhone 18 at Best Buy","domain":"bestbuy.com"},{"link":"https://amazon.com/dp/iphone-18","title":"iPhone 18 on Amazon","domain":"amazon.com"}]}}'
+
+apple_buy_iphone18_us_week_4:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":3,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."}],"ai_overview":{"text_blocks":[{"type":"paragraph","snippet":"Buy the iPhone 18 starting at $799 from Apple, authorized carriers, and major retailers including Best Buy and Amazon."}],"sources":[{"link":"https://bestbuy.com/iphone-18","title":"Buy iPhone 18 at Best Buy","domain":"bestbuy.com"},{"link":"https://amazon.com/dp/iphone-18","title":"iPhone 18 on Amazon","domain":"amazon.com"}]}}'
+
+# === Apple / buy iphone 18 — GB ===
+apple_buy_iphone18_gb_week_0:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (5.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+apple_buy_iphone18_gb_week_1:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (4.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/uk/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple UK."}]}'
+
+apple_buy_iphone18_gb_week_2:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (3.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"Apple iPhone 18","link":"https://apple.com/uk/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple UK."}]}'
+
+apple_buy_iphone18_gb_week_3:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (2.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/uk/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple UK."},{"position":3,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."}]}'
+
+apple_buy_iphone18_gb_week_4:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (1.week.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"Apple iPhone 18","link":"https://apple.com/uk/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple UK."},{"position":3,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."}]}'
+
+# === Apple / buy iphone 18 — ES ===
+apple_buy_iphone18_es_week_0:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: es
+  status: success
+  checked_at: <%= (5.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+apple_buy_iphone18_es_week_1:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: es
+  status: success
+  checked_at: <%= (4.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+apple_buy_iphone18_es_week_2:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: es
+  status: success
+  checked_at: <%= (3.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+apple_buy_iphone18_es_week_3:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: es
+  status: success
+  checked_at: <%= (2.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+apple_buy_iphone18_es_week_4:
+  keyword: apple_buy_iphone18
+  query: buy iphone 18
+  location: es
+  status: success
+  checked_at: <%= (1.week.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Buy iPhone 18 at Best Buy","link":"https://bestbuy.com/iphone-18","snippet":"Shop iPhone 18 deals at Best Buy with trade-in offers."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+# === Best Buy / iphone 18 — US ===
+bestbuy_iphone18_us_week_0:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+bestbuy_iphone18_us_week_1:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+bestbuy_iphone18_us_week_2:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+bestbuy_iphone18_us_week_3:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+bestbuy_iphone18_us_week_4:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+# === Best Buy / iphone 18 — GB ===
+bestbuy_iphone18_gb_week_0:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (5.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+bestbuy_iphone18_gb_week_1:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (4.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+bestbuy_iphone18_gb_week_2:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (3.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+bestbuy_iphone18_gb_week_3:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (2.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+bestbuy_iphone18_gb_week_4:
+  keyword: bestbuy_iphone18
+  query: iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (1.week.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/iphone-18","snippet":"The official Apple iPhone 18 with A19 chip and advanced camera system."},{"position":2,"title":"Samsung Galaxy S25","link":"https://samsung.com/us/smartphones/galaxy-s25/","snippet":"Compare Samsung Galaxy S25 with iPhone 18."},{"position":3,"title":"Apple iPhone 18 Full Specs","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"Detailed specifications for Apple iPhone 18."}]}'
+
+# === Best Buy / iphone 18 pro — US ===
+bestbuy_iphone18_pro_us_week_0:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+bestbuy_iphone18_pro_us_week_1:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+bestbuy_iphone18_pro_us_week_2:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+bestbuy_iphone18_pro_us_week_3:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+bestbuy_iphone18_pro_us_week_4:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+# === Best Buy / iphone 18 pro — GB ===
+bestbuy_iphone18_pro_gb_week_0:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (5.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+bestbuy_iphone18_pro_gb_week_1:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (4.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+bestbuy_iphone18_pro_gb_week_2:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (3.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+bestbuy_iphone18_pro_gb_week_3:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (2.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+bestbuy_iphone18_pro_gb_week_4:
+  keyword: bestbuy_iphone18_pro
+  query: iphone 18 pro
+  location: gb
+  status: success
+  checked_at: <%= (1.week.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18 Pro","link":"https://apple.com/iphone-18-pro","snippet":"The official Apple iPhone 18 Pro with A19 Pro chip."},{"position":2,"title":"Samsung Galaxy S25 Ultra","link":"https://samsung.com/us/smartphones/galaxy-s25-ultra/","snippet":"Compare Samsung Galaxy S25 Ultra with iPhone 18 Pro."},{"position":3,"title":"Apple iPhone 18 Pro Specs","link":"https://gsmarena.com/apple_iphone_18_pro-specs.php","snippet":"Detailed specifications for Apple iPhone 18 Pro."}]}'
+
+# === Best Buy / buy iphone 18 — US ===
+bestbuy_buy_iphone18_us_week_0:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+bestbuy_buy_iphone18_us_week_1:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"Best Buy iPhone 18","link":"https://bestbuy.com/buy-iphone-18","snippet":"Best deals on iPhone 18 at Best Buy."}]}'
+
+bestbuy_buy_iphone18_us_week_2:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"Best Buy iPhone 18","link":"https://bestbuy.com/buy-iphone-18","snippet":"Best deals on iPhone 18 at Best Buy."}]}'
+
+bestbuy_buy_iphone18_us_week_3:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"Best Buy iPhone 18","link":"https://bestbuy.com/buy-iphone-18","snippet":"Best deals on iPhone 18 at Best Buy."}]}'
+
+bestbuy_buy_iphone18_us_week_4:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"Best Buy iPhone 18","link":"https://bestbuy.com/buy-iphone-18","snippet":"Best deals on iPhone 18 at Best Buy."},{"position":3,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."}]}'
+
+# === Best Buy / buy iphone 18 — GB ===
+bestbuy_buy_iphone18_gb_week_0:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (5.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+bestbuy_buy_iphone18_gb_week_1:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (4.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+bestbuy_buy_iphone18_gb_week_2:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (3.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+bestbuy_buy_iphone18_gb_week_3:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (2.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+bestbuy_buy_iphone18_gb_week_4:
+  keyword: bestbuy_buy_iphone18
+  query: buy iphone 18
+  location: gb
+  status: success
+  checked_at: <%= (1.week.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple iPhone 18","link":"https://apple.com/shop/buy-iphone/iphone-18","snippet":"Buy iPhone 18 directly from Apple with financing options."},{"position":2,"title":"iPhone 18 on Amazon","link":"https://amazon.com/dp/iphone-18","snippet":"Find iPhone 18 deals on Amazon with fast shipping."},{"position":3,"title":"iPhone 18 at Walmart","link":"https://walmart.com/iphone-18","snippet":"Shop iPhone 18 at Walmart with great prices."}]}'
+
+# === 9to5Mac / iphone 18 review — US ===
+mac_iphone18_review_us_week_0:
+  keyword: mac_iphone18_review
+  query: iphone 18 review
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."},{"position":2,"title":"iPhone 18 Full Review","link":"https://macrumors.com/review/iphone-18/","snippet":"MacRumors comprehensive iPhone 18 review."},{"position":3,"title":"iPhone 18 Review","link":"https://cnet.com/reviews/iphone-18-review/","snippet":"CNET iPhone 18 review and hands-on."}]}'
+
+mac_iphone18_review_us_week_1:
+  keyword: mac_iphone18_review
+  query: iphone 18 review
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."},{"position":2,"title":"iPhone 18 Full Review","link":"https://macrumors.com/review/iphone-18/","snippet":"MacRumors comprehensive iPhone 18 review."},{"position":3,"title":"iPhone 18 Review: The Best iPhone Yet","link":"https://9to5mac.com/iphone-18-review","snippet":"9to5Mac review of the iPhone 18."}]}'
+
+mac_iphone18_review_us_week_2:
+  keyword: mac_iphone18_review
+  query: iphone 18 review
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."},{"position":2,"title":"iPhone 18 Review: The Best iPhone Yet","link":"https://9to5mac.com/iphone-18-review","snippet":"9to5Mac review of the iPhone 18."},{"position":3,"title":"iPhone 18 Full Review","link":"https://macrumors.com/review/iphone-18/","snippet":"MacRumors comprehensive iPhone 18 review."}]}'
+
+mac_iphone18_review_us_week_3:
+  keyword: mac_iphone18_review
+  query: iphone 18 review
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."},{"position":2,"title":"iPhone 18 Review: The Best iPhone Yet","link":"https://9to5mac.com/iphone-18-review","snippet":"9to5Mac review of the iPhone 18."},{"position":3,"title":"iPhone 18 Full Review","link":"https://macrumors.com/review/iphone-18/","snippet":"MacRumors comprehensive iPhone 18 review."}]}'
+
+mac_iphone18_review_us_week_4:
+  keyword: mac_iphone18_review
+  query: iphone 18 review
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Review: The Best iPhone Yet","link":"https://9to5mac.com/iphone-18-review","snippet":"9to5Mac review of the iPhone 18."},{"position":2,"title":"iPhone 18 Review","link":"https://theverge.com/iphone-18-review","snippet":"The iPhone 18 is the most refined iPhone yet."},{"position":3,"title":"iPhone 18 Full Review","link":"https://macrumors.com/review/iphone-18/","snippet":"MacRumors comprehensive iPhone 18 review."}]}'
+
+# === 9to5Mac / iphone 18 vs iphone 17 — US ===
+mac_iphone18_vs_us_week_0:
+  keyword: mac_iphone18_vs
+  query: iphone 18 vs iphone 17
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 vs iPhone 17: Which Should You Buy?","link":"https://theverge.com/iphone-18-vs-iphone-17","snippet":"The Verge compares iPhone 18 and iPhone 17."},{"position":2,"title":"iPhone 18 vs iPhone 17 Comparison","link":"https://macrumors.com/guide/iphone-18-vs-iphone-17/","snippet":"MacRumors detailed comparison of iPhone 18 and iPhone 17."},{"position":3,"title":"iPhone 18 vs iPhone 17: Full Spec Comparison","link":"https://engadget.com/iphone-18-vs-iphone-17-comparison/","snippet":"Engadget compares all specs of iPhone 18 and iPhone 17."}]}'
+
+mac_iphone18_vs_us_week_1:
+  keyword: mac_iphone18_vs
+  query: iphone 18 vs iphone 17
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 vs iPhone 17: Which Should You Buy?","link":"https://theverge.com/iphone-18-vs-iphone-17","snippet":"The Verge compares iPhone 18 and iPhone 17."},{"position":2,"title":"iPhone 18 vs iPhone 17 Comparison","link":"https://macrumors.com/guide/iphone-18-vs-iphone-17/","snippet":"MacRumors detailed comparison of iPhone 18 and iPhone 17."},{"position":3,"title":"iPhone 18 vs iPhone 17: Full Spec Comparison","link":"https://engadget.com/iphone-18-vs-iphone-17-comparison/","snippet":"Engadget compares all specs of iPhone 18 and iPhone 17."}]}'
+
+mac_iphone18_vs_us_week_2:
+  keyword: mac_iphone18_vs
+  query: iphone 18 vs iphone 17
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 vs iPhone 17: Which Should You Buy?","link":"https://theverge.com/iphone-18-vs-iphone-17","snippet":"The Verge compares iPhone 18 and iPhone 17."},{"position":2,"title":"iPhone 18 vs iPhone 17 Comparison","link":"https://macrumors.com/guide/iphone-18-vs-iphone-17/","snippet":"MacRumors detailed comparison of iPhone 18 and iPhone 17."},{"position":3,"title":"iPhone 18 vs iPhone 17: Full Spec Comparison","link":"https://engadget.com/iphone-18-vs-iphone-17-comparison/","snippet":"Engadget compares all specs of iPhone 18 and iPhone 17."}]}'
+
+mac_iphone18_vs_us_week_3:
+  keyword: mac_iphone18_vs
+  query: iphone 18 vs iphone 17
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 vs iPhone 17: Which Should You Buy?","link":"https://theverge.com/iphone-18-vs-iphone-17","snippet":"The Verge compares iPhone 18 and iPhone 17."},{"position":2,"title":"iPhone 18 vs iPhone 17 Comparison","link":"https://macrumors.com/guide/iphone-18-vs-iphone-17/","snippet":"MacRumors detailed comparison of iPhone 18 and iPhone 17."},{"position":3,"title":"iPhone 18 vs iPhone 17: Full Spec Comparison","link":"https://engadget.com/iphone-18-vs-iphone-17-comparison/","snippet":"Engadget compares all specs of iPhone 18 and iPhone 17."}]}'
+
+mac_iphone18_vs_us_week_4:
+  keyword: mac_iphone18_vs
+  query: iphone 18 vs iphone 17
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 vs iPhone 17: Which Should You Buy?","link":"https://theverge.com/iphone-18-vs-iphone-17","snippet":"The Verge compares iPhone 18 and iPhone 17."},{"position":2,"title":"iPhone 18 vs iPhone 17 Comparison","link":"https://macrumors.com/guide/iphone-18-vs-iphone-17/","snippet":"MacRumors detailed comparison of iPhone 18 and iPhone 17."},{"position":3,"title":"iPhone 18 vs iPhone 17","link":"https://9to5mac.com/iphone-18-vs-iphone-17","snippet":"9to5Mac comparison of iPhone 18 and iPhone 17."}]}'
+
+# === GSMArena / iphone 18 specs — US ===
+gsma_iphone18_specs_us_week_0:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_us_week_1:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_us_week_2:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_us_week_3:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 - Full specifications","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"GSMArena full specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_us_week_4:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 - Full specifications","link":"https://gsmarena.com/apple_iphone_18-specs.php","snippet":"GSMArena full specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."}]}'
+
+# === GSMArena / iphone 18 specs — GB ===
+gsma_iphone18_specs_gb_week_0:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: gb
+  status: success
+  checked_at: <%= (5.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_gb_week_1:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: gb
+  status: success
+  checked_at: <%= (4.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_gb_week_2:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: gb
+  status: success
+  checked_at: <%= (3.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_gb_week_3:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: gb
+  status: success
+  checked_at: <%= (2.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_gb_week_4:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: gb
+  status: success
+  checked_at: <%= (1.week.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+# === GSMArena / iphone 18 specs — DE ===
+gsma_iphone18_specs_de_week_0:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: de
+  status: success
+  checked_at: <%= (5.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_de_week_1:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: de
+  status: success
+  checked_at: <%= (4.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_de_week_2:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: de
+  status: success
+  checked_at: <%= (3.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_de_week_3:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: de
+  status: success
+  checked_at: <%= (2.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_specs_de_week_4:
+  keyword: gsma_iphone18_specs
+  query: iphone 18 specs
+  location: de
+  status: success
+  checked_at: <%= (1.week.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 - Technical Specifications","link":"https://apple.com/iphone-18/specs/","snippet":"Official Apple technical specifications for iPhone 18."},{"position":2,"title":"Apple iPhone 18 Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18","snippet":"Full technical specifications for Apple iPhone 18."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+# === GSMArena / iphone 18 pro max specs — US ===
+gsma_iphone18_pro_specs_us_week_0:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_us_week_1:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Pro Max - Full specifications","link":"https://gsmarena.com/apple_iphone_18_pro_max-specs.php","snippet":"GSMArena full specifications for Apple iPhone 18 Pro Max."}]}'
+
+gsma_iphone18_pro_specs_us_week_2:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Pro Max - Full specifications","link":"https://gsmarena.com/apple_iphone_18_pro_max-specs.php","snippet":"GSMArena full specifications for Apple iPhone 18 Pro Max."}]}'
+
+gsma_iphone18_pro_specs_us_week_3:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max - Full specifications","link":"https://gsmarena.com/apple_iphone_18_pro_max-specs.php","snippet":"GSMArena full specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."}]}'
+
+gsma_iphone18_pro_specs_us_week_4:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max - Full specifications","link":"https://gsmarena.com/apple_iphone_18_pro_max-specs.php","snippet":"GSMArena full specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."}]}'
+
+# === GSMArena / iphone 18 pro max specs — GB ===
+gsma_iphone18_pro_specs_gb_week_0:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: gb
+  status: success
+  checked_at: <%= (5.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_gb_week_1:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: gb
+  status: success
+  checked_at: <%= (4.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_gb_week_2:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: gb
+  status: success
+  checked_at: <%= (3.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_gb_week_3:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: gb
+  status: success
+  checked_at: <%= (2.weeks.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_gb_week_4:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: gb
+  status: success
+  checked_at: <%= (1.week.ago + 1.hour).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Pro Max - Full specifications","link":"https://gsmarena.com/apple_iphone_18_pro_max-specs.php","snippet":"GSMArena full specifications for Apple iPhone 18 Pro Max."}]}'
+
+# === GSMArena / iphone 18 pro max specs — DE ===
+gsma_iphone18_pro_specs_de_week_0:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: de
+  status: success
+  checked_at: <%= (5.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_de_week_1:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: de
+  status: success
+  checked_at: <%= (4.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_de_week_2:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: de
+  status: success
+  checked_at: <%= (3.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_de_week_3:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: de
+  status: success
+  checked_at: <%= (2.weeks.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+gsma_iphone18_pro_specs_de_week_4:
+  keyword: gsma_iphone18_pro_specs
+  query: iphone 18 pro max specs
+  location: de
+  status: success
+  checked_at: <%= (1.week.ago + 2.hours).to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"iPhone 18 Pro - Technical Specifications","link":"https://apple.com/iphone-18-pro/specs/","snippet":"Official Apple technical specifications for iPhone 18 Pro."},{"position":2,"title":"Apple iPhone 18 Pro Max Specifications","link":"https://phonescoop.com/phones/phone.ww.php?m=Apple_iPhone_18_Pro_Max","snippet":"Full technical specifications for Apple iPhone 18 Pro Max."},{"position":3,"title":"Apple iPhone 18 Specs","link":"https://anandtech.com/iphone-18-specs/","snippet":"AnandTech specifications for Apple iPhone 18."}]}'
+
+# === Apple / apple intelligence — US ===
+never_checked_us_week_0:
+  keyword: never_checked
+  query: apple intelligence
+  location: us
+  status: success
+  checked_at: <%= 5.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple Intelligence: Everything You Need to Know","link":"https://theverge.com/apple-intelligence","snippet":"The Verge explains Apple Intelligence AI features."},{"position":2,"title":"Apple Intelligence Features Guide","link":"https://macrumors.com/guide/apple-intelligence/","snippet":"MacRumors guide to all Apple Intelligence features."},{"position":3,"title":"Apple Intelligence Explained","link":"https://techcrunch.com/apple-intelligence/","snippet":"TechCrunch explains Apple Intelligence features and availability."}]}'
+
+never_checked_us_week_1:
+  keyword: never_checked
+  query: apple intelligence
+  location: us
+  status: success
+  checked_at: <%= 4.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple Intelligence: Everything You Need to Know","link":"https://theverge.com/apple-intelligence","snippet":"The Verge explains Apple Intelligence AI features."},{"position":2,"title":"Apple Intelligence Features Guide","link":"https://macrumors.com/guide/apple-intelligence/","snippet":"MacRumors guide to all Apple Intelligence features."},{"position":3,"title":"Apple Intelligence Explained","link":"https://techcrunch.com/apple-intelligence/","snippet":"TechCrunch explains Apple Intelligence features and availability."}]}'
+
+never_checked_us_week_2:
+  keyword: never_checked
+  query: apple intelligence
+  location: us
+  status: success
+  checked_at: <%= 3.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple Intelligence: Everything You Need to Know","link":"https://theverge.com/apple-intelligence","snippet":"The Verge explains Apple Intelligence AI features."},{"position":2,"title":"Apple Intelligence Features Guide","link":"https://macrumors.com/guide/apple-intelligence/","snippet":"MacRumors guide to all Apple Intelligence features."},{"position":3,"title":"Apple Intelligence Explained","link":"https://techcrunch.com/apple-intelligence/","snippet":"TechCrunch explains Apple Intelligence features and availability."}]}'
+
+never_checked_us_week_3:
+  keyword: never_checked
+  query: apple intelligence
+  location: us
+  status: success
+  checked_at: <%= 2.weeks.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple Intelligence: Everything You Need to Know","link":"https://theverge.com/apple-intelligence","snippet":"The Verge explains Apple Intelligence AI features."},{"position":2,"title":"Apple Intelligence Features Guide","link":"https://macrumors.com/guide/apple-intelligence/","snippet":"MacRumors guide to all Apple Intelligence features."},{"position":3,"title":"Apple Intelligence","link":"https://apple.com/apple-intelligence","snippet":"Apple Intelligence is the personal intelligence system for iPhone, iPad, and Mac."}]}'
+
+never_checked_us_week_4:
+  keyword: never_checked
+  query: apple intelligence
+  location: us
+  status: success
+  checked_at: <%= 1.week.ago.to_fs(:db) %>
+  raw_response: '{"organic_results":[{"position":1,"title":"Apple Intelligence: Everything You Need to Know","link":"https://theverge.com/apple-intelligence","snippet":"The Verge explains Apple Intelligence AI features."},{"position":2,"title":"Apple Intelligence","link":"https://apple.com/apple-intelligence","snippet":"Apple Intelligence is the personal intelligence system for iPhone, iPad, and Mac."},{"position":3,"title":"Apple Intelligence Features Guide","link":"https://macrumors.com/guide/apple-intelligence/","snippet":"MacRumors guide to all Apple Intelligence features."}]}'

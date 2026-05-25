@@ -75,34 +75,14 @@
     <h2>Search runs</h2>
   </div>
 
-  <% if @search_runs.any? %>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Location</th>
-          <th>Status</th>
-          <th>Checks</th>
-          <th>SerpApi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @search_runs.each do |search_run| %>
-          <tr>
-            <td title="Ran for query <%= search_run.query %>"><%= search_run.checked_at.strftime("%Y-%m-%d %H:%M") %></td>
-            <td><%= country_flag(search_run.location) %> <%= country_name(search_run.location) %></td>
-            <td><%= tag.span search_run.status.capitalize, class: [ "status", "status-#{search_run.status}" ] %></td>
-            <td><%= search_run.checks.count %></td>
-            <td>
-              <% if search_run.serpapi_search_id.present? %>
-                <%= link_to "Open", "https://serpapi.com/searches/#{search_run.serpapi_search_id}/inspect", title: "Open in SerpApi", target: "_blank", rel: "noopener", class: "serpapi-link" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <p>No search runs recorded yet.</p>
+  <% timeline = search_runs_timeline(@search_runs, link_for: ->(run) { keyword_search_run_path(@keyword, run) }) %>
+  <% if timeline %>
+    <div class="history-chart" data-controller="chart-nav" data-chart-nav-frame-value="search-run-results">
+      <%= timeline %>
+    </div>
   <% end %>
+
+  <turbo-frame id="search-run-results"<% if @latest_search_run %> src="<%= keyword_search_run_path(@keyword, @latest_search_run) %>"<% end %>>
+    <p class="muted">No search runs recorded yet.</p>
+  </turbo-frame>
 </section>

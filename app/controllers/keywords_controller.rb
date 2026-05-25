@@ -7,8 +7,9 @@ class KeywordsController < ApplicationController
   end
 
   def show
-    @keyword_targets = @keyword.keyword_targets.includes(:site, checks: :search_run).joins(:site).order("sites.name")
-    @search_runs = @keyword.search_runs.order(checked_at: :desc).limit(50)
+    @keyword_targets = @keyword.keyword_targets.includes(:site).joins(:site).order("sites.name")
+    @search_runs = @keyword.search_runs.order(checked_at: :asc)
+    @latest_search_run = @search_runs.where(status: :success).last
   end
 
   def new
