@@ -9,7 +9,10 @@ class KeywordsController < ApplicationController
   def show
     @keyword_targets = @keyword.keyword_targets.includes(:site).joins(:site).order("sites.name")
     @search_runs = @keyword.search_runs.order(checked_at: :asc)
-    @latest_search_run = @search_runs.where(status: :success).last
+    @selected_slot_start, @runs_by_location = last_slot_with_runs(@keyword, @search_runs.select(&:success?))
+    @selected_location = @runs_by_location.keys.first
+    @selected_run = @runs_by_location.values.first
+    @organic_results, @ai_overview = parse_search_run(@selected_run)
   end
 
   def new
@@ -57,6 +60,22 @@ class KeywordsController < ApplicationController
 
   def set_keyword
     @keyword = Keyword.find(params[:id])
+  end
+
+  def last_slot_with_runs(keyword, success_runs)
+    return [ nil, {} ] if success_runs.empty?
+    duration = slot_duration_for(keyword)
+    now = Time.current
+    (0...30).reverse_each do |i|
+      slot_start = now - (30 - i) * duration
+      slot_end   = now - (29 - i) * duration
+      runs_in    = success_runs.select { |r| r.checked_at > slot_start && r.checked_at <= slot_end }
+      if runs_in.any?
+        by_loc = runs_in.sort_by(&:checked_at).each_with_object({}) { |r, h| h[r.location] = r }
+        return [ slot_start, by_loc ]
+      end
+    end
+    [ nil, {} ]
   end
 
   def load_sites

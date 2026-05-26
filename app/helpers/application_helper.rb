@@ -51,66 +51,47 @@ module ApplicationHelper
     end
   end
 
-  # Renders the full chart component: sparkline + legend + empty state.
-  def search_runs_timeline(search_runs, link_for: nil, width: 960)
-    runs = search_runs.select(&:success?).sort_by(&:checked_at)
-    return nil if runs.empty?
+  def runs_column_chart(keyword, search_runs, selected_slot_start: nil)
+    success_runs = search_runs.select(&:success?)
+    return nil if success_runs.empty?
 
-    locations = runs.map(&:location).uniq
+    slot_duration = case keyword.check_frequency.to_s
+      when "daily"     then 1.day
+      when "weekly"    then 7.days
+      when "biweekly"  then 14.days
+      when "monthly"   then 30.days
+      else 7.days
+    end
 
-    padding_left   = 36
-    padding_right  = 8
-    padding_top    = 8
-    padding_bottom = 24
-    row_height     = 40
-    plot_w = width - padding_left - padding_right
-    height = padding_top + locations.size * row_height + padding_bottom
+    label_format = keyword.check_frequency.to_s == "monthly" ? "%b '%y" : "%-d %b"
+    now = Time.current
 
-    min_time  = runs.first.checked_at
-    max_time  = runs.last.checked_at
-    time_span = [(max_time - min_time).to_f, 1.0].max
+    slots = (0...30).map do |i|
+      slot_start = now - (30 - i) * slot_duration
+      slot_end   = now - (29 - i) * slot_duration
+      runs_in    = success_runs.select { |r| r.checked_at > slot_start && r.checked_at <= slot_end }
+      by_loc     = runs_in.sort_by(&:checked_at).each_with_object({}) { |r, h| h[r.location] = r }
+      { label: slot_start.strftime(label_format), by_location: by_loc, slot_start: slot_start }
+    end
 
-    x_for = ->(t) { (padding_left + (t - min_time).to_f / time_span * plot_w).round(1) }
+    tag.div(class: "runs-chart") do
+      safe_join(slots.each_with_index.map { |slot, i|
+        has_data  = slot[:by_location].any?
+        show_lbl  = (i % 6 == 0) || i == 29
+        label     = tag.span(show_lbl ? slot[:label] : "", class: "runs-slot-label")
+        bar       = tag.span(class: "runs-slot-bar") + label
+        selected  = selected_slot_start &&
+                    (slot[:slot_start].to_i - selected_slot_start.to_i).abs < 3600
 
-    tag.svg(width: width, height: height, class: "sparkline", viewBox: "0 0 #{width} #{height}") do
-      rows = safe_join(locations.each_with_index.map { |location, idx|
-        y     = padding_top + idx * row_height + row_height / 2
-        color = location_color(idx)
-
-        track     = tag.line(x1: padding_left, y1: y, x2: padding_left + plot_w, y2: y,
-                             stroke: "#e5e7eb", stroke_width: 1)
-        loc_label = tag.text(country_flag(location), x: padding_left - 4, y: y + 4,
-                             "text-anchor": "end", class: "sparkline-axis-label")
-
-        dots = safe_join(runs.select { |r| r.location == location }.map { |run|
-          x = x_for.call(run.checked_at)
-
-          g_attrs = { class: "sparkline-point" }
-          if link_for && (url = link_for.call(run))
-            g_attrs[:data] = { "search-run-url": url, action: "click->chart-nav#navigate" }
-          end
-
-          tag.g(**g_attrs) do
-            tag.circle(cx: x, cy: y, r: 16, class: "sparkline-hitarea") +
-            tag.circle(cx: x, cy: y, r: 5, style: "fill: #{color}; opacity: 1") +
-            tag.text(run.checked_at.strftime("%b %-d"), x: x, y: y - 12,
-                     class: "sparkline-label", "text-anchor": "middle")
-          end
-        })
-
-        track + loc_label + dots
+        if has_data
+          classes = selected ? "runs-slot runs-slot--selected" : "runs-slot"
+          tag.a(href: keyword_search_runs_path(keyword, slot: slot[:slot_start].to_i),
+                class: classes,
+                data: { turbo_frame: "runs-section" }) { bar }
+        else
+          tag.div(class: "runs-slot runs-slot--empty") { bar }
+        end
       })
-
-      all_times = runs.map(&:checked_at).sort
-      x_labels  = safe_join(all_times.each_with_index.select { |_, i|
-        all_times.size <= 6 || i == 0 || i == all_times.size - 1 ||
-          (i % (all_times.size / 4.0).ceil == 0)
-      }.map { |time, _|
-        tag.text(time.strftime("%b %-d"), x: x_for.call(time), y: height - 4,
-                 "text-anchor": "middle", class: "sparkline-axis-label")
-      })
-
-      rows + x_labels
     end
   end
 

@@ -75,14 +75,13 @@
     <h2>Search runs</h2>
   </div>
 
-  <% timeline = search_runs_timeline(@search_runs, link_for: ->(run) { keyword_search_run_path(@keyword, run) }) %>
-  <% if timeline %>
-    <div class="history-chart" data-controller="chart-nav" data-chart-nav-frame-value="search-run-results">
-      <%= timeline %>
-    </div>
-  <% end %>
-
-  <turbo-frame id="search-run-results"<% if @latest_search_run %> src="<%= keyword_search_run_path(@keyword, @latest_search_run) %>"<% end %>>
-    <p class="muted">No search runs recorded yet.</p>
-  </turbo-frame>
+  <%= render "search_runs/runs_section",
+        keyword: @keyword,
+        search_runs: @search_runs,
+        selected_slot_start: @selected_slot_start,
+        runs_by_location: @runs_by_location,
+        selected_run: @selected_run,
+        selected_location: @selected_location,
+        organic_results: @organic_results,
+        ai_overview: @ai_overview %>
 </section>

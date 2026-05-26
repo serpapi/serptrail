@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :keywords, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     post :check, on: :member
-    resources :search_runs, only: [ :show ]
+    resources :search_runs, only: [ :index, :show ]
   end
 
   resources :sites do
