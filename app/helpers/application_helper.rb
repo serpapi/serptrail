@@ -21,6 +21,11 @@ module ApplicationHelper
     "ar" => "Argentina",       "cl" => "Chile",            "co" => "Colombia"
   }.freeze
 
+  def nav_link(label, path, controllers:)
+    active = controllers.include?(controller_path)
+    link_to label, path, class: "navbar-link#{active ? " navbar-link--active" : ""}"
+  end
+
   def next_check_label(keyword)
     next_check = keyword.next_check_at
     if next_check.nil?

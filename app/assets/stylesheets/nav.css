@@ -42,10 +42,15 @@
     color: var(--color-muted);
     text-decoration: none;
     font-size: 0.875rem;
+    font-weight: 500;
     line-height: 1;
   }
 
   .navbar-link:hover {
     color: #111827;
+  }
+
+  .navbar-link--active {
+    color: var(--color-primary);
   }
 }
