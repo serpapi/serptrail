@@ -37,6 +37,7 @@ class KeywordCheckJob < ApplicationJob
 
     keyword.update!(last_checked_at: checked_at)
     broadcast_keyword_updates(targets)
+    Turbo::StreamsChannel.broadcast_refresh_to(keyword)
   rescue StandardError => e
     search_run ||= keyword.search_runs.create!(
       query: keyword.query,
