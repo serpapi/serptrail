@@ -56,7 +56,7 @@ module ApplicationHelper
     end
   end
 
-  def runs_column_chart(keyword, search_runs, selected_slot_start: nil)
+  def runs_column_chart(keyword, search_runs, selected_slot_start: nil, chart_end: nil)
     success_runs = search_runs.select(&:success?)
     return nil if success_runs.empty?
 
@@ -69,7 +69,9 @@ module ApplicationHelper
     end
 
     label_format = keyword.check_frequency.to_s == "monthly" ? "%b '%y" : "%-d %b"
-    now = Time.current
+    is_current_window = chart_end.nil? || chart_end + slot_duration >= Time.current
+    now = chart_end || Time.current
+    window_start = now - 30 * slot_duration
 
     slots = (0...30).map do |i|
       slot_start = now - (30 - i) * slot_duration
@@ -79,7 +81,9 @@ module ApplicationHelper
       { label: slot_start.strftime(label_format), by_location: by_loc, slot_start: slot_start }
     end
 
-    tag.div(class: "runs-chart") do
+    chart_end_param = is_current_window ? {} : { chart_end: now.to_i }
+
+    chart = tag.div(class: "runs-chart") do
       safe_join(slots.each_with_index.map { |slot, i|
         has_data  = slot[:by_location].any?
         show_lbl  = (i % 6 == 0) || i == 29
@@ -90,13 +94,40 @@ module ApplicationHelper
 
         if has_data
           classes = selected ? "runs-slot runs-slot--selected" : "runs-slot"
-          tag.a(href: keyword_search_runs_path(keyword, slot: slot[:slot_start].to_i),
+          tag.a(href: keyword_search_runs_path(keyword, slot: slot[:slot_start].to_i, **chart_end_param),
                 class: classes,
                 data: { turbo_frame: "runs-section" }) { bar }
         else
           tag.div(class: "runs-slot runs-slot--empty") { bar }
         end
       })
+    end
+
+    has_older_data = success_runs.any? { |r| r.checked_at < window_start }
+    prev_chart_end = now - 30 * slot_duration
+    next_chart_end = now + 30 * slot_duration
+
+    prev_url = keyword_search_runs_path(keyword, chart_end: prev_chart_end.to_i)
+    next_url = if next_chart_end >= Time.current
+      keyword_search_runs_path(keyword)
+    else
+      keyword_search_runs_path(keyword, chart_end: next_chart_end.to_i)
+    end
+
+    prev_btn = if has_older_data
+      tag.a("‹", href: prev_url, class: "runs-nav-btn", data: { turbo_frame: "runs-section" })
+    else
+      tag.span("‹", class: "runs-nav-btn runs-nav-btn--disabled")
+    end
+
+    next_btn = if is_current_window
+      tag.span("›", class: "runs-nav-btn runs-nav-btn--disabled")
+    else
+      tag.a("›", href: next_url, class: "runs-nav-btn", data: { turbo_frame: "runs-section" })
+    end
+
+    tag.div(class: "runs-chart-wrapper") do
+      prev_btn + chart + next_btn
     end
   end
 

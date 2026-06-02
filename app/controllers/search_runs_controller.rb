@@ -3,6 +3,7 @@ class SearchRunsController < ApplicationController
 
   def index
     @search_runs = @keyword.search_runs.order(checked_at: :asc)
+    @chart_end = params[:chart_end].present? ? Time.at(params[:chart_end].to_i).utc : nil
     if params[:slot].present?
       @selected_slot_start = Time.at(params[:slot].to_i).utc
       slot_end = @selected_slot_start + slot_duration_for(@keyword)

@@ -1,6 +1,6 @@
-<%# locals: (keyword:, search_runs:, selected_slot_start: nil, runs_by_location: {}, selected_run: nil, selected_location: nil, organic_results: [], ai_overview: nil) %>
+<%# locals: (keyword:, search_runs:, selected_slot_start: nil, runs_by_location: {}, selected_run: nil, selected_location: nil, organic_results: [], ai_overview: nil, chart_end: nil) %>
 <turbo-frame id="runs-section">
-  <% chart = runs_column_chart(keyword, search_runs, selected_slot_start: selected_slot_start) %>
+  <% chart = runs_column_chart(keyword, search_runs, selected_slot_start: selected_slot_start, chart_end: chart_end) %>
   <% if chart %>
     <div class="history-chart">
       <%= chart %>
@@ -10,10 +10,11 @@
   <% if runs_by_location.any? %>
     <div class="runs-location-picker">
       <span class="muted">Select location:</span>
+      <% chart_end_param = chart_end.present? ? { chart_end: chart_end.to_i } : {} %>
       <% runs_by_location.each do |code, run| %>
         <% btn_class = "runs-location-btn#{code == selected_location ? " runs-location-btn--selected" : ""}" %>
         <%= link_to "#{country_flag(code)} #{country_name(code)}",
-              keyword_search_runs_path(keyword, slot: selected_slot_start.to_i, location: code),
+              keyword_search_runs_path(keyword, slot: selected_slot_start.to_i, location: code, **chart_end_param),
               class: btn_class,
               data: { turbo_frame: "runs-section" } %>
       <% end %>
