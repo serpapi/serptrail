@@ -28,17 +28,17 @@
         <span class="muted"><%= selected_run.checked_at.strftime("%B %-d, %Y at %H:%M") %></span>
       </div>
 
-      <% if ai_overview %>
+      <% ai_text_blocks = ai_overview&.dig(:text_blocks)&.select { |b| b[:snippet].present? } || [] %>
+      <% ai_sources = ai_overview&.dig(:sources).presence || [] %>
+      <% if ai_text_blocks.any? || ai_sources.any? %>
         <div class="ai-overview">
           <div class="ai-overview-label">AI Overview</div>
-          <% (ai_overview[:text_blocks] || []).each do |block| %>
-            <% if block[:snippet].present? %>
-              <p class="ai-overview-text"><%= block[:snippet] %></p>
-            <% end %>
+          <% ai_text_blocks.each do |block| %>
+            <p class="ai-overview-text"><%= block[:snippet] %></p>
           <% end %>
-          <% if (sources = ai_overview[:sources]).present? %>
+          <% if ai_sources.any? %>
             <div class="ai-overview-sources">
-              <% sources.each do |source| %>
+              <% ai_sources.each do |source| %>
                 <%= link_to (source[:title].presence || source[:domain] || source[:link]),
                       source[:link], target: "_blank", rel: "noopener", class: "ai-source" %>
               <% end %>
