@@ -50,6 +50,6 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.expect(site: [ :name, :domain, :tracking_enabled ])
+    params.expect(site: [ :name, :domain ])
   end
 end

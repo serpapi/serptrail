@@ -39,6 +39,25 @@ class Sites::KeywordsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "weekly", @keyword.reload.check_frequency
   end
 
+  test "update keyword disables checking" do
+    target = keyword_targets(:apple_iphone18)
+    patch site_keyword_url(@site, @keyword),
+          params: { keyword: { check_frequency: "daily" }, keyword_target: { tracking_enabled: "0" } },
+          headers: @headers
+    assert_redirected_to site_url(@site)
+    assert_not target.reload.tracking_enabled?
+  end
+
+  test "update keyword enables checking" do
+    target = keyword_targets(:disabled_keyword)
+    keyword = target.keyword
+    patch site_keyword_url(sites(:disabled), keyword),
+          params: { keyword: { check_frequency: "daily" }, keyword_target: { tracking_enabled: "1" } },
+          headers: @headers
+    assert_redirected_to site_url(sites(:disabled))
+    assert target.reload.tracking_enabled?
+  end
+
   test "check enqueues job" do
     assert_enqueued_with(job: KeywordCheckJob, args: [@keyword, "us"]) do
       post check_site_keyword_url(@site, @keyword), headers: @headers

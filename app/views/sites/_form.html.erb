@@ -20,14 +20,6 @@
     <%= form.text_field :domain, required: true, placeholder: "example.com", autocomplete: "off" %>
   </div>
 
-  <div class="field toggle-field">
-    <%= form.label :tracking_enabled, "Enable tracking" %>
-    <label class="toggle">
-      <%= form.check_box :tracking_enabled, class: "toggle-input" %>
-      <span class="toggle-slider"></span>
-    </label>
-  </div>
-
   <div class="actions">
     <%= form.submit(site.new_record? ? "Create" : "Update", class: "btn") %>
   </div>

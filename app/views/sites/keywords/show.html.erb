@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<% if @site.tracking_enabled? %>
+<% if @keyword_target.tracking_enabled? %>
   <p class="next-check-note"><%= @keyword.check_frequency.capitalize %> | <%= next_check_label(@keyword) %></p>
 <% end %>
 

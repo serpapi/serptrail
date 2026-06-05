@@ -8,8 +8,7 @@
 </div>
 
 <p class="site-meta">
-  <strong>Domain:</strong> <%= @site.domain %> |
-  <strong>Tracking:</strong> <%= @site.tracking_enabled? ? "Enabled" : "Disabled" %>
+  <strong>Domain:</strong> <%= @site.domain %>
 </p>
 
 <% if @keyword_targets.any? %>
@@ -32,7 +31,7 @@
         <% change = keyword_target.position_change %>
         <tr>
           <td><%= link_to site_keyword_path(@site, keyword) do %><%= keyword.query %> <span class="keyword-flag"><%= keyword.locations.map { |l| country_flag(l) }.join(" ") %></span><% end %></td>
-          <% if @site.tracking_enabled? %>
+          <% if keyword_target.tracking_enabled? %>
             <td title="<%= next_check_label(keyword) %>"><%= keyword.check_frequency.capitalize %></td>
           <% else %>
             <td><%= keyword.check_frequency.capitalize %></td>

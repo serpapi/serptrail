@@ -72,6 +72,7 @@ class Sites::KeywordsController < ApplicationController
 
   def update
     if @keyword.update(keyword_update_params)
+      @keyword_target.update!(keyword_target_params) if params[:keyword_target].present?
       redirect_to @site, notice: "Keyword was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -119,5 +120,9 @@ class Sites::KeywordsController < ApplicationController
 
   def keyword_update_params
     params.expect(keyword: [ :query, :check_frequency, locations: [] ])
+  end
+
+  def keyword_target_params
+    params.expect(keyword_target: [ :tracking_enabled ])
   end
 end

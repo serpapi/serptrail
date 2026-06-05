@@ -56,4 +56,4 @@ never_checked:
 disabled_keyword:
   keyword: disabled_keyword
   site: disabled
-  tracking_enabled: true
+  tracking_enabled: false

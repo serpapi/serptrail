@@ -7,7 +7,7 @@ class KeywordTarget < ApplicationRecord
 
   after_create_commit :backfill_checks_from_search_runs_later
 
-  scope :tracked, -> { where(tracking_enabled: true).joins(:site).where(sites: { tracking_enabled: true }) }
+  scope :tracked, -> { where(tracking_enabled: true) }
 
   delegate :query, :locations, :check_frequency, :last_checked_at, :next_check_at, to: :keyword
 

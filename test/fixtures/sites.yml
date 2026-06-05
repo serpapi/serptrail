@@ -1,24 +1,19 @@
 apple:
   name: Apple
   domain: apple.com
-  tracking_enabled: true
 
 bestbuy:
   name: Best Buy
   domain: bestbuy.com
-  tracking_enabled: true
 
 nintyfivemac:
   name: 9to5Mac
   domain: 9to5mac.com
-  tracking_enabled: true
 
 gsmarena:
   name: GSMArena
   domain: gsmarena.com
-  tracking_enabled: true
 
 disabled:
   name: Amazon
   domain: amazon.com
-  tracking_enabled: false

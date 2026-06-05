@@ -7,18 +7,14 @@ class KeywordCheckDispatchJobTest < ActiveJob::TestCase
     end
   end
 
-  test "does not enqueue for disabled sites" do
-    # disabled_keyword belongs to disabled site
-    enqueued_keywords = []
-
+  test "does not enqueue for disabled keyword targets" do
     perform_enqueued_jobs(only: KeywordCheckDispatchJob) do
       KeywordCheckDispatchJob.perform_now
     end
 
     assert_enqueued_jobs 0, only: KeywordCheckJob, queue: "default" do
-      # only check keywords from enabled sites
       Keyword.due_for_check.each do |kw|
-        assert kw.site.tracking_enabled?
+        assert kw.keyword_targets.all?(&:tracking_enabled?)
       end
     end
   end

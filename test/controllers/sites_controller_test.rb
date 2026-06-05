@@ -37,7 +37,7 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
 
   test "create site" do
     assert_difference("Site.count") do
-      post sites_url, params: { site: { name: "New", domain: "new.com", tracking_enabled: true } }, headers: @headers
+      post sites_url, params: { site: { name: "New", domain: "new.com" } }, headers: @headers
     end
     assert_redirected_to site_url(Site.last)
   end

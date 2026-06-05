@@ -9,17 +9,15 @@
       <tr>
         <th>Name</th>
         <th>Domain</th>
-        <th>Tracking</th>
         <th>Keywords</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <% @sites.each do |site| %>
-        <tr class="<%= 'row-disabled' unless site.tracking_enabled? %>">
+        <tr>
           <td><%= link_to site.name, site %></td>
           <td><%= site.domain %></td>
-          <td><%= site.tracking_enabled? ? "Enabled" : "Disabled" %></td>
           <td><%= site.keywords.size %></td>
           <td class="actions">
             <%= link_to "Edit", edit_site_path(site) %>

@@ -34,11 +34,6 @@ class SiteTest < ActiveSupport::TestCase
     assert_equal "site.com", site.domain
   end
 
-  test "tracking_enabled defaults to true" do
-    site = Site.create!(name: "Test", domain: "new.com")
-    assert site.tracking_enabled?
-  end
-
   test "rejects invalid domain formats" do
     invalid_domains = [
       "foo bar.com",

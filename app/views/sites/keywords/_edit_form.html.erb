@@ -45,6 +45,18 @@
     </div>
   </div>
 
+  <div class="field toggle-field">
+    <label for="keyword_target_tracking_enabled">Enable checking</label>
+    <label class="toggle">
+      <input type="hidden" name="keyword_target[tracking_enabled]" value="0">
+      <input type="checkbox" id="keyword_target_tracking_enabled"
+             name="keyword_target[tracking_enabled]" value="1"
+             class="toggle-input"
+             <%= "checked" if keyword_target.tracking_enabled? %>>
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
   <div class="actions">
     <%= form.submit "Update", class: "btn" %>
   </div>

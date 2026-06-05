@@ -39,7 +39,7 @@
     </div>
     <div class="card-stat">
       <span class="card-stat-label">Frequency</span>
-      <% if site.tracking_enabled? %>
+      <% if keyword_target.tracking_enabled? %>
         <span class="card-stat-value" title="<%= next_check_label(keyword) %>"><%= keyword.check_frequency.capitalize %></span>
       <% else %>
         <span class="card-stat-value"><%= keyword.check_frequency.capitalize %></span>
