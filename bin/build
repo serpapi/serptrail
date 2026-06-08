@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -e
+
+VERSION=$1
+
+if [ -z "$VERSION" ]; then
+  echo "Usage: bin/build <version>"
+  echo "Example: bin/build 1.0.0"
+  exit 1
+fi
+
+IMAGE="serpapi/serptrail:$VERSION"
+LATEST="serpapi/serptrail:latest"
+
+echo "Verifying DockerHub login..."
+docker login || { echo "Error: DockerHub login failed."; exit 1; }
+
+echo "Building $IMAGE for linux/amd64..."
+docker buildx build \
+  --platform linux/amd64 \
+  --tag "$IMAGE" \
+  --tag "$LATEST" \
+  --push \
+  .
+
+# TODO: enable later
+# echo "Tagging git commit as v$VERSION..."
+# git tag "v$VERSION"
+# git push origin "v$VERSION"
+
+echo "Done. Published $IMAGE"
