@@ -8,7 +8,7 @@
 <% if @views.any? %>
   <div class="card-grid">
     <% @views.each do |saved_view| %>
-      <% valid_series = saved_view.series.select { |s| s.keyword_target.present? } %>
+      <% valid_series = saved_view.series.select { |s| s.keyword_target&.keyword.present? } %>
       <% checks_by_series = {} %>
       <% compare_params = {} %>
       <% valid_series.each_with_index do |s, idx| %>
