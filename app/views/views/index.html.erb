@@ -8,9 +8,10 @@
 <% if @views.any? %>
   <div class="card-grid">
     <% @views.each do |saved_view| %>
+      <% valid_series = saved_view.series.select { |s| s.keyword_target.present? } %>
       <% checks_by_series = {} %>
       <% compare_params = {} %>
-      <% saved_view.series.each_with_index do |s, idx| %>
+      <% valid_series.each_with_index do |s, idx| %>
         <% key = "s#{idx + 1}" %>
         <% checks_by_series[key] = s.tracked_checks.select { |c| c.success? && c.location == s.location }.sort_by(&:checked_at) %>
         <% compare_params[key] = { keyword_target_id: s.keyword_target_id, location: s.location, site_id: s.tracked_site.id } %>
@@ -25,7 +26,7 @@
         </div>
 
         <div class="view-series">
-          <% saved_view.series.each_with_index do |s, idx| %>
+          <% valid_series.each_with_index do |s, idx| %>
             <div class="view-series-row">
               <span class="location-legend-swatch" style="background: <%= location_color(idx) %>"></span>
               <span><strong><%= s.tracked_site.domain %></strong> &mdash; <%= s.tracked_keyword.query %> &mdash; <%= country_flag(s.location) %> <%= country_name(s.location) %></span>

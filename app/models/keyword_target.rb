@@ -2,6 +2,7 @@ class KeywordTarget < ApplicationRecord
   belongs_to :keyword
   belongs_to :site
   has_many :checks, dependent: :destroy
+  has_many :view_series, dependent: :destroy
 
   validates :keyword_id, uniqueness: { scope: :site_id }
 
