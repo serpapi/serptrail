@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_08_073333) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_15_000000) do
   create_table "checks", force: :cascade do |t|
     t.integer "ai_overview_citation_position"
     t.boolean "ai_overview_cited"
@@ -60,6 +60,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_08_073333) do
   create_table "search_runs", force: :cascade do |t|
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
+    t.string "engine", default: "google", null: false
     t.string "error_message"
     t.integer "keyword_id", null: false
     t.string "location", null: false
