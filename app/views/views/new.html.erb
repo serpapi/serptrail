@@ -72,7 +72,7 @@
           <%= hidden_field_tag "view[series][#{idx}][location]",   params.dig(key, :location) %>
         <% end %>
 
-        <h2 class="dialog-title">Save View</h2>
+        <h2 class="dialog-title">Save view</h2>
         <div class="field">
           <label for="view_name">Name</label>
           <%= text_field_tag "view[name]", nil, id: "view_name", autofocus: true, placeholder: "e.g. My site vs Competitor", required: true %>
