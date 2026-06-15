@@ -9,8 +9,9 @@ class SeoAgent < RubyLLM::Agent
 
     Use the tools available to you whenever a question requires live search data
     or stored ranking history. Prefer the database-backed tools (KeywordHistory)
-    for past performance, and the SerpApi-backed tools (SearchGoogle,
-    CheckKeywordPosition, FindCompetitors) for live lookups.
+    for past performance across one or more keyword/site combinations, and the
+    SerpApi-backed tools (SearchGoogle, CheckKeywordPosition, FindCompetitors)
+    for live lookups.
 
     When presenting results, be concise and structured: lead with the answer,
     then list supporting positions, URLs, and any notable changes.
