@@ -15,9 +15,15 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :serpapi_key, "SerpAPI Key" %>
+    <%= form.label :serpapi_key, "SerpAPI key" %>
     <%= form.password_field :serpapi_key, value: @tenant.serpapi_key, placeholder: "Enter SerpAPI key", autocomplete: "off" %>
     <span class="field-hint">You can get your SerpApi key in your <%= link_to "SerpApi dashboard", "https://serpapi.com/manage-api-key", target: "_blank", rel: "noopener" %>.</span>
+  </div>
+
+  <div class="field">
+    <%= form.label :openai_api_key, "OpenAI key" %>
+    <%= form.password_field :openai_api_key, value: @tenant.openai_api_key, placeholder: "Enter OpenAI API key", autocomplete: "off" %>
+    <span class="field-hint">Used by the chat assistant. You can get your key in your <%= link_to "OpenAI API keys", "https://platform.openai.com/api-keys", target: "_blank", rel: "noopener" %>.</span>
   </div>
 
   <div class="actions">

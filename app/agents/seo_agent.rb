@@ -21,4 +21,16 @@ class SeoAgent < RubyLLM::Agent
         SearchGoogle,
         KeywordHistory,
         FindCompetitors
+
+  def initialize(...)
+    configure_openai_api_key
+    super
+  end
+
+  private
+
+  def configure_openai_api_key
+    api_key = Tenant.first&.openai_api_key.presence || ENV["OPENAI_API_KEY"].presence
+    RubyLLM.config.openai_api_key = api_key
+  end
 end

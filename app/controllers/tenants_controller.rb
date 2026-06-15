@@ -15,6 +15,6 @@ class TenantsController < ApplicationController
   private
 
   def tenant_params
-    params.expect(tenant: [ :serpapi_key ])
+    params.expect(tenant: [ :serpapi_key, :openai_api_key ])
   end
 end
