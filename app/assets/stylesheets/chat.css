@@ -193,12 +193,57 @@
     font-style: italic;
   }
 
-  .chat-message-content p {
+  .chat-message-content p,
+  .chat-message-content ul,
+  .chat-message-content ol,
+  .chat-message-content blockquote,
+  .chat-message-content pre {
     margin: 0 0 0.5rem;
   }
 
-  .chat-message-content p:last-child {
+  .chat-message-content p:last-child,
+  .chat-message-content ul:last-child,
+  .chat-message-content ol:last-child,
+  .chat-message-content blockquote:last-child,
+  .chat-message-content pre:last-child {
     margin-bottom: 0;
+  }
+
+  .chat-message-content ul,
+  .chat-message-content ol {
+    padding-left: 1.25rem;
+  }
+
+  .chat-message-content code {
+    padding: 0.0625rem 0.25rem;
+    border-radius: 4px;
+    background: rgba(15, 23, 42, 0.08);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.8125rem;
+  }
+
+  .chat-message-user .chat-message-content code {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .chat-message-content pre {
+    overflow-x: auto;
+    padding: 0.625rem;
+    border-radius: 8px;
+    background: #111827;
+    color: #f9fafb;
+  }
+
+  .chat-message-content pre code {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+  }
+
+  .chat-message-content blockquote {
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--color-border);
+    color: var(--color-muted);
   }
 
   .chat-message-action {

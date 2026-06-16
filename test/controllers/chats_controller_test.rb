@@ -78,6 +78,17 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".chat-widget-usage", text: /Tokens: 1,200 in \/ 80 out/
   end
 
+  test "renders chat messages as sanitized markdown" do
+    with_stubbed_chat_answers("**Summary**\n\n- Apple is #1\n- Best Buy is #5\n\n<script>alert('xss')</script>") do
+      post chat_url, params: { chat: { message: "Format this" } }, headers: @headers
+    end
+
+    assert_response :success
+    assert_select ".chat-message-assistant strong", text: "Summary"
+    assert_select ".chat-message-assistant li", text: "Apple is #1"
+    assert_select ".chat-message-assistant script", count: 0
+  end
+
   test "destroy clears current persisted chat" do
     with_stubbed_chat_answers("Answer") do
       post chat_url, params: { chat: { message: "Question" } }, headers: @headers

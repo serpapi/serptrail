@@ -57,7 +57,7 @@
               <%= tag.div class: [ "chat-message", "chat-message-#{message_role}" ] do %>
                 <div class="chat-message-role"><%= message_role == "user" ? "You" : "SerpTrail" %></div>
                 <div class="chat-message-content">
-                  <%= simple_format(message.content) %>
+                  <%= markdown(message.content) %>
                   <% if api_key_error_message?(message.content) %>
                     <%= link_to "Open Settings", settings_path, class: "chat-message-action", data: { turbo_frame: "_top" } %>
                   <% end %>

@@ -73,3 +73,5 @@ group :test do
   gem "selenium-webdriver"
   gem "mocha"
 end
+
+gem "kramdown", "~> 2.5"
