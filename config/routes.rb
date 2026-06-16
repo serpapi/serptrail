@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   resources :views, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
 
+  get "settings", to: "tenants#edit"
   resource :settings, controller: "tenants", only: [ :edit, :update ]
+  resource :chat, controller: "chats", only: [ :show, :create, :destroy ]
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

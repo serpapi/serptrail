@@ -1,0 +1,93 @@
+<%= turbo_frame_tag "chat_widget" do %>
+  <div class="chat-widget <%= "is-open" if @open %>"
+       data-controller="chat-widget"
+       data-chat-widget-open-value="<%= @open ? "true" : "false" %>">
+    <button type="button"
+            class="chat-widget-toggle"
+            aria-label="Open chat assistant"
+            data-action="chat-widget#toggle">
+      <svg class="chat-widget-paw" viewBox="0 0 64 64" aria-hidden="true">
+        <ellipse cx="20" cy="21" rx="8" ry="11" transform="rotate(-25 20 21)"/>
+        <ellipse cx="32" cy="16" rx="8" ry="12"/>
+        <ellipse cx="44" cy="21" rx="8" ry="11" transform="rotate(25 44 21)"/>
+        <ellipse cx="17" cy="36" rx="7" ry="9" transform="rotate(-35 17 36)"/>
+        <path d="M18 49c0-10 7-18 14-18s14 8 14 18c0 5-4 8-9 6-3-1-7-1-10 0-5 2-9-1-9-6Z"/>
+      </svg>
+    </button>
+
+    <section class="chat-widget-panel" aria-label="Chat assistant" data-chat-widget-target="panel">
+      <header class="chat-widget-header">
+        <div>
+          <h2>Chat assistant</h2>
+          <p>Ask about rankings, competitors, and search history.</p>
+        </div>
+        <div class="chat-widget-header-actions">
+          <% if @messages.any? %>
+            <%= button_to "Clear", chat_path, method: :delete, class: "chat-widget-clear", form: { data: { turbo_frame: "chat_widget" } } %>
+          <% end %>
+          <button type="button" class="chat-widget-close" aria-label="Close chat" data-action="chat-widget#close">×</button>
+        </div>
+      </header>
+
+      <% if @missing_api_keys.include?("OpenAI") %>
+        <div class="chat-widget-setup">
+          <h3>Connect your assistant</h3>
+          <p>Add your OpenAI key to start chatting with SerpTrail.</p>
+          <% if @missing_api_keys.include?("SerpApi") %>
+            <p class="muted">Add your SerpApi key too if you want live Google lookups.</p>
+          <% end %>
+          <%= link_to "Set up API keys", settings_path, class: "btn", data: { turbo_frame: "_top" } %>
+        </div>
+      <% else %>
+        <% if @serpapi_key_missing %>
+          <div class="chat-widget-warning">
+            Add a <%= link_to "SerpApi key", settings_path, data: { turbo_frame: "_top" } %> to enable live Google searches. Historical ranking questions still work.
+          </div>
+        <% end %>
+
+        <div class="chat-widget-messages" data-chat-widget-target="messages">
+          <% if @messages.empty? %>
+            <div class="chat-widget-empty">
+              <strong>How can I help?</strong>
+              <span>Try “How did apple.com rank for iphone 18 in the US?”</span>
+            </div>
+          <% else %>
+            <% @messages.each do |message| %>
+              <% message_role = message.role == "user" ? "user" : "assistant" %>
+              <%= tag.div class: [ "chat-message", "chat-message-#{message_role}" ] do %>
+                <div class="chat-message-role"><%= message_role == "user" ? "You" : "SerpTrail" %></div>
+                <div class="chat-message-content">
+                  <%= simple_format(message.content) %>
+                  <% if api_key_error_message?(message.content) %>
+                    <%= link_to "Open Settings", settings_path, class: "chat-message-action", data: { turbo_frame: "_top" } %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <% if @chat && (@input_tokens.to_i + @output_tokens.to_i + @cache_read_tokens.to_i + @cache_write_tokens.to_i).positive? %>
+          <div class="chat-widget-usage">
+            <span>Tokens: <%= number_with_delimiter(@input_tokens.to_i) %> in / <%= number_with_delimiter(@output_tokens.to_i) %> out</span>
+            <% if @cost %>
+              <span>Cost: <%= number_to_currency(@cost, precision: 4) %></span>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= form_with url: chat_path,
+          scope: :chat,
+          class: "chat-widget-form",
+          data: { turbo_frame: "chat_widget", action: "submit->chat-widget#submitStart turbo:submit-end->chat-widget#submitEnd" } do |form| %>
+          <%= form.text_area :message,
+            rows: 2,
+            placeholder: "Ask about rankings…",
+            autocomplete: "off",
+            data: { chat_widget_target: "messageInput", action: "keydown->chat-widget#submitWithEnter" } %>
+          <%= form.submit "Send", class: "btn", data: { chat_widget_target: "submitButton" } %>
+        <% end %>
+      <% end %>
+    </section>
+  </div>
+<% end %>

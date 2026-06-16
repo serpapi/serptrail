@@ -6,7 +6,7 @@ class TenantsController < ApplicationController
   def update
     @tenant = Tenant.instance
     if @tenant.update(tenant_params)
-      redirect_to edit_settings_path, notice: "Settings saved."
+      redirect_to settings_path, notice: "Settings saved."
     else
       render :edit, status: :unprocessable_entity
     end

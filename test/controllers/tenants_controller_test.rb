@@ -6,8 +6,8 @@ class TenantsControllerTest < ActionDispatch::IntegrationTest
     @tenant = tenants(:default)
   end
 
-  test "edit shows API key fields" do
-    get edit_settings_url, headers: @headers
+  test "settings shows API key fields" do
+    get settings_url, headers: @headers
 
     assert_response :success
     assert_select "input[name='tenant[serpapi_key]']"
@@ -19,7 +19,7 @@ class TenantsControllerTest < ActionDispatch::IntegrationTest
       params: { tenant: { serpapi_key: "new_serpapi_key", openai_api_key: "new_openai_key" } },
       headers: @headers
 
-    assert_redirected_to edit_settings_path
+    assert_redirected_to settings_path
     @tenant.reload
     assert_equal "new_serpapi_key", @tenant.serpapi_key
     assert_equal "new_openai_key", @tenant.openai_api_key

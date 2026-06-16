@@ -1,4 +1,5 @@
 class SeoAgent < RubyLLM::Agent
+  chat_model Chat
   model ENV.fetch("CHAT_MODEL", "gpt-4o-mini")
 
   instructions <<~PROMPT
@@ -22,15 +23,23 @@ class SeoAgent < RubyLLM::Agent
         KeywordHistory,
         FindCompetitors
 
-  def initialize(...)
+  def self.create!(...)
     configure_openai_api_key
     super
   end
 
-  private
+  def self.find(...)
+    configure_openai_api_key
+    super
+  end
 
-  def configure_openai_api_key
+  def self.configure_openai_api_key
     api_key = Tenant.first&.openai_api_key.presence || ENV["OPENAI_API_KEY"].presence
     RubyLLM.config.openai_api_key = api_key
+  end
+
+  def initialize(...)
+    self.class.configure_openai_api_key
+    super
   end
 end
