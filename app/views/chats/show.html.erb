@@ -15,11 +15,14 @@
       </svg>
     </button>
 
+    <div class="chat-widget-panel-wrapper">
+    <div class="chat-widget-cat" aria-hidden="true">
+      <img src="/images/cat.png" alt="">
+    </div>
     <section class="chat-widget-panel" aria-label="Chat assistant" data-chat-widget-target="panel">
       <header class="chat-widget-header">
         <div>
           <h2>Chat assistant</h2>
-          <p>Ask about rankings, competitors, and search history.</p>
         </div>
         <div class="chat-widget-header-actions">
           <% if @messages.any? %>
@@ -89,5 +92,6 @@
         <% end %>
       <% end %>
     </section>
+    </div>
   </div>
 <% end %>
