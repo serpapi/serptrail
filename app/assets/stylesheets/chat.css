@@ -53,12 +53,18 @@
     left: 0;
     right: 0;
     overflow: hidden;
-    /* crop to the portion above the horizontal line (~41% of image height) */
-    aspect-ratio: 1536 / 420;
+    height: 0;
+    /* crop to the top portion of the image — padding-bottom used instead of
+       aspect-ratio because Safari miscalculates height on abs-positioned
+       elements whose width comes from left+right stretching */
+    padding-bottom: calc(420 / 1536 * 100%);
     pointer-events: none;
   }
 
   .chat-widget-cat img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     display: block;
     mix-blend-mode: multiply;
