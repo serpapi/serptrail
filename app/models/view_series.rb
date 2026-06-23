@@ -1,10 +1,9 @@
 class ViewSeries < ApplicationRecord
   belongs_to :view
   belongs_to :keyword_target
+  belongs_to :keyword
 
   validates :location, :position, presence: true
-
-  delegate :keyword, to: :keyword_target
 
   def tracked_keyword
     keyword_target.keyword
