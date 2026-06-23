@@ -56,7 +56,6 @@ class ViewsController < ApplicationController
     target = KeywordTarget.find(series_params[:keyword_target_id])
     view.series.build(
       keyword_target: target,
-      keyword: target.keyword,
       location: series_params[:location],
       position: index.to_i
     )
