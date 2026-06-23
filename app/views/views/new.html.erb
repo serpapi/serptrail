@@ -75,7 +75,7 @@
         <h2 class="dialog-title">Save view</h2>
         <div class="field">
           <label for="view_name">Name</label>
-          <%= text_field_tag "view[name]", nil, id: "view_name", autofocus: true, placeholder: "e.g. My site vs Competitor", required: true %>
+          <%= text_field_tag "view[name]", nil, id: "view_name", autofocus: true, placeholder: "e.g. My site vs Competitor", required: true, autocomplete: "off" %>
         </div>
         <div class="dialog-actions">
           <%= submit_tag "Save", class: "btn btn-primary" %>

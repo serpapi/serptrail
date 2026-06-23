@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "sites#index"
+  root "keywords#index"
 
   resources :keywords, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     post :check, on: :member
