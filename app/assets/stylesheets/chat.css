@@ -131,10 +131,12 @@
   }
 
   .chat-widget-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 1.75rem;
     height: 1.75rem;
-    font-size: 1.25rem;
-    line-height: 1;
+    padding: 0;
   }
 
   .chat-widget-clear:hover,
