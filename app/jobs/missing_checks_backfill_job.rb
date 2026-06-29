@@ -49,7 +49,7 @@ class MissingChecksBackfillJob < ApplicationJob
   end
 
   def create_success_check(target, search_run, results)
-    result = SerpApiClient.new.extract_position(results, target.site.domain)
+    result = SerpApiClient.new.extract_position(results, target.site.domain, match_subdomains: target.site.match_subdomains)
 
     target.checks.create!(
       keyword: target.keyword,
