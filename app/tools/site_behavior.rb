@@ -2,7 +2,7 @@ class SiteBehavior < RubyLLM::Tool
   include Rails.application.routes.url_helpers
 
   desc <<~TEXT
-    Fetches extra internal guidance for known SerpTrail site behaviours.
+    Fetches extra internal guidance for known SerpTrail site behaviors.
 
     Call this before answering if the user is asking about anything relating to
     a specific site behavior or if a response would be enhanced by having extra
