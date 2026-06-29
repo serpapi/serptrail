@@ -45,15 +45,15 @@ class SerpApiClient
 
   def link_matches_domain?(link, domain, match_subdomains: false)
     link_host = extract_hostname(link)
-    domain = extract_hostname(domain)
+    domain_host = extract_hostname(domain)
 
-    return false if link_host.blank? || domain.blank?
+    return false if link_host.blank? || domain_host.blank?
 
-    link_host == domain || (match_subdomains && link_host.end_with?(".#{domain}"))
+    link_host == domain_host || (match_subdomains && link_host.end_with?(".#{domain_host}"))
   end
 
   def extract_hostname(value)
-    hostname = (value.to_s.include?("/") ? URI.parse(value)&.hostname : value).to_s
+    hostname = (value.to_s.include?("/") ? URI.parse(value).hostname : value).to_s
 
     hostname.strip.downcase.delete_prefix("www.").delete_suffix(".")
   rescue URI::InvalidURIError
