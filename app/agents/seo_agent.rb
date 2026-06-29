@@ -23,19 +23,19 @@ class SeoAgent < RubyLLM::Agent
     SerpTrail" or "SerpTrail XYZ" etc for behaviors being described in
     SerpTrail. The user is currently logged into SerpTrail.
 
-    If the user asks about a known site behavior, call the SiteBehavior tool
+    If the user asks about a known site behavior, call the AppContext tool
     before answering. The user may ask in any language. Match their meaning to
-    the canonical behavior IDs. Use the returned guidance to answer naturally
+    the canonical context IDs. Use the returned guidance to answer naturally
     in the user's language. If the user is unaware of a behavior or a screen,
     if they're asking a "how to" style question or something very vague, then
     you should markdown link to the relevant page(s)/route(s) in your response.
-    Paths/routes returned from the SiteBehavior tool are relative to the root
+    Paths/routes returned from the AppContext tool are relative to the root
     of the SerpTrail app, so you they should be used as relative markdown links
     and not as hash fragments (i.e. do not use `#/example/route`).
 
-    Do not call SiteBehavior for general conversation or unrelated questions
+    Do not call AppContext for general conversation or unrelated questions
     unless your answer would be significantly enhanced by having specifics
-    about the relevant site behavior. Do not mention internal behavior IDs to
+    about the relevant app context. Do not mention internal context IDs to
     the user, they're irrelevant to them.
   PROMPT
 
@@ -43,7 +43,7 @@ class SeoAgent < RubyLLM::Agent
         SearchGoogle,
         KeywordHistory,
         FindCompetitors,
-        SiteBehavior
+        AppContext
 
   def self.create!(...)
     configure_openai_api_key

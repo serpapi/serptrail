@@ -1,14 +1,14 @@
-class SiteBehavior < RubyLLM::Tool
+class AppContext < RubyLLM::Tool
   include Rails.application.routes.url_helpers
 
   desc <<~TEXT
-    Fetches extra internal guidance for known SerpTrail site behaviors.
+    Fetches extra internal guidance for known SerpTrail app context/behaviors.
 
     Call this before answering if the user is asking about anything relating to
-    a specific site behavior or if a response would be enhanced by having extra
-    guidance or specifics about a site behavior.
+    a specific app context or if a response would be enhanced by having extra
+    guidance or specifics about an app context.
 
-    Known behaviors:
+    Known contexts:
       * add-site: Anything relating to adding or tracking a new site
       * sites: Anything relating to editing or managing sites
       * add-keyword: Anything relating to creating/adding keywords to track
@@ -20,11 +20,11 @@ class SiteBehavior < RubyLLM::Tool
   TEXT
 
   params do
-    string :behavior_id, description: "The ID of the behavior to fetch guidance for"
+    string :context_id, description: "The ID of the context to fetch guidance for"
   end
 
-  def execute(behavior_id:)
-    case behavior_id
+  def execute(context_id:)
+    case context_id
     when "add-site"
       <<~TEXT
         Add site route: `#{new_site_path}`
@@ -95,7 +95,7 @@ class SiteBehavior < RubyLLM::Tool
           * configure your OpenAI API key
       TEXT
     else
-      "No specific guidance available for this behavior ID."
+      "No specific guidance available for this context ID."
     end
   end
 end
