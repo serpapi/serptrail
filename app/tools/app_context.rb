@@ -13,8 +13,8 @@ class AppContext < RubyLLM::Tool
       * sites: Anything relating to editing or managing sites
       * add-keyword: Anything relating to creating/adding keywords to track
       * keywords: Anything relating to editing, or managing keywords
-      * views: Anything relating to creating/adding, editing, or managing
-               custom views/charts
+      * add-view: Anything relating to creating/adding custom views/charts
+      * views: Anything relating to editing, or managing custom views/charts
       * settings: Anything relating to configuring or managing SerpTrail
                   settings, including API keys, user accounts, and preferences
   TEXT
@@ -73,6 +73,19 @@ class AppContext < RubyLLM::Tool
           * edit the keyword's query, locations, check frequency, and tracked
             sites
           * view a specific site's tracking history for that keyword
+      TEXT
+    when "add-view"
+      <<~TEXT
+        Add view route: `#{new_view_path}`
+        How to get there:
+          * go to the "Views" page from the top menu, then click "Add"
+        Fields:
+          * Series 1 [required]
+          * Series 2 [required]
+          * Each series has the following fields:
+            * Site [required]
+            * Keyword [required]
+            * Location [required]
       TEXT
     when "views"
       <<~TEXT
