@@ -40,6 +40,7 @@
   .chat-widget-panel-wrapper {
     display: none;
     position: relative;
+    z-index: 0;
     width: min(22rem, calc(100vw - 2rem));
   }
 
@@ -49,23 +50,20 @@
 
   .chat-widget-cat {
     position: absolute;
-    bottom: 100%;
-    left: 0;
-    right: 0;
+    bottom: calc(100% - 0.75rem);
+    left: -0.25rem;
+    right: 0.25rem;
     overflow: hidden;
-    height: 0;
-    /* crop to the top portion of the image — padding-bottom used instead of
-       aspect-ratio because Safari miscalculates height on abs-positioned
-       elements whose width comes from left+right stretching */
-    padding-bottom: calc(420 / 1536 * 100%);
+    height: 5rem;
     pointer-events: none;
+    z-index: 1;
   }
 
   .chat-widget-cat img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: -0.5rem;
+    left: 23%;
+    width: 50%;
     display: block;
     mix-blend-mode: multiply;
   }
