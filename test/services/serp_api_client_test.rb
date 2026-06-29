@@ -30,8 +30,8 @@ class SerpApiClientTest < ActiveSupport::TestCase
   end
 
   test "link matches subdomains when enabled and with www. disregarded" do
-    assert @client.link_matches_domain?("https://www.shop.example.com/page", "example.com", match_subdomains: true)
-    assert @client.link_matches_domain?("https://www.nested.shop.example.com/page", "example.com", match_subdomains: true)
+    assert @client.link_matches_domain?("https://www.shop.example.com/page", "www.example.com", match_subdomains: true)
+    assert @client.link_matches_domain?("https://www.nested.shop.example.com/page", "www.example.com", match_subdomains: true)
   end
 
   test "link does not match unrelated domains" do
