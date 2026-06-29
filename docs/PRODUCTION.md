@@ -52,7 +52,7 @@ AR_ENCRYPTION_DETERMINISTIC_KEY=<deterministic_key value>
 AR_ENCRYPTION_KEY_DERIVATION_SALT=<key_derivation_salt value>
 ```
 
-**Important:** generate these keys once and keep them stable. Rotating them means all existing encrypted values in the database (e.g. the SerpAPI key stored in the `tenants` table) can no longer be decrypted.
+**Important:** generate these keys once and keep them stable. Rotating them means all existing encrypted values in the database (e.g. the SerpApi key stored in the `tenants` table) can no longer be decrypted.
 
 ## First-time database setup
 
