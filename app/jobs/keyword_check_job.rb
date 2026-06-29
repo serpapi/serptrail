@@ -31,7 +31,7 @@ class KeywordCheckJob < ApplicationJob
     )
 
     targets.each do |target|
-      result = client.extract_position(results, target.site.domain)
+      result = client.extract_position(results, target.site.domain, match_subdomains: target.site.match_subdomains)
       create_check(keyword, target, search_run, result.merge(status: :success))
     end
 
