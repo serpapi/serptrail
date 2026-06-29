@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_15_002040) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_26_235916) do
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "llm_model_id"
@@ -127,6 +127,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_15_002040) do
   create_table "sites", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "domain", null: false
+    t.boolean "match_subdomains", default: false, null: false
     t.string "name", null: false
     t.datetime "updated_at", null: false
     t.index ["domain"], name: "index_sites_on_domain", unique: true

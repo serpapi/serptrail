@@ -50,6 +50,6 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.expect(site: [ :name, :domain ])
+    params.expect(site: [ :name, :domain, :match_subdomains ])
   end
 end

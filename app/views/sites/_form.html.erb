@@ -20,6 +20,20 @@
     <%= form.text_field :domain, required: true, placeholder: "example.com", autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <div class="checkbox-grid">
+      <label class="checkbox-card">
+        <%= form.check_box :match_subdomains %>
+        <span>
+          <span class="checkbox-card-title">Match subdomains</span>
+          <span class="checkbox-card-meta">
+            e.g. <code>blog.example.com</code> will also be matched if you enter <code>example.com</code> for your domain.
+          </span>
+        </span>
+      </label>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit(site.new_record? ? "Create" : "Update", class: "btn") %>
   </div>
