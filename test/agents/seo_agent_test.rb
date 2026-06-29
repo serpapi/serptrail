@@ -4,7 +4,7 @@ class SeoAgentTest < ActiveSupport::TestCase
   test "registers SEO tools with RubyLLM" do
     agent = SeoAgent.new
 
-    assert_equal [ :check_keyword_position, :search_google, :keyword_history, :find_competitors ], agent.chat.tools.keys
+    assert_equal [ :check_keyword_position, :search_google, :keyword_history, :find_competitors, :app_context ], agent.chat.tools.keys
   end
 
   test "configures RubyLLM with tenant OpenAI key" do
