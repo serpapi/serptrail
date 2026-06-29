@@ -79,13 +79,14 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "renders chat messages as sanitized markdown" do
-    with_stubbed_chat_answers("**Summary**\n\n- Apple is #1\n- Best Buy is #5\n\n<script>alert('xss')</script>") do
+    with_stubbed_chat_answers("**Summary**\n\n- Apple is #1\n- Best Buy is #5\n\n[Open settings](/settings)\n\n<script>alert('xss')</script>") do
       post chat_url, params: { chat: { message: "Format this" } }, headers: @headers
     end
 
     assert_response :success
     assert_select ".chat-message-assistant strong", text: "Summary"
     assert_select ".chat-message-assistant li", text: "Apple is #1"
+    assert_select ".chat-message-assistant a[href='#{settings_path}'][data-turbo-frame='_top']", text: "Open settings"
     assert_select ".chat-message-assistant script", count: 0
   end
 
