@@ -11,8 +11,8 @@ class CheckKeywordPositionTest < ActiveSupport::TestCase
   test "delegates to SerpApiClient with default location" do
     client = mock("serp_api_client")
     SerpApiClient.expects(:new).returns(client)
-    client.expects(:check_position).with("iphone 18", "apple.com", location: "us").returns(position: 1)
+    client.expects(:check_position).with("iphone 18", "apple.com", location: "us", match_subdomains: false).returns(position: 1)
 
-    assert_equal({ position: 1 }, CheckKeywordPosition.new.execute(query: "iphone 18", domain: "apple.com", location: ""))
+    assert_equal({ position: 1 }, CheckKeywordPosition.new.execute(query: "iphone 18", domain: "apple.com", location: "", match_subdomains: false))
   end
 end
