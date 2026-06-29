@@ -1,4 +1,7 @@
-<%= form_with(model: keyword) do |form| %>
+<%
+site ||= nil
+%>
+<%= form_with(model: [site, keyword].compact) do |form| %>
   <% if keyword.errors.any? %>
     <div class="errors">
       <h2><%= pluralize(keyword.errors.count, "error") %> prohibited this keyword from being saved:</h2>
@@ -13,6 +16,10 @@
   <div class="field">
     <%= form.label :query %>
     <%= form.text_field :query, required: true, placeholder: "e.g. best ruby gems", autocomplete: "off" %>
+
+    <% if site.present? && keyword.new_record? %>
+      <small class="import-prompt"><%= link_to "Adding more keywords at once?", import_site_keywords_path(site) %></small>
+    <% end %>
   </div>
 
   <div class="field"
@@ -45,29 +52,43 @@
     </div>
   </div>
 
-  <div class="field">
-    <label>Sites to track</label>
-    <%= hidden_field_tag "keyword[site_ids][]", "" %>
-    <% selected_site_ids = keyword.keyword_targets.map(&:site_id) %>
-    <% if sites.any? %>
-      <div class="checkbox-grid">
-        <% sites.each do |site| %>
-          <label class="checkbox-card">
-            <%= check_box_tag "keyword[site_ids][]", site.id, selected_site_ids.include?(site.id), id: "keyword_site_ids_#{site.id}" %>
-            <span>
-              <span class="checkbox-card-title"><%= site.name %></span>
-              <span class="checkbox-card-meta"><%= site.domain %></span>
-            </span>
-          </label>
-        <% end %>
-      </div>
-      <small class="field-hint">Optional. You can track this keyword now and attach sites later.</small>
-    <% else %>
-      <p class="muted">No sites yet. You can still create this keyword and attach sites later.</p>
-    <% end %>
-  </div>
+  <% if site.present? && keyword.persisted? %>
+    <div class="field toggle-field">
+      <label for="keyword_target_tracking_enabled">Enable checking</label>
+      <label class="toggle">
+        <input type="hidden" name="keyword_target[tracking_enabled]" value="0">
+        <input type="checkbox" id="keyword_target_tracking_enabled"
+              name="keyword_target[tracking_enabled]" value="1"
+              class="toggle-input"
+              <%= "checked" if keyword_target.tracking_enabled? %>>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  <% elsif site.blank? %>
+    <div class="field">
+      <label>Sites to track</label>
+      <%= hidden_field_tag "keyword[site_ids][]", "" %>
+      <% selected_site_ids = keyword.keyword_targets.map(&:site_id) %>
+      <% if sites.any? %>
+        <div class="checkbox-grid">
+          <% sites.each do |site| %>
+            <label class="checkbox-card">
+              <%= check_box_tag "keyword[site_ids][]", site.id, selected_site_ids.include?(site.id), id: "keyword_site_ids_#{site.id}" %>
+              <span>
+                <span class="checkbox-card-title"><%= site.name %></span>
+                <span class="checkbox-card-meta"><%= site.domain %></span>
+              </span>
+            </label>
+          <% end %>
+        </div>
+        <small class="field-hint">Optional. You can track this keyword now and attach sites later.</small>
+      <% else %>
+        <p class="muted">No sites yet. You can still create this keyword and attach sites later.</p>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="actions">
-    <%= form.submit(keyword.new_record? ? "Create keyword" : "Update keyword", class: "btn") %>
+    <%= form.submit(keyword.new_record? ? "Create" : "Update", class: "btn") %>
   </div>
 <% end %>
