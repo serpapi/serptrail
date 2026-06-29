@@ -50,7 +50,7 @@
 
   .chat-widget-cat {
     position: absolute;
-    bottom: calc(100% - 0.75rem);
+    top: -4.25rem;
     left: -0.25rem;
     right: 0.25rem;
     overflow: hidden;
