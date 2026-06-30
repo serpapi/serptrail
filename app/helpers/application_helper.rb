@@ -61,11 +61,11 @@ module ApplicationHelper
     return nil if success_runs.empty?
 
     slot_duration = case keyword.check_frequency.to_s
-      when "daily"     then 1.day
-      when "weekly"    then 7.days
-      when "biweekly"  then 14.days
-      when "monthly"   then 30.days
-      else 7.days
+    when "daily"     then 1.day
+    when "weekly"    then 7.days
+    when "biweekly"  then 14.days
+    when "monthly"   then 30.days
+    else 7.days
     end
 
     label_format = keyword.check_frequency.to_s == "monthly" ? "%b '%y" : "%-d %b"
@@ -145,10 +145,10 @@ module ApplicationHelper
 
     min_pos    = all_positions.min
     max_pos    = all_positions.max
-    pos_range  = [max_pos - min_pos, 1].max
+    pos_range  = [ max_pos - min_pos, 1 ].max
     min_time   = all_checks.first.checked_at
     max_time   = all_checks.last.checked_at
-    time_span  = [(max_time - min_time).to_f, 1.0].max
+    time_span  = [ (max_time - min_time).to_f, 1.0 ].max
 
     padding_left   = 36
     padding_right  = 8
@@ -214,9 +214,9 @@ module ApplicationHelper
       })
 
       # Y-axis position labels
-      num_y_ticks = [pos_range, 4].min + 1
+      num_y_ticks = [ pos_range, 4 ].min + 1
       y_tick_values = (0...num_y_ticks).map { |i|
-        (min_pos + i.to_f * (max_pos - min_pos) / [num_y_ticks - 1, 1].max).round
+        (min_pos + i.to_f * (max_pos - min_pos) / [ num_y_ticks - 1, 1 ].max).round
       }.uniq
       y_labels = safe_join(y_tick_values.map { |pos|
         tag.text(pos.to_s, x: padding_left - 4, y: y_for.call(pos) + 4,
@@ -235,7 +235,7 @@ module ApplicationHelper
     positions = ranked.map(&:position)
     min_pos = positions.min
     max_pos = positions.max
-    pos_range  = [max_pos - min_pos, 1].max
+    pos_range  = [ max_pos - min_pos, 1 ].max
 
     padding_left   = 32
     padding_right  = 8
@@ -287,9 +287,9 @@ module ApplicationHelper
       })
 
       # Y-axis position labels
-      num_y_ticks = [pos_range, 3].min + 1
+      num_y_ticks = [ pos_range, 3 ].min + 1
       y_tick_values = (0...num_y_ticks).map { |i|
-        (min_pos + i.to_f * (max_pos - min_pos) / [num_y_ticks - 1, 1].max).round
+        (min_pos + i.to_f * (max_pos - min_pos) / [ num_y_ticks - 1, 1 ].max).round
       }.uniq
       y_labels = safe_join(y_tick_values.map { |pos|
         tag.text(pos.to_s, x: padding_left - 4, y: y_for.call(pos) + 4,
