@@ -2,6 +2,6 @@
   <h1>Edit keyword for <%= @site.name %></h1>
 </div>
 
-<%= render "edit_form", keyword: @keyword, site: @site, keyword_target: @keyword_target %>
+<%= render partial: "keywords/form", locals: { keyword: @keyword, site: @site, keyword_target: @keyword_target } %>
 
 <%= link_to "Back to site", @site, class: "back-link" %>
