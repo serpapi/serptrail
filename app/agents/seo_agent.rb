@@ -56,8 +56,7 @@ class SeoAgent < RubyLLM::Agent
   end
 
   def self.configure_openai_api_key
-    api_key = Tenant.first&.openai_api_key.presence || ENV["OPENAI_API_KEY"].presence
-    RubyLLM.config.openai_api_key = api_key
+    RubyLLM.config.openai_api_key = Tenant.first&.openai_api_key.presence
   end
 
   def initialize(...)

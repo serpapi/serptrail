@@ -25,7 +25,6 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show navigates to settings when OpenAI key is missing" do
-    original_openai_key = ENV.delete("OPENAI_API_KEY")
     @tenant.update!(openai_api_key: "")
 
     get chat_url, headers: @headers
@@ -34,8 +33,19 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".chat-widget-setup", text: /Add your OpenAI key/
     assert_select "a[href='#{settings_path}']", text: "Set up API keys"
     assert_select "textarea[name='chat[message]']", count: 0
+  end
+
+  test "show ignores global OPENAI_API_KEY env var when tenant key is missing" do
+    original_openai_key = ENV["OPENAI_API_KEY"]
+    ENV["OPENAI_API_KEY"] = "env-fallback-key"
+    @tenant.update!(openai_api_key: "")
+
+    get chat_url, headers: @headers
+
+    assert_response :success
+    assert_select ".chat-widget-setup", text: /Add your OpenAI key/
   ensure
-    ENV["OPENAI_API_KEY"] = original_openai_key if original_openai_key
+    ENV["OPENAI_API_KEY"] = original_openai_key
   end
 
   test "create asks persisted RubyLLM chat and renders answer" do

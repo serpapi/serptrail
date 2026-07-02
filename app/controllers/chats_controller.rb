@@ -143,7 +143,7 @@ class ChatsController < ApplicationController
   end
 
   def openai_api_key_missing?
-    (@tenant&.openai_api_key.presence || ENV["OPENAI_API_KEY"].presence).blank?
+    @tenant&.openai_api_key.blank?
   end
 
   def serpapi_key_missing?
