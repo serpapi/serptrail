@@ -71,7 +71,6 @@
   .chat-widget-panel {
     display: flex;
     flex-direction: column;
-    min-height: 26rem;
     max-height: min(38rem, calc(100vh - 6.5rem));
     overflow: hidden;
     border: 1px solid var(--color-border);
@@ -151,8 +150,6 @@
   }
 
   .chat-widget-setup {
-    flex: 1;
-    justify-content: center;
     padding: 1.25rem;
   }
 
