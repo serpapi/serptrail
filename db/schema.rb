@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_26_235916) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_13_000000) do
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "llm_model_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_26_235916) do
     t.datetime "last_checked_at"
     t.json "locations"
     t.string "query", null: false
+    t.integer "search_pages", default: 1, null: false
     t.integer "site_id"
     t.datetime "updated_at", null: false
     t.index ["site_id", "query"], name: "index_keywords_on_site_id_and_query", unique: true
@@ -106,6 +107,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_26_235916) do
     t.index ["tool_call_id"], name: "index_messages_on_tool_call_id"
   end
 
+  create_table "search_run_pages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "error_message"
+    t.integer "page_number", null: false
+    t.text "raw_response"
+    t.json "search_params"
+    t.integer "search_run_id", null: false
+    t.string "serpapi_search_id"
+    t.integer "start", null: false
+    t.string "status", default: "pending", null: false
+    t.datetime "updated_at", null: false
+    t.index ["search_run_id", "page_number"], name: "index_search_run_pages_on_search_run_id_and_page_number", unique: true
+    t.index ["search_run_id"], name: "index_search_run_pages_on_search_run_id"
+  end
+
   create_table "search_runs", force: :cascade do |t|
     t.datetime "checked_at", null: false
     t.datetime "created_at", null: false
@@ -115,6 +131,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_26_235916) do
     t.string "location", null: false
     t.string "query", null: false
     t.text "raw_response"
+    t.integer "requested_pages", default: 1, null: false
     t.json "search_params"
     t.string "serpapi_search_id"
     t.string "status", default: "pending", null: false
@@ -182,6 +199,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_26_235916) do
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "llm_models"
   add_foreign_key "messages", "tool_calls"
+  add_foreign_key "search_run_pages", "search_runs"
   add_foreign_key "search_runs", "keywords"
   add_foreign_key "tool_calls", "messages"
   add_foreign_key "view_series", "keyword_targets"

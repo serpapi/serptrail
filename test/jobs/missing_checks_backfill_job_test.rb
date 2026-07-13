@@ -27,6 +27,36 @@ class MissingChecksBackfillJobTest < ActiveJob::TestCase
     assert_equal 7, bestbuy_target.checks.find_by(search_run: search_run).position
   end
 
+  test "creates checks from paginated search run results" do
+    keyword = Keyword.create!(query: "paginated backfill keyword", locations: [ "us" ], search_pages: 2)
+    target = keyword.keyword_targets.create!(site: sites(:apple))
+    search_run = keyword.search_runs.create!(
+      query: keyword.query,
+      location: "us",
+      requested_pages: 2,
+      status: :success,
+      checked_at: 2.days.ago
+    )
+    search_run.search_run_pages.create!(
+      page_number: 1,
+      start: 0,
+      status: :success,
+      raw_response: { organic_results: [ { position: 1, link: "https://example.com/page" } ] }.to_json
+    )
+    search_run.search_run_pages.create!(
+      page_number: 2,
+      start: 10,
+      status: :success,
+      raw_response: { organic_results: [ { position: 1, link: "https://apple.com/page" } ] }.to_json
+    )
+
+    assert_difference("Check.count", 1) do
+      MissingChecksBackfillJob.perform_now(keyword: keyword)
+    end
+
+    assert_equal 11, target.checks.find_by!(search_run: search_run).position
+  end
+
   test "does not duplicate existing checks" do
     keyword = Keyword.create!(query: "no duplicate checks keyword", locations: [ "us" ])
     target = keyword.keyword_targets.create!(site: sites(:apple))

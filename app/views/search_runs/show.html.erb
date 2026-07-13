@@ -2,7 +2,7 @@
   <div class="search-run-results">
     <div class="search-run-results-header">
       <strong><%= country_flag(@search_run.location) %> <%= country_name(@search_run.location) %></strong>
-      <span class="muted"><%= @search_run.checked_at.strftime("%B %-d, %Y at %H:%M") %></span>
+      <span class="muted"><%= @search_run.checked_at.strftime("%B %-d, %Y at %H:%M") %> · <%= pluralize(@search_run.requested_pages, "page") %></span>
     </div>
 
     <% if @ai_overview %>
@@ -25,20 +25,7 @@
     <% end %>
 
     <% if @organic_results.any? %>
-      <ol class="organic-results">
-        <% @organic_results.first(20).each do |result| %>
-          <li class="organic-result">
-            <span class="result-position">#<%= result[:position] %></span>
-            <div class="result-body">
-              <%= link_to result[:title].presence || result[:link], result[:link], target: "_blank", rel: "noopener" %>
-              <div class="result-url muted"><%= result[:link] %></div>
-              <% if result[:snippet].present? %>
-                <p class="result-snippet"><%= result[:snippet] %></p>
-              <% end %>
-            </div>
-          </li>
-        <% end %>
-      </ol>
+      <%= render "search_runs/organic_results", organic_results: @organic_results %>
     <% else %>
       <p class="muted">No search results recorded for this run.</p>
     <% end %>

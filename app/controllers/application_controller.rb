@@ -22,10 +22,9 @@ class ApplicationController < ActionController::Base
   end
 
   def parse_search_run(run)
-    return [ [], nil ] if run.nil? || run.raw_response.blank?
-    data = JSON.parse(run.raw_response, symbolize_names: true)
+    return [ [], nil ] if run.nil?
+
+    data = run.combined_results
     [ data[:organic_results] || [], data[:ai_overview].presence ]
-  rescue JSON::ParserError
-    [ [], nil ]
   end
 end

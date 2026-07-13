@@ -9,6 +9,7 @@ class Keyword < ApplicationRecord
   validates :query, presence: true, uniqueness: { scope: :site_id }, length: { maximum: 255 }
   validates :check_frequency, presence: true
   validates :locations, presence: true
+  validates :search_pages, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
 
   before_validation :set_default_locations
   after_create :ensure_primary_keyword_target

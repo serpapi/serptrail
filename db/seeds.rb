@@ -3,7 +3,7 @@ if Rails.env.development?
   ActiveRecord::FixtureSet.reset_cache
   ActiveRecord::FixtureSet.create_fixtures(
     Rails.root.join("test/fixtures"),
-    %w[sites keywords keyword_targets search_runs checks tenants]
+    %w[sites keywords keyword_targets search_runs search_run_pages checks tenants]
   )
 else
   Tenant.find_or_create_by!(id: 1) do |t|

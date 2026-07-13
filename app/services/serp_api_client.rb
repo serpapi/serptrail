@@ -1,12 +1,15 @@
 class SerpApiClient
+  RESULTS_PER_PAGE = 10
+
   def initialize(api_key: nil)
     @api_key = api_key
   end
 
-  def search(query, location:)
+  def search(query, location:, page: 1, results_per_page: RESULTS_PER_PAGE)
+    start = (page - 1) * results_per_page
     api_key = @api_key || Tenant.instance.serpapi_key
     client = SerpApi::Client.new(engine: "google", api_key: api_key)
-    client.search(q: query, num: 100, gl: location)
+    client.search(q: query, num: results_per_page, start: start, gl: location)
   ensure
     client&.close
   end
@@ -36,7 +39,7 @@ class SerpApiClient
   end
 
   def check_position(query, domain, location:, match_subdomains: false)
-    results = search(query, location: location)
+    results = search(query, location: location, page: 1, results_per_page: 100)
     extract_position(results, domain, match_subdomains: match_subdomains).merge(
       serpapi_search_id: results.dig(:search_metadata, :id),
       raw_response: results.to_json

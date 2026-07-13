@@ -11,9 +11,21 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h1", "Keywords"
   end
 
+  test "show separates multi-page search results" do
+    keyword = keywords(:bestbuy_iphone18)
+
+    get keyword_url(keyword), headers: @headers
+
+    assert_response :success
+    assert_select ".organic-result", count: 20
+    assert_select ".organic-results-page-divider", count: 1, text: "Page 2"
+  end
+
   test "get new" do
     get new_keyword_url, headers: @headers
     assert_response :success
+    assert_select "input[type='range'][name='keyword[search_pages]'][min='1'][max='5']"
+    assert_select ".search-depth-value", text: "1 page"
   end
 
   test "create keyword without sites" do
@@ -43,6 +55,7 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
           keyword: {
             query: "global tracked keyword",
             check_frequency: "weekly",
+            search_pages: 3,
             locations: [ "us", "gb" ],
             site_ids: [ sites(:apple).id, sites(:bestbuy).id ]
           }
@@ -52,6 +65,7 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
 
     keyword = Keyword.find_by!(query: "global tracked keyword")
     assert_equal [ sites(:apple).id, sites(:bestbuy).id ].sort, keyword.keyword_targets.pluck(:site_id).sort
+    assert_equal 3, keyword.search_pages
     assert_redirected_to keyword_url(keyword)
   end
 

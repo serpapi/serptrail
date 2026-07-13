@@ -10,28 +10,52 @@ class KeywordCheckJob < ApplicationJob
     search_run = keyword.search_runs.create!(
       query: keyword.query,
       location: location,
+      requested_pages: keyword.search_pages,
       status: :pending,
       checked_at: checked_at
     )
 
     if Tenant.instance.serpapi_key.blank?
-      search_run.update!(status: :failed, error_message: "SerpApi key is not configured")
-      create_failed_checks(keyword, targets, search_run, "SerpApi key is not configured")
+      message = "SerpApi key is not configured"
+      create_failed_page_records(search_run, message)
+      search_run.update!(status: :failed, error_message: message)
+      create_failed_checks(keyword, targets, search_run, message)
       broadcast_keyword_updates(targets)
       return
     end
 
     client = SerpApiClient.new
-    results = client.search(keyword.query, location: location)
+    search_run.requested_pages.times do |index|
+      page_number = index + 1
+      start = index * SerpApiClient::RESULTS_PER_PAGE
+      search_run_page = search_run.search_run_pages.create!(
+        page_number: page_number,
+        start: start,
+        status: :pending,
+        search_params: {
+          engine: search_run.engine,
+          q: search_run.query,
+          gl: search_run.location,
+          num: SerpApiClient::RESULTS_PER_PAGE,
+          start: start
+        }
+      )
+      results = client.search(keyword.query, location: location, page: page_number)
+      search_run_page.update!(
+        status: :success,
+        serpapi_search_id: results.dig(:search_metadata, :id),
+        raw_response: results.to_json
+      )
+    rescue StandardError => e
+      search_run_page.update!(status: :failed, error_message: e.message)
+      raise
+    end
 
-    search_run.update!(
-      status: :success,
-      serpapi_search_id: results.dig(:search_metadata, :id),
-      raw_response: results.to_json
-    )
+    search_run.update!(status: :success)
+    combined_results = search_run.combined_results
 
     targets.each do |target|
-      result = client.extract_position(results, target.site.domain, match_subdomains: target.site.match_subdomains)
+      result = client.extract_position(combined_results, target.site.domain, match_subdomains: target.site.match_subdomains)
       create_check(keyword, target, search_run, result.merge(status: :success))
     end
 
@@ -42,6 +66,7 @@ class KeywordCheckJob < ApplicationJob
     search_run ||= keyword.search_runs.create!(
       query: keyword.query,
       location: location,
+      requested_pages: keyword.search_pages,
       status: :failed,
       error_message: e.message,
       checked_at: Time.current
@@ -58,6 +83,17 @@ class KeywordCheckJob < ApplicationJob
 
   def keyword_targets_for(keyword)
     keyword.keyword_targets.includes(:site).merge(KeywordTarget.tracked).to_a
+  end
+
+  def create_failed_page_records(search_run, message)
+    search_run.requested_pages.times do |index|
+      search_run.search_run_pages.create!(
+        page_number: index + 1,
+        start: index * SerpApiClient::RESULTS_PER_PAGE,
+        status: :failed,
+        error_message: message
+      )
+    end
   end
 
   def create_failed_checks(keyword, targets, search_run, message)

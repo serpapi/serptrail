@@ -32,9 +32,10 @@ class Sites::KeywordsController < ApplicationController
       queries = import_params[:queries].to_s.lines.map(&:strip).reject(&:blank?).uniq
       locations = import_params[:locations] || [ "us" ]
       check_frequency = import_params[:check_frequency].presence || "daily"
+      search_pages = import_params[:search_pages].presence || 1
 
       created = queries.count do |query|
-        keyword = find_or_initialize_keyword(query, locations: locations, check_frequency: check_frequency)
+        keyword = find_or_initialize_keyword(query, locations: locations, check_frequency: check_frequency, search_pages: search_pages)
         new_keyword = keyword.new_record?
         if keyword.save
           target = keyword.keyword_targets.find_or_create_by!(site: @site)
@@ -55,7 +56,12 @@ class Sites::KeywordsController < ApplicationController
   end
 
   def create
-    @keyword = find_or_initialize_keyword(keyword_params[:query], locations: keyword_params[:locations], check_frequency: keyword_params[:check_frequency])
+    @keyword = find_or_initialize_keyword(
+      keyword_params[:query],
+      locations: keyword_params[:locations],
+      check_frequency: keyword_params[:check_frequency],
+      search_pages: keyword_params[:search_pages]
+    )
 
     if @keyword.save
       @keyword_target = @keyword.keyword_targets.find_or_create_by!(site: @site)
@@ -101,25 +107,26 @@ class Sites::KeywordsController < ApplicationController
     @keyword = @keyword_target.keyword
   end
 
-  def find_or_initialize_keyword(query, locations:, check_frequency:)
+  def find_or_initialize_keyword(query, locations:, check_frequency:, search_pages:)
     existing_target = @site.keyword_targets.joins(:keyword).find_by(keywords: { query: query })
     keyword = existing_target&.keyword || Keyword.find_by(query: query) || Keyword.new(query: query, site: @site)
     keyword.site ||= @site
     keyword.locations = locations if locations.present?
     keyword.check_frequency = check_frequency if check_frequency.present?
+    keyword.search_pages = search_pages if search_pages.present?
     keyword
   end
 
   def import_params
-    params.expect(keyword: [ :queries, :check_frequency, locations: [] ])
+    params.expect(keyword: [ :queries, :check_frequency, :search_pages, locations: [] ])
   end
 
   def keyword_params
-    params.expect(keyword: [ :query, :check_frequency, locations: [] ])
+    params.expect(keyword: [ :query, :check_frequency, :search_pages, locations: [] ])
   end
 
   def keyword_update_params
-    params.expect(keyword: [ :query, :check_frequency, locations: [] ])
+    params.expect(keyword: [ :query, :check_frequency, :search_pages, locations: [] ])
   end
 
   def keyword_target_params

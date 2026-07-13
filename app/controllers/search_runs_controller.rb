@@ -19,12 +19,9 @@ class SearchRunsController < ApplicationController
 
   def show
     @search_run = @keyword.search_runs.find(params[:id])
-    data = @search_run.raw_response.present? ? JSON.parse(@search_run.raw_response, symbolize_names: true) : {}
+    data = @search_run.combined_results
     @organic_results = data[:organic_results] || []
     @ai_overview = data[:ai_overview].presence
-  rescue JSON::ParserError
-    @organic_results = []
-    @ai_overview = nil
   end
 
   private

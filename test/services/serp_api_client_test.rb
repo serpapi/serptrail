@@ -5,6 +5,22 @@ class SerpApiClientTest < ActiveSupport::TestCase
     @client = SerpApiClient.new
   end
 
+  test "search requests an explicit Google result page" do
+    api_client = mock("serpapi_client")
+    SerpApi::Client.expects(:new).with(engine: "google", api_key: tenants(:default).serpapi_key).returns(api_client)
+    api_client.expects(:search).with(q: "iphone 18", num: 10, start: 20, gl: "us").returns(organic_results: [])
+    api_client.expects(:close)
+
+    @client.search("iphone 18", location: "us", page: 3)
+  end
+
+  test "position check preserves the existing top 100 lookup" do
+    results = { organic_results: [] }
+    @client.expects(:search).with("iphone 18", location: "us", page: 1, results_per_page: 100).returns(results)
+
+    @client.check_position("iphone 18", "apple.com", location: "us")
+  end
+
   test "link matches identical domains" do
     assert @client.link_matches_domain?("https://example.com/page", "example.com")
     assert @client.link_matches_domain?("example.com", "https://example.com/about")

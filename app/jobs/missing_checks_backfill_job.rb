@@ -40,12 +40,7 @@ class MissingChecksBackfillJob < ApplicationJob
   end
 
   def parsed_results(search_run)
-    return nil if search_run.raw_response.blank?
-
-    JSON.parse(search_run.raw_response, symbolize_names: true)
-  rescue JSON::ParserError => e
-    Rails.logger.warn("Skipping SearchRun #{search_run.id}: raw_response could not be parsed: #{e.message}")
-    nil
+    search_run.combined_results.presence
   end
 
   def create_success_check(target, search_run, results)

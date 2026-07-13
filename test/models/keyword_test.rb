@@ -33,6 +33,23 @@ class KeywordTest < ActiveSupport::TestCase
     assert_equal "daily", keyword.check_frequency
   end
 
+  test "search pages default to one" do
+    keyword = Keyword.new(query: "search depth default")
+
+    assert_equal 1, keyword.search_pages
+  end
+
+  test "search pages must be between one and five" do
+    keyword = Keyword.new(query: "invalid search depth", search_pages: 0)
+    assert_not keyword.valid?
+
+    keyword.search_pages = 6
+    assert_not keyword.valid?
+
+    keyword.search_pages = 5
+    assert keyword.valid?
+  end
+
   test "due_for_check includes keywords needing check" do
     due = Keyword.due_for_check
     assert_includes due, keywords(:apple_iphone18)

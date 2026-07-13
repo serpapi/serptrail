@@ -34,6 +34,7 @@ bestbuy_iphone18:
   site: bestbuy
   query: iphone 18
   check_frequency: weekly
+  search_pages: 2
   locations:
     - us
     - gb
@@ -43,6 +44,7 @@ bestbuy_iphone18_pro:
   site: bestbuy
   query: iphone 18 pro
   check_frequency: weekly
+  search_pages: 2
   locations:
     - us
     - gb

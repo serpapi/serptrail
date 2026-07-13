@@ -39,6 +39,24 @@
     </div>
   </div>
 
+  <div class="field search-depth-field" data-controller="search-depth">
+    <div class="search-depth-header">
+      <%= form.label :search_pages, "Search depth" %>
+      <output class="search-depth-value" data-search-depth-target="value"><%= pluralize(@keyword.search_pages, "page") %></output>
+    </div>
+    <%= form.range_field :search_pages,
+      min: 1,
+      max: 5,
+      step: 1,
+      class: "search-depth-slider",
+      data: { search_depth_target: "input", action: "input->search-depth#update" } %>
+    <div class="search-depth-scale" aria-hidden="true">
+      <span>1 page</span>
+      <span>5 pages</span>
+    </div>
+    <small class="field-hint">Checks up to <span data-search-depth-target="results"><%= @keyword.search_pages * 10 %></span> Google results and uses one SerpApi search per page, keyword, and location.</small>
+  </div>
+
   <div class="actions">
     <%= form.submit "Import", class: "btn" %>
   </div>

@@ -10,15 +10,24 @@ class Sites::KeywordsControllerTest < ActionDispatch::IntegrationTest
   test "get new" do
     get new_site_keyword_url(@site), headers: @headers
     assert_response :success
+    assert_select "input[type='range'][name='keyword[search_pages]'][min='1'][max='5']"
+  end
+
+  test "get import shows search depth slider" do
+    get import_site_keywords_url(@site), headers: @headers
+
+    assert_response :success
+    assert_select "input[type='range'][name='keyword[search_pages]'][min='1'][max='5']"
   end
 
   test "create keyword" do
     assert_difference("Keyword.count") do
       assert_enqueued_with(job: KeywordCheckJob) do
-        post site_keywords_url(@site), params: { keyword: { query: "new query", check_frequency: "daily", locations: [ "us" ] } }, headers: @headers
+        post site_keywords_url(@site), params: { keyword: { query: "new query", check_frequency: "daily", search_pages: 4, locations: [ "us" ] } }, headers: @headers
       end
     end
     assert_redirected_to site_url(@site)
+    assert_equal 4, Keyword.find_by!(query: "new query").search_pages
   end
 
   test "create keyword with invalid data" do
@@ -71,12 +80,14 @@ class Sites::KeywordsControllerTest < ActionDispatch::IntegrationTest
         keyword: {
           queries: "bulk keyword one\nbulk keyword two\nbulk keyword three",
           check_frequency: "daily",
+          search_pages: 2,
           locations: [ "us" ]
         }
       }, headers: @headers
     end
     assert_redirected_to site_url(@site)
     assert_match "3 keywords imported", flash[:notice]
+    assert_equal [ 2 ], Keyword.where(query: [ "bulk keyword one", "bulk keyword two", "bulk keyword three" ]).distinct.pluck(:search_pages)
   end
 
   test "destroy keyword" do

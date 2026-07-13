@@ -1,0 +1,24 @@
+<%# locals: (organic_results:) %>
+<ol class="organic-results">
+  <% current_page = nil %>
+  <% organic_results.each do |result| %>
+    <% result_page = result[:page].presence || ((result[:position].to_i - 1) / SerpApiClient::RESULTS_PER_PAGE) + 1 %>
+    <% if current_page && result_page != current_page %>
+      <li class="organic-results-page-divider" aria-label="Page <%= result_page %>">
+        <span>Page <%= result_page %></span>
+      </li>
+    <% end %>
+    <% current_page = result_page %>
+
+    <li class="organic-result">
+      <span class="result-position">#<%= result[:position] %></span>
+      <div class="result-body">
+        <%= link_to result[:title].presence || result[:link], result[:link], target: "_blank", rel: "noopener" %>
+        <div class="result-url muted"><%= result[:link] %></div>
+        <% if result[:snippet].present? %>
+          <p class="result-snippet"><%= result[:snippet] %></p>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ol>
