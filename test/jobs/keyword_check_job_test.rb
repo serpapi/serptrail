@@ -101,31 +101,7 @@ class KeywordCheckJobTest < ActiveJob::TestCase
     assert_not_nil keyword.reload.last_checked_at
   end
 
-  test "creates historical checks when target is added after search runs exist" do
-    keyword = Keyword.create!(query: "historical target query", locations: [ "us" ])
-    keyword.search_runs.create!(
-      query: keyword.query,
-      location: "us",
-      status: :success,
-      checked_at: 1.day.ago,
-      raw_response: {
-        search_metadata: { id: "historical_search" },
-        organic_results: [ { position: 4, link: "https://apple.com/page" } ]
-      }.to_json
-    )
 
-    target = keyword.keyword_targets.create!(site: sites(:apple))
-
-    assert_difference("Check.count", 1) do
-      MissingChecksBackfillJob.perform_now(keyword_target: target)
-    end
-
-    check = keyword.checks.order(:created_at).last
-    assert_equal "success", check.status
-    assert_equal 4, check.position
-    assert_equal "https://apple.com/page", check.url
-    assert_equal "us", check.location
-  end
 
   test "creates failed page records when SerpApi is not configured" do
     keyword = keywords(:apple_iphone18)

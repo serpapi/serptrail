@@ -6,7 +6,6 @@ class KeywordTarget < ApplicationRecord
 
   validates :keyword_id, uniqueness: { scope: :site_id }
 
-  after_create_commit :backfill_checks_from_search_runs_later
 
   scope :tracked, -> { where(tracking_enabled: true) }
 
@@ -30,9 +29,6 @@ class KeywordTarget < ApplicationRecord
 
   private
 
-  def backfill_checks_from_search_runs_later
-    MissingChecksBackfillJob.perform_later(keyword_target: self)
-  end
 
 
   def scoped_checks(location)
