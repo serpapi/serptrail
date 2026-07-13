@@ -28,7 +28,7 @@
   .serpapi-link { font-size: 0.75rem; color: var(--color-muted); text-decoration: none; }
   .serpapi-link:hover { color: var(--color-primary); }
 
-  .back-link { display: inline-block; margin-top: 1.5rem; font-size: 0.875rem; color: var(--color-muted); text-decoration: none; }
+  .back-link { display: inline-block; margin: 1.5rem 0 2rem; font-size: 0.875rem; color: var(--color-muted); text-decoration: none; }
   .back-link:hover { color: #111827; }
 
   .location-legend {
