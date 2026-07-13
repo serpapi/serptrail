@@ -26,6 +26,7 @@ class KeywordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "input[type='range'][name='keyword[search_pages]'][min='1'][max='5']"
     assert_select ".search-depth-value", text: "1 page"
+    assert_select ".search-depth-field .field-hint", text: /Each additional page uses another SerpApi credit per location/
   end
 
   test "create keyword without sites" do

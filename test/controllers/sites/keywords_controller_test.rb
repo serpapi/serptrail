@@ -11,6 +11,7 @@ class Sites::KeywordsControllerTest < ActionDispatch::IntegrationTest
     get new_site_keyword_url(@site), headers: @headers
     assert_response :success
     assert_select "input[type='range'][name='keyword[search_pages]'][min='1'][max='5']"
+    assert_select ".search-depth-field .field-hint", text: /Each additional page uses another SerpApi credit per location/
   end
 
   test "get import shows search depth slider" do
@@ -18,6 +19,7 @@ class Sites::KeywordsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select "input[type='range'][name='keyword[search_pages]'][min='1'][max='5']"
+    assert_select ".search-depth-field .field-hint", text: /Each additional page uses another SerpApi credit per keyword and location/
   end
 
   test "create keyword" do

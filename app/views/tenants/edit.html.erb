@@ -2,31 +2,48 @@
   <h1>Settings</h1>
 </div>
 
-<%= form_with(model: @tenant, url: settings_path) do |form| %>
-  <% if @tenant.errors.any? %>
-    <div class="errors">
-      <h2><%= pluralize(@tenant.errors.count, "error") %> prohibited settings from being saved:</h2>
-      <ul>
-        <% @tenant.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="settings-layout">
+  <%= form_with(model: @tenant, url: settings_path, html: { class: "settings-form" }) do |form| %>
+    <% if @tenant.errors.any? %>
+      <div class="errors">
+        <h2><%= pluralize(@tenant.errors.count, "error") %> prohibited settings from being saved:</h2>
+        <ul>
+          <% @tenant.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :serpapi_key, "SerpApi key" %>
+      <%= form.password_field :serpapi_key, value: @tenant.serpapi_key, placeholder: "Enter SerpApi key", autocomplete: "off" %>
+      <span class="field-hint">You can get your SerpApi key in your <%= link_to "SerpApi dashboard", "https://serpapi.com/manage-api-key", target: "_blank", rel: "noopener" %>.</span>
+    </div>
+
+    <div class="field">
+      <%= form.label :openai_api_key, "OpenAI key" %>
+      <%= form.password_field :openai_api_key, value: @tenant.openai_api_key, placeholder: "Enter OpenAI API key", autocomplete: "off" %>
+      <span class="field-hint">Used by the chat assistant. You can get your key in your <%= link_to "OpenAI API keys", "https://platform.openai.com/api-keys", target: "_blank", rel: "noopener" %>.</span>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Save", class: "btn" %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :serpapi_key, "SerpApi key" %>
-    <%= form.password_field :serpapi_key, value: @tenant.serpapi_key, placeholder: "Enter SerpApi key", autocomplete: "off" %>
-    <span class="field-hint">You can get your SerpApi key in your <%= link_to "SerpApi dashboard", "https://serpapi.com/manage-api-key", target: "_blank", rel: "noopener" %>.</span>
-  </div>
-
-  <div class="field">
-    <%= form.label :openai_api_key, "OpenAI key" %>
-    <%= form.password_field :openai_api_key, value: @tenant.openai_api_key, placeholder: "Enter OpenAI API key", autocomplete: "off" %>
-    <span class="field-hint">Used by the chat assistant. You can get your key in your <%= link_to "OpenAI API keys", "https://platform.openai.com/api-keys", target: "_blank", rel: "noopener" %>.</span>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Save", class: "btn" %>
-  </div>
-<% end %>
+  <section class="card settings-credit-card" id="serpapi-credit-estimate">
+    <h2 class="card-title">SerpApi credit estimate</h2>
+    <div class="card-stats">
+      <div class="card-stat">
+        <span class="card-stat-label">Estimated monthly credits</span>
+        <span class="card-stat-value"><%= number_with_delimiter(@serpapi_credit_estimate.monthly_credits) %></span>
+      </div>
+      <div class="card-stat">
+        <span class="card-stat-label">Keywords being checked</span>
+        <span class="card-stat-value"><%= number_with_delimiter(@serpapi_credit_estimate.keyword_count) %></span>
+      </div>
+    </div>
+    <p class="muted">This 30-day estimate uses each keyword's check frequency, locations, and search depth. Each page costs one SerpApi credit per keyword and location. Manual checks add extra usage.</p>
+  </section>
+</div>

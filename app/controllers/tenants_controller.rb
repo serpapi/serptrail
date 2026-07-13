@@ -1,4 +1,6 @@
 class TenantsController < ApplicationController
+  before_action :set_serpapi_credit_estimate
+
   def edit
     @tenant = Tenant.instance
   end
@@ -13,6 +15,10 @@ class TenantsController < ApplicationController
   end
 
   private
+
+  def set_serpapi_credit_estimate
+    @serpapi_credit_estimate = SerpApiCreditEstimator.new
+  end
 
   def tenant_params
     params.expect(tenant: [ :serpapi_key, :openai_api_key ])

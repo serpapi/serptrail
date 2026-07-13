@@ -12,6 +12,12 @@ class TenantsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "input[name='tenant[serpapi_key]']"
     assert_select "input[name='tenant[openai_api_key]']"
+    assert_select ".settings-layout > #serpapi-credit-estimate.card" do
+      assert_select "h2.card-title", text: "SerpApi credit estimate"
+      assert_select ".card-stat-label", text: "Estimated monthly credits"
+      assert_select ".card-stat-label", text: "Keywords being checked"
+      assert_select "p", text: /Each page costs one SerpApi credit/
+    end
   end
 
   test "updates API keys" do

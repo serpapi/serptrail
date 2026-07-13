@@ -16,14 +16,17 @@ class Keyword < ApplicationRecord
 
   enum :check_frequency, { daily: "daily", weekly: "weekly", biweekly: "biweekly", monthly: "monthly" }
 
-  scope :due_for_check, -> {
+  scope :checking_enabled, -> {
     left_joins(:keyword_targets)
       .where(
         "keyword_targets.id IS NULL OR keyword_targets.tracking_enabled = :target_tracking_enabled",
         target_tracking_enabled: true
       )
       .distinct
-      .where(
+  }
+
+  scope :due_for_check, -> {
+    checking_enabled.where(
       "keywords.last_checked_at IS NULL OR " \
       "(keywords.check_frequency = 'daily' AND keywords.last_checked_at <= :daily) OR " \
       "(keywords.check_frequency = 'weekly' AND keywords.last_checked_at <= :weekly) OR " \
