@@ -37,6 +37,13 @@ class Sites::KeywordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
+  test "get show links to keyword overview" do
+    get site_keyword_url(@site, @keyword), headers: @headers
+
+    assert_response :success
+    assert_select "a[href='#{keyword_path(@keyword)}']", text: "Keyword overview"
+  end
+
   test "get edit" do
     get edit_site_keyword_url(@site, @keyword), headers: @headers
     assert_response :success

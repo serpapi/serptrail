@@ -8,6 +8,7 @@
 <div class="header">
   <h1><%= @keyword.query %></h1>
   <div class="header-actions">
+    <%= link_to "Keyword overview", keyword_path(@keyword), class: "btn btn-secondary" %>
     <%= link_to "History", site_keyword_checks_path(@site, @keyword), class: "btn btn-secondary" %>
     <%= link_to "Edit", edit_site_keyword_path(@site, @keyword), class: "btn btn-secondary" %>
   </div>
