@@ -6,7 +6,7 @@ SerpTrail is a self-hosted SEO and GEO rank tracker built with Ruby on Rails and
 
 ## Features
 
-Here are the main SerpTail features:
+Here are the main SerpTrail features:
 
 - Track multiple websites, keywords, and locations
 - Check rankings daily, weekly, biweekly, or monthly
@@ -29,7 +29,9 @@ Keywords and websites are tracked independently. A keyword defines:
 - Check frequency
 - Search depth
 
-One Google search is performed for each keyword, location, and requested results page. The returned results are then checked against every website attached to that keyword. Attaching another website therefore does not increase SerpApi usage and is possible retroactively.
+One Google search is performed for each keyword, location, and requested results page. A country location runs a localized search, while a region or city location runs a location-based search.
+
+The returned results are checked against every website attached to that keyword. Attaching another website therefore does not increase SerpApi usage and is possible retroactively.
 
 ### Multi-page Google results
 
