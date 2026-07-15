@@ -2,6 +2,8 @@
 
 SerpTrail is a self-hosted SEO and GEO rank tracker built with Ruby on Rails and SQLite. It tracks Google organic positions and AI Overview citations while preserving historical search results for later analysis.
 
+![SerpTrail keyword tracking dashboard](serptrail.png)
+
 ## Features
 
 Here are the main SerpTail features:
@@ -13,7 +15,7 @@ Here are the main SerpTail features:
 - Track whether a website is cited in Google AI Overviews
 - Attach multiple websites to the same keyword without repeating the search
 - Compare historical performance using saved views
-- Ask questions about historical data andrankings through the OpenAI-powered chat assistant
+- Ask questions about historical data and rankings through the OpenAI-powered chat assistant
 - Estimate monthly SerpApi credit usage from your current configuration
 
 ## How SerpTrail works
