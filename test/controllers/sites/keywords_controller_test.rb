@@ -11,6 +11,8 @@ class Sites::KeywordsControllerTest < ActionDispatch::IntegrationTest
     get new_site_keyword_url(@site), headers: @headers
     assert_response :success
     assert_select "input[type='range'][name='keyword[search_pages]'][min='1'][max='5']"
+    assert_select "[data-controller='location-select'][data-location-select-search-url-value='#{locations_path}']"
+    assert_select ".field-hint", text: "Choose a country or search for a city."
     assert_select ".search-depth-field .field-hint", text: /Each additional page uses another SerpApi credit per location/
   end
 
@@ -19,6 +21,8 @@ class Sites::KeywordsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select "input[type='range'][name='keyword[search_pages]'][min='1'][max='5']"
+    assert_select "[data-controller='location-select'][data-location-select-search-url-value='#{locations_path}']"
+    assert_select ".field-hint", text: "Choose a country or search for a city."
     assert_select ".search-depth-field .field-hint", text: /Each additional page uses another SerpApi credit per keyword and location/
   end
 

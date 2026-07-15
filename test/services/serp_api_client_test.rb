@@ -14,6 +14,22 @@ class SerpApiClientTest < ActiveSupport::TestCase
     @client.search("iphone 18", location: "us", page: 3)
   end
 
+  test "search sends city location and matching country localization" do
+    api_client = mock("serpapi_client")
+    SerpApi::Client.expects(:new).with(engine: "google", api_key: tenants(:default).serpapi_key).returns(api_client)
+    api_client.expects(:search).with(
+      q: "coffee",
+      num: 10,
+      start: 0,
+      location: "Austin,Texas,United States",
+      gl: "us"
+    ).returns(organic_results: [])
+    api_client.expects(:close)
+
+    location = SearchLocation.city_value(canonical_name: "Austin,Texas,United States", country_code: "us")
+    @client.search("coffee", location: location)
+  end
+
   test "position check preserves the existing top 100 lookup" do
     results = { organic_results: [] }
     @client.expects(:search).with("iphone 18", location: "us", page: 1, results_per_page: 100).returns(results)

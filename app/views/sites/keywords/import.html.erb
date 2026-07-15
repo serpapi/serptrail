@@ -11,7 +11,8 @@
 
   <div class="field"
        data-controller="location-select"
-       data-location-select-initial-value="<%= @keyword.locations.to_json %>">
+       data-location-select-initial-value="<%= @keyword.locations.to_json %>"
+       data-location-select-search-url-value="<%= locations_path %>">
     <label>Locations</label>
     <div class="location-select-control" data-action="click->location-select#focusInput">
       <div data-location-select-target="tags"></div>
@@ -25,6 +26,7 @@
     </div>
     <div class="location-select-dropdown" data-location-select-target="dropdown" hidden></div>
     <div data-location-select-target="hiddenInputs"></div>
+    <small class="field-hint">Choose a country or search for a city.</small>
   </div>
 
   <div class="field">

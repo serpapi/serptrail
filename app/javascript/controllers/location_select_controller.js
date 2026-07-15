@@ -54,12 +54,43 @@ const COUNTRIES = [
   { code: "co", name: "Colombia", flag: "🇨🇴" },
 ]
 
+function countryFlag(code) {
+  return [...code.toUpperCase()].map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65)).join("")
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+}
+
+function locationOption(value) {
+  const country = COUNTRIES.find(item => item.code === value)
+  if (country) return { value, ...country }
+
+  if (value.startsWith("city:")) {
+    const [, code, ...nameParts] = value.split(":")
+    return {
+      value,
+      code,
+      flag: countryFlag(code),
+      name: nameParts.join(":").replaceAll(",", ", "),
+      targetType: "City",
+    }
+  }
+
+  return { value, code: value, flag: "", name: value }
+}
+
 export default class extends Controller {
   static targets = ["input", "tags", "dropdown", "hiddenInputs"]
+  static values = { searchUrl: String }
 
   connect() {
     const initial = JSON.parse(this.element.dataset.locationSelectInitialValue || "[]")
-    this.selectedCodes = new Set(initial)
+    this.selectedValues = new Set(initial)
     this.renderTags()
     this.renderHiddenInputs()
     this.onDocumentClick = this.closeIfOutside.bind(this)
@@ -68,27 +99,66 @@ export default class extends Controller {
 
   disconnect() {
     document.removeEventListener("click", this.onDocumentClick)
+    clearTimeout(this.searchTimer)
+    this.abortController?.abort()
   }
 
   open() {
     this.inputTarget.select()
-    this.renderDropdown(this.available())
+    this.renderDropdown(this.availableCountries())
     this.dropdownTarget.removeAttribute("hidden")
   }
 
   filter() {
-    const q = this.inputTarget.value.toLowerCase().trim()
-    const matches = q
-      ? this.available().filter(c => c.name.toLowerCase().includes(q) || c.code === q)
-      : this.available()
-    this.renderDropdown(matches)
+    const query = this.inputTarget.value.toLowerCase().trim()
+    const countries = this.availableCountries().filter(country =>
+      country.name.toLowerCase().includes(query) || country.code === query
+    )
+
+    clearTimeout(this.searchTimer)
+    this.abortController?.abort()
+
+    if (query.length < 2) {
+      this.renderDropdown(countries)
+    } else {
+      this.renderDropdown(countries, "Searching cities…")
+      this.searchTimer = setTimeout(() => this.searchCities(query, countries), 250)
+    }
     this.dropdownTarget.removeAttribute("hidden")
   }
 
+  async searchCities(query, countries) {
+    this.abortController = new AbortController()
+
+    try {
+      const url = new URL(this.searchUrlValue, window.location.origin)
+      url.searchParams.set("q", query)
+      const response = await fetch(url, { headers: { Accept: "application/json" }, signal: this.abortController.signal })
+      if (!response.ok) throw new Error("Location search failed")
+
+      const cities = (await response.json())
+        .filter(city => !this.selectedValues.has(city.value))
+        .map(city => ({
+          value: city.value,
+          code: city.country_code,
+          flag: countryFlag(city.country_code),
+          name: city.name,
+          targetType: city.target_type,
+        }))
+
+      if (this.inputTarget.value.toLowerCase().trim() === query) {
+        this.renderDropdown([...countries, ...cities])
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") this.renderDropdown(countries, "City search is temporarily unavailable")
+    }
+  }
+
   add(event) {
-    const option = event.target.closest("[data-code]")
+    const option = event.target.closest("[data-value]")
     if (!option) return
-    this.selectedCodes.add(option.dataset.code)
+
+    this.selectedValues.add(option.dataset.value)
     this.renderTags()
     this.renderHiddenInputs()
     this.inputTarget.value = ""
@@ -97,7 +167,7 @@ export default class extends Controller {
   }
 
   remove(event) {
-    this.selectedCodes.delete(event.currentTarget.dataset.code)
+    this.selectedValues.delete(event.currentTarget.dataset.value)
     this.renderTags()
     this.renderHiddenInputs()
     if (!this.dropdownTarget.hidden) this.filter()
@@ -114,37 +184,41 @@ export default class extends Controller {
     }
   }
 
-  available() {
-    return COUNTRIES.filter(c => !this.selectedCodes.has(c.code))
+  availableCountries() {
+    return COUNTRIES
+      .filter(country => !this.selectedValues.has(country.code))
+      .map(country => ({ value: country.code, ...country }))
   }
 
   renderTags() {
-    this.tagsTarget.innerHTML = Array.from(this.selectedCodes).map(code => {
-      const c = COUNTRIES.find(c => c.code === code)
-      if (!c) return ""
+    this.tagsTarget.innerHTML = Array.from(this.selectedValues).map(value => {
+      const location = locationOption(value)
       return `<span class="location-tag">
-        ${c.flag} ${c.name}
+        ${location.flag} ${escapeHtml(location.name)}
         <button type="button" class="location-tag-remove"
                 data-action="click->location-select#remove"
-                data-code="${code}"
-                aria-label="Remove ${c.name}">×</button>
+                data-value="${escapeHtml(value)}"
+                aria-label="Remove ${escapeHtml(location.name)}">×</button>
       </span>`
     }).join("")
   }
 
   renderHiddenInputs() {
-    this.hiddenInputsTarget.innerHTML = Array.from(this.selectedCodes)
-      .map(code => `<input type="hidden" name="keyword[locations][]" value="${code}">`)
+    this.hiddenInputsTarget.innerHTML = Array.from(this.selectedValues)
+      .map(value => `<input type="hidden" name="keyword[locations][]" value="${escapeHtml(value)}">`)
       .join("")
   }
 
-  renderDropdown(countries) {
-    if (countries.length === 0) {
-      this.dropdownTarget.innerHTML = `<div class="location-select-empty">No results</div>`
-    } else {
-      this.dropdownTarget.innerHTML = countries
-        .map(c => `<button type="button" class="location-select-option" data-action="click->location-select#add" data-code="${c.code}">${c.flag} ${c.name}</button>`)
-        .join("")
-    }
+  renderDropdown(locations, message = null) {
+    const options = locations.map(location => {
+      const type = location.targetType
+        ? `<span class="location-select-option-type">${escapeHtml(location.targetType)}</span>`
+        : ""
+      return `<button type="button" class="location-select-option" data-action="click->location-select#add" data-value="${escapeHtml(location.value)}"><span>${location.flag} ${escapeHtml(location.name)}</span>${type}</button>`
+    }).join("")
+
+    const status = message ? `<div class="location-select-empty">${escapeHtml(message)}</div>` : ""
+    this.dropdownTarget.innerHTML = options || status || `<div class="location-select-empty">No results</div>`
+    if (options && status) this.dropdownTarget.insertAdjacentHTML("beforeend", status)
   }
 }

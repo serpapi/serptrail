@@ -25,6 +25,22 @@ class KeywordCheckJobTest < ActiveJob::TestCase
     assert_not_nil keyword.reload.last_checked_at
   end
 
+  test "stores precise city parameters on search run pages" do
+    location = SearchLocation.city_value(canonical_name: "Austin,Texas,United States", country_code: "us")
+    keyword = Keyword.create!(query: "coffee in austin", locations: [ location ])
+    results = {
+      search_metadata: { id: "city_search" },
+      organic_results: []
+    }
+    SerpApiClient.any_instance.expects(:search).with(keyword.query, location: location, page: 1).returns(results)
+
+    KeywordCheckJob.perform_now(keyword, location)
+
+    search_params = keyword.search_runs.order(:created_at).last.search_run_pages.first.search_params.symbolize_keys
+    assert_equal "Austin,Texas,United States", search_params[:location]
+    assert_equal "us", search_params[:gl]
+  end
+
   test "reuses one search run for all keyword targets" do
     keyword = keywords(:apple_iphone18)
     keyword.keyword_targets.create!(site: sites(:bestbuy))

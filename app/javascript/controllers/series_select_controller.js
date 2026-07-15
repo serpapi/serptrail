@@ -18,6 +18,15 @@ function countryFlag(code) {
   return [...code.toUpperCase()].map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65)).join("")
 }
 
+function locationDetails(value) {
+  if (value.startsWith("city:")) {
+    const [, code, ...nameParts] = value.split(":")
+    return { flag: countryFlag(code), name: nameParts.join(":").replaceAll(",", ", ") }
+  }
+
+  return { flag: countryFlag(value), name: COUNTRY_NAMES[value] || value.toUpperCase() }
+}
+
 export default class extends Controller {
   static targets = ["siteSelect", "keywordSelect", "locationSelect"]
 
@@ -30,15 +39,15 @@ export default class extends Controller {
     const keywordSelect = this.keywordSelectTarget
     const currentKeyword = keywordSelect.value
 
-    Array.from(keywordSelect.options).forEach(opt => {
-      if (!opt.value) return
-      opt.hidden = opt.dataset.siteId !== siteId
+    Array.from(keywordSelect.options).forEach(option => {
+      if (!option.value) return
+      option.hidden = option.dataset.siteId !== siteId
     })
 
-    const selectedOpt = keywordSelect.querySelector(`option[value="${currentKeyword}"]`)
-    if (!selectedOpt || selectedOpt.dataset.siteId !== siteId) {
+    const selectedOption = keywordSelect.querySelector(`option[value="${currentKeyword}"]`)
+    if (!selectedOption || selectedOption.dataset.siteId !== siteId) {
       keywordSelect.value = ""
-      this.locationSelectTarget.innerHTML = '<option value="">Select location</option>'
+      this.resetLocations()
     } else {
       this.keywordChanged()
     }
@@ -46,22 +55,23 @@ export default class extends Controller {
 
   keywordChanged() {
     const selected = this.keywordSelectTarget.selectedOptions[0]
-    const locationSelect = this.locationSelectTarget
-    const currentLocation = locationSelect.value
+    const currentLocation = this.locationSelectTarget.value
 
     if (!selected || !selected.value || !selected.dataset.locations) {
-      locationSelect.innerHTML = '<option value="">Select location</option>'
+      this.resetLocations()
       return
     }
 
     const locations = JSON.parse(selected.dataset.locations)
-    const options = ['<option value="">Select location</option>']
-    locations.forEach(code => {
-      const name = COUNTRY_NAMES[code] || code.toUpperCase()
-      const flag = countryFlag(code)
-      const sel = code === currentLocation ? ' selected' : ''
-      options.push(`<option value="${code}"${sel}>${flag} ${name}</option>`)
+    const options = [new Option("Select location", "")]
+    locations.forEach(value => {
+      const location = locationDetails(value)
+      options.push(new Option(`${location.flag} ${location.name}`, value, false, value === currentLocation))
     })
-    locationSelect.innerHTML = options.join("")
+    this.locationSelectTarget.replaceChildren(...options)
+  }
+
+  resetLocations() {
+    this.locationSelectTarget.replaceChildren(new Option("Select location", ""))
   }
 }

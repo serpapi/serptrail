@@ -9,7 +9,8 @@ class SerpApiClient
     start = (page - 1) * results_per_page
     api_key = @api_key || Tenant.instance.serpapi_key
     client = SerpApi::Client.new(engine: "google", api_key: api_key)
-    client.search(q: query, num: results_per_page, start: start, gl: location)
+    search_location = SearchLocation.new(location)
+    client.search(q: query, num: results_per_page, start: start, **search_location.search_params)
   ensure
     client&.close
   end

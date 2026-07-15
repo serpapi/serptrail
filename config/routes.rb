@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :views, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
+  resources :locations, only: :index
 
   get "settings", to: "tenants#edit"
   resource :settings, controller: "tenants", only: [ :edit, :update ]

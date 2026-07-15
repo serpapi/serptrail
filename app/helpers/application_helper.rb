@@ -37,12 +37,16 @@ module ApplicationHelper
     end
   end
 
-  def country_flag(code)
-    code.to_s.upcase.chars.map { |c| (0x1F1E6 + (c.ord - "A".ord)).chr(Encoding::UTF_8) }.join
+  def country_flag(value)
+    code = SearchLocation.new(value).country_code
+    code.upcase.chars.map { |c| (0x1F1E6 + (c.ord - "A".ord)).chr(Encoding::UTF_8) }.join
   end
 
-  def country_name(code)
-    COUNTRY_NAMES[code.to_s] || code.to_s.upcase
+  def country_name(value)
+    location = SearchLocation.new(value)
+    return location.display_name if location.city?
+
+    COUNTRY_NAMES[location.country_code] || location.country_code.upcase
   end
 
   def location_color(index)

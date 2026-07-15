@@ -28,6 +28,7 @@ class KeywordCheckJob < ApplicationJob
     search_run.requested_pages.times do |index|
       page_number = index + 1
       start = index * SerpApiClient::RESULTS_PER_PAGE
+      search_location = SearchLocation.new(search_run.location)
       search_run_page = search_run.search_run_pages.create!(
         page_number: page_number,
         start: start,
@@ -35,10 +36,9 @@ class KeywordCheckJob < ApplicationJob
         search_params: {
           engine: search_run.engine,
           q: search_run.query,
-          gl: search_run.location,
           num: SerpApiClient::RESULTS_PER_PAGE,
           start: start
-        }
+        }.merge(search_location.search_params)
       )
       results = client.search(keyword.query, location: location, page: page_number)
       search_run_page.update!(

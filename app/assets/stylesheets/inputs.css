@@ -203,7 +203,9 @@
   }
 
   .location-select-option {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
     width: 100%;
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
@@ -216,6 +218,12 @@
 
   .location-select-option:hover {
     background: #f3f4f6;
+  }
+
+  .location-select-option-type {
+    flex-shrink: 0;
+    color: var(--color-muted);
+    font-size: 0.75rem;
   }
 
   .location-select-empty {
