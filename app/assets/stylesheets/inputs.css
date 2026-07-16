@@ -250,7 +250,9 @@
     cursor: pointer;
   }
 
+  /* .field label sets display: block and would beat .checkbox-card on specificity */
   .field .checkbox-card {
+    display: flex;
     margin-bottom: 0;
   }
 
