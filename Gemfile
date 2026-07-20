@@ -37,6 +37,9 @@ gem "kamal", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
+# Pin zlib above Ruby 4.0.1's bundled default gem version to pull in a CVE fix (CVE-2026-27820)
+gem "zlib", ">= 3.2.3"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
