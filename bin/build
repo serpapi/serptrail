@@ -9,22 +9,34 @@ if [ -z "$VERSION" ]; then
   exit 1
 fi
 
+if git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
+  echo "Error: tag v$VERSION already exists."
+  exit 1
+fi
+
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "Error: uncommitted changes to tracked files. Commit or stash before releasing."
+  exit 1
+fi
+
+COMMIT=$(git rev-parse HEAD)
+
 IMAGE="serpapi/serptrail:$VERSION"
 LATEST="serpapi/serptrail:latest"
 
 echo "Verifying DockerHub login..."
 docker login || { echo "Error: DockerHub login failed."; exit 1; }
 
-echo "Building $IMAGE for linux/amd64,linux/arm64..."
-docker buildx build \
+echo "Building $IMAGE for linux/amd64,linux/arm64 from commit $COMMIT..."
+git archive "$COMMIT" | docker buildx build \
   --platform linux/amd64,linux/arm64 \
   --tag "$IMAGE" \
   --tag "$LATEST" \
   --push \
-  .
+  -
 
-echo "Tagging git commit as v$VERSION..."
-git tag "v$VERSION"
+echo "Tagging commit $COMMIT as v$VERSION..."
+git tag "v$VERSION" "$COMMIT"
 git push origin "v$VERSION"
 
-echo "Done. Published $IMAGE"
+echo "Done. Published $IMAGE built from commit $COMMIT"
