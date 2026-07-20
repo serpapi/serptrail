@@ -26,6 +26,13 @@ Here is the list of optional environment variables:
 | `WEB_CONCURRENCY` | `1` | Number of Puma worker processes. |
 | `JOB_CONCURRENCY` | `1` | Number of Solid Queue processes. |
 | `RAILS_LOG_LEVEL` | `info` | Log verbosity (`debug`, `info`, `warn`, `error`). |
+| `FORCE_SSL` | `true` | Set to `false` to disable `assume_ssl`/`force_ssl` when running without a TLS-terminating reverse proxy in front (e.g. local testing over plain HTTP). Leave at the default for real deployments. |
+
+### Local testing without HTTPS
+
+By default the production environment sets `config.assume_ssl = true` and `config.force_ssl = true`, since SerpTrail is meant to run behind an HTTPS-terminating reverse proxy (Caddy, Traefik, Nginx, Kamal Proxy, Cloudflare Tunnel). If you run the image directly over plain HTTP (e.g. `docker run -p 80:80` with no proxy), this causes a confusing failure mode: `assume_ssl` makes Rails believe every request already arrived over HTTPS, so redirects after a successful save (e.g. from `/settings`) point to an `https://` URL that nothing is listening on. The write itself succeeds — the record gets saved — but the browser's follow-up request to the `https://` redirect target fails silently, so the page just appears to do nothing.
+
+Pass `-e FORCE_SSL=false` when testing locally over plain HTTP to avoid this.
 
 ### Generating Active Record Encryption keys
 
