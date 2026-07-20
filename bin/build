@@ -15,9 +15,9 @@ LATEST="serpapi/serptrail:latest"
 echo "Verifying DockerHub login..."
 docker login || { echo "Error: DockerHub login failed."; exit 1; }
 
-echo "Building $IMAGE for linux/amd64..."
+echo "Building $IMAGE for linux/amd64,linux/arm64..."
 docker buildx build \
-  --platform linux/amd64 \
+  --platform linux/amd64,linux/arm64 \
   --tag "$IMAGE" \
   --tag "$LATEST" \
   --push \
