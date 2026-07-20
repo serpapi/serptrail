@@ -23,9 +23,8 @@ docker buildx build \
   --push \
   .
 
-# TODO: enable later
-# echo "Tagging git commit as v$VERSION..."
-# git tag "v$VERSION"
-# git push origin "v$VERSION"
+echo "Tagging git commit as v$VERSION..."
+git tag "v$VERSION"
+git push origin "v$VERSION"
 
 echo "Done. Published $IMAGE"
