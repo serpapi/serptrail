@@ -1,4 +1,12 @@
 # === Apple / iphone 18 — US ===
+apple_iphone18_us_failed:
+  keyword: apple_iphone18
+  query: iphone 18
+  location: us
+  status: failed
+  error_message: "SerpApi request timed out after 30s"
+  checked_at: <%= 12.hours.ago.to_fs(:db) %>
+
 apple_iphone18_us_latest:
   keyword: apple_iphone18
   query: iphone 18

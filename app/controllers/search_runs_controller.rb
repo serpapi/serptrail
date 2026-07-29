@@ -7,7 +7,7 @@ class SearchRunsController < ApplicationController
     if params[:slot].present?
       @selected_slot_start = Time.at(params[:slot].to_i).utc
       slot_end = @selected_slot_start + slot_duration_for(@keyword)
-      runs = @keyword.search_runs.where(status: :success, checked_at: @selected_slot_start..slot_end).order(:checked_at)
+      runs = @keyword.search_runs.where(status: [ :success, :failed ], checked_at: @selected_slot_start..slot_end).order(:checked_at)
       @runs_by_location = runs.each_with_object({}) { |r, h| h[r.location] = r }
       @selected_location = params[:location] || @runs_by_location.keys.first
       @selected_run = @runs_by_location[@selected_location]

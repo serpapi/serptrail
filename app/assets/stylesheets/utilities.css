@@ -70,6 +70,8 @@
   a.runs-slot .runs-slot-bar { background: #2563eb; }
   a.runs-slot:hover .runs-slot-bar { opacity: 0.8; }
   a.runs-slot.runs-slot--selected .runs-slot-bar { background: #1d4ed8; box-shadow: 0 0 0 2px #93c5fd; }
+  a.runs-slot.runs-slot--failed .runs-slot-bar { background: #dc2626; }
+  a.runs-slot.runs-slot--failed.runs-slot--selected .runs-slot-bar { background: #991b1b; box-shadow: 0 0 0 2px #fca5a5; }
   .runs-slot--empty { cursor: default; }
   .runs-slot-label { font-size: 0.625rem; color: #6b7280; white-space: nowrap; text-align: center; min-height: 1em; }
   .runs-nav-btn { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; border: 1px solid var(--color-border); border-radius: 6px; text-decoration: none; color: #374151; font-size: 1.125rem; line-height: 1; }
@@ -163,6 +165,13 @@
     gap: 0.75rem;
     margin-bottom: 1rem;
     font-size: 0.875rem;
+  }
+
+  .search-run-error-message {
+    margin-top: 0.75rem;
+    color: #991b1b;
+    font-size: 0.875rem;
+    font-family: monospace;
   }
 
   .organic-results {

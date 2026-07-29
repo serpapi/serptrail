@@ -28,29 +28,38 @@
         <span class="muted"><%= selected_run.checked_at.strftime("%B %-d, %Y at %H:%M") %> · <%= pluralize(selected_run.requested_pages, "page") %></span>
       </div>
 
-      <% ai_text_blocks = ai_overview&.dig(:text_blocks)&.select { |b| b[:snippet].present? } || [] %>
-      <% ai_sources = ai_overview&.dig(:sources).presence || [] %>
-      <% if ai_text_blocks.any? || ai_sources.any? %>
-        <div class="ai-overview">
-          <div class="ai-overview-label">AI Overview</div>
-          <% ai_text_blocks.each do |block| %>
-            <p class="ai-overview-text"><%= block[:snippet] %></p>
-          <% end %>
-          <% if ai_sources.any? %>
-            <div class="ai-overview-sources">
-              <% ai_sources.each do |source| %>
-                <%= link_to (source[:title].presence || source[:domain] || source[:link]),
-                      source[:link], target: "_blank", rel: "noopener", class: "ai-source" %>
-              <% end %>
-            </div>
+      <% if selected_run.failed? %>
+        <div class="search-run-error">
+          <%= tag.span "Failed", class: "status status-failed" %>
+          <% if selected_run.error_message.present? %>
+            <p class="search-run-error-message"><%= selected_run.error_message %></p>
           <% end %>
         </div>
-      <% end %>
-
-      <% if organic_results.any? %>
-        <%= render "search_runs/organic_results", organic_results: organic_results %>
       <% else %>
-        <p class="muted">No search results recorded for this run.</p>
+        <% ai_text_blocks = ai_overview&.dig(:text_blocks)&.select { |b| b[:snippet].present? } || [] %>
+        <% ai_sources = ai_overview&.dig(:sources).presence || [] %>
+        <% if ai_text_blocks.any? || ai_sources.any? %>
+          <div class="ai-overview">
+            <div class="ai-overview-label">AI Overview</div>
+            <% ai_text_blocks.each do |block| %>
+              <p class="ai-overview-text"><%= block[:snippet] %></p>
+            <% end %>
+            <% if ai_sources.any? %>
+              <div class="ai-overview-sources">
+                <% ai_sources.each do |source| %>
+                  <%= link_to (source[:title].presence || source[:domain] || source[:link]),
+                        source[:link], target: "_blank", rel: "noopener", class: "ai-source" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if organic_results.any? %>
+          <%= render "search_runs/organic_results", organic_results: organic_results %>
+        <% else %>
+          <p class="muted">No search results recorded for this run.</p>
+        <% end %>
       <% end %>
     </div>
   <% elsif runs_by_location.empty? && !chart %>

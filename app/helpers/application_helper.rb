@@ -61,8 +61,8 @@ module ApplicationHelper
   end
 
   def runs_column_chart(keyword, search_runs, selected_slot_start: nil, chart_end: nil)
-    success_runs = search_runs.select(&:success?)
-    return nil if success_runs.empty?
+    visible_runs = search_runs.reject(&:pending?)
+    return nil if visible_runs.empty?
 
     slot_duration = case keyword.check_frequency.to_s
     when "daily"     then 1.day
@@ -80,7 +80,7 @@ module ApplicationHelper
     slots = (0...30).map do |i|
       slot_start = now - (30 - i) * slot_duration
       slot_end   = now - (29 - i) * slot_duration
-      runs_in    = success_runs.select { |r| r.checked_at > slot_start && r.checked_at <= slot_end }
+      runs_in    = visible_runs.select { |r| r.checked_at > slot_start && r.checked_at <= slot_end }
       by_loc     = runs_in.sort_by(&:checked_at).each_with_object({}) { |r, h| h[r.location] = r }
       { label: slot_start.strftime(label_format), by_location: by_loc, slot_start: slot_start }
     end
@@ -97,7 +97,10 @@ module ApplicationHelper
                     (slot[:slot_start].to_i - selected_slot_start.to_i).abs < 3600
 
         if has_data
-          classes = selected ? "runs-slot runs-slot--selected" : "runs-slot"
+          all_failed = slot[:by_location].values.all?(&:failed?)
+          classes = [ "runs-slot" ]
+          classes << "runs-slot--selected" if selected
+          classes << "runs-slot--failed" if all_failed
           tag.a(href: keyword_search_runs_path(keyword, slot: slot[:slot_start].to_i, **chart_end_param),
                 class: classes,
                 data: { turbo_frame: "runs-section" }) { bar }
@@ -107,7 +110,7 @@ module ApplicationHelper
       })
     end
 
-    has_older_data = success_runs.any? { |r| r.checked_at < window_start }
+    has_older_data = visible_runs.any? { |r| r.checked_at < window_start }
     prev_chart_end = now - 30 * slot_duration
     next_chart_end = now + 30 * slot_duration
 

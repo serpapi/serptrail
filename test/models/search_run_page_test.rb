@@ -2,7 +2,7 @@ require "test_helper"
 
 class SearchRunPageTest < ActiveSupport::TestCase
   test "fixture pages always contain ten organic results" do
-    assert SearchRunPage.all.all? { |page| page.organic_results.size == 10 }
+    assert SearchRunPage.success.all? { |page| page.organic_results.size == 10 }
   end
 
   test "two-page keyword fixtures have matching run and page settings" do

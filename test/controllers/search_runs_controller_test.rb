@@ -33,4 +33,15 @@ class SearchRunsControllerTest < ActionDispatch::IntegrationTest
     assert_select "turbo-frame#search-run-results"
     assert_select ".muted", text: "No search results recorded for this run."
   end
+
+  test "index shows the error for a slot whose only run failed" do
+    failed_run = search_runs(:apple_iphone18_us_failed)
+
+    get keyword_search_runs_url(@keyword, slot: failed_run.checked_at.beginning_of_day.to_i), headers: @headers
+
+    assert_response :success
+    assert_select ".runs-slot--failed"
+    assert_select ".status-failed", text: "Failed"
+    assert_select ".search-run-error-message", text: failed_run.error_message
+  end
 end

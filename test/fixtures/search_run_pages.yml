@@ -1,3 +1,14 @@
+apple_iphone18_us_failed_page_1:
+  search_run: apple_iphone18_us_failed
+  page_number: 1
+  start: 0
+  status: failed
+  error_message: "SerpApi request timed out after 30s"
+  search_params: {"engine":"google","q":"iphone 18","gl":"us","num":10,"start":0}
+
+
+
+
 apple_iphone18_us_latest_page_1:
   search_run: apple_iphone18_us_latest
   page_number: 1
