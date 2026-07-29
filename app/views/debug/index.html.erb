@@ -1,0 +1,71 @@
+<div class="header">
+  <h1>Debug</h1>
+</div>
+
+<p class="muted">Most recent 1000 search runs across all keywords, with their pages and checks.</p>
+
+<ul>
+  <li>
+    SerpApi key:
+    <%= tag.span @serpapi_key_present ? "Set" : "Missing", class: [ "status", @serpapi_key_present ? "status-success" : "status-failed" ] %>
+  </li>
+  <li>
+    OpenAI key:
+    <%= tag.span @openai_key_present ? "Set" : "Missing", class: [ "status", @openai_key_present ? "status-success" : "status-failed" ] %>
+  </li>
+</ul>
+
+<% if @search_runs.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Checked at</th>
+        <th>Keyword</th>
+        <th>Location</th>
+        <th>Run status</th>
+        <th>Run error</th>
+        <th>Pages</th>
+        <th>Checks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @search_runs.each do |run| %>
+        <tr>
+          <td><%= run.checked_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= run.keyword&.query || "(deleted)" %></td>
+          <td><%= run.location %></td>
+          <td><%= tag.span run.status.capitalize, class: [ "status", "status-#{run.status}" ] %></td>
+          <td>
+            <% if run.error_message.present? %>
+              <small class="muted"><%= run.error_message %></small>
+            <% end %>
+          </td>
+          <td>
+            <% run.search_run_pages.sort_by(&:page_number).each do |page| %>
+              <div>
+                #<%= page.page_number %>
+                <%= tag.span page.status.capitalize, class: [ "status", "status-#{page.status}" ] %>
+                <% if page.error_message.present? %>
+                  <small class="muted"><%= page.error_message %></small>
+                <% end %>
+              </div>
+            <% end %>
+          </td>
+          <td>
+            <% run.checks.each do |check| %>
+              <div>
+                <%= tag.span check.status.capitalize, class: [ "status", "status-#{check.status}" ] %>
+                <%= check.keyword_target&.site&.name %>
+                <% if check.error_message.present? %>
+                  <small class="muted"><%= check.error_message %></small>
+                <% end %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No search runs recorded yet.</p>
+<% end %>

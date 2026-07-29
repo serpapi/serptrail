@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :views, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
   resources :locations, only: :index
 
+  get "debug", to: "debug#index"
+
   get "settings", to: "tenants#edit"
   resource :settings, controller: "tenants", only: [ :edit, :update ]
   resource :chat, controller: "chats", only: [ :show, :create, :destroy ]
