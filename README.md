@@ -81,84 +81,9 @@ SerpTrail is pretty minimal project. You can host it on any platform that suppor
 
 ## Getting started
 
-### 1. Create your `.env` file
+See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for local setup instructions.
 
-Copy the template below into a `.env` file in the project root. You'll fill in the generated values in the next two steps.
-
-```bash
-# Rails master key — generated in step 2
-RAILS_MASTER_KEY=
-
-# HTTP Basic Auth — protects the web interface, choose any values
-HTTP_AUTH_USERNAME=admin
-HTTP_AUTH_PASSWORD=changeme
-
-# Active Record Encryption keys — generated in step 3
-AR_ENCRYPTION_PRIMARY_KEY=
-AR_ENCRYPTION_DETERMINISTIC_KEY=
-AR_ENCRYPTION_KEY_DERIVATION_SALT=
-```
-
-### 2. Regenerate Rails credentials
-
-`config/credentials.yml.enc` is committed to the repository but was encrypted with a key you don't have. You must replace it before any `bin/rails` command will work, otherwise you'll get an `ActiveSupport::MessageEncryptor::InvalidMessage` error on every command.
-
-```bash
-rm config/credentials.yml.enc
-bin/rails credentials:edit
-```
-
-This creates a new `config/master.key` and a matching `credentials.yml.enc`. Your editor will open — just save and close it immediately without making changes.
-
-Then copy the contents of `config/master.key` into the `RAILS_MASTER_KEY=` line in your `.env`.
-
-### 3. Generate Active Record Encryption keys
-
-```bash
-bin/rails db:encryption:init
-```
-
-The output looks like:
-
-```
-active_record_encryption:
-  primary_key: <value>
-  deterministic_key: <value>
-  key_derivation_salt: <value>
-```
-
-Copy the three values into the matching lines in your `.env`. Generate them once and keep them stable — rotating them makes existing encrypted database values (e.g. a stored SerpApi key) unreadable.
-
-### 4. Set up the database and start the server
-
-```bash
-bin/setup --skip-server   # installs gems and prepares the database
-bin/rails db:seed         # creates the initial Tenant record
-bin/dev                   # starts the server
-```
-
-Open `http://localhost:3000` and log in with the credentials you set in step 1. Then go to **Settings** and enter your SerpApi key — that's the one secret stored in the database rather than in `.env`.
-
-> **Note:** `config/master.key` is gitignored and must never be committed. Back it up somewhere safe — losing it means losing access to your encrypted credentials.
-
-### 5. Running with Docker
-
-**Build and run:**
-
-```bash
-docker build -t serptrail .
-
-docker run -d \
-  --name serptrail \
-  -p 80:80 \
-  --env-file .env \
-  -v serptrail_storage:/rails/storage \
-  serptrail
-```
-
-The container runs `db:prepare` automatically on startup, so the database is created and migrated on first boot. All SQLite data is written to `/rails/storage` — the named volume keeps it across restarts.
-
-See [docs/PRODUCTION.md](docs/PRODUCTION.md) for full production deployment instructions, Docker Compose setup, and optional environment variables.
+For production deployment, Docker usage, and environment variable reference, see [docs/PRODUCTION.md](docs/PRODUCTION.md).
 
 ## Contributing
 
