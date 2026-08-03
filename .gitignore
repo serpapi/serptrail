@@ -30,6 +30,7 @@
 
 /public/assets
 
-# Ignore key files for decrypting credentials and more.
+# Ignore key files and encrypted credentials.
 /config/*.key
+/config/credentials.yml.enc
 

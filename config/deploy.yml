@@ -41,7 +41,7 @@ registry:
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
   secret:
-    - RAILS_MASTER_KEY
+    - SECRET_KEY_BASE
     - HTTP_AUTH_USERNAME
     - HTTP_AUTH_PASSWORD
     - SERPAPI_API_KEY
@@ -98,7 +98,7 @@ builder:
   #   RUBY_VERSION: ruby-4.0.1
   # secrets:
   #   - GITHUB_TOKEN
-  #   - RAILS_MASTER_KEY
+  #   - SECRET_KEY_BASE
 
 # Use a different ssh user than root
 ssh:

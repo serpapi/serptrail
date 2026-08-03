@@ -79,6 +79,12 @@ Adding more websites to an existing keyword does not increase usage because the 
 
 SerpTrail is pretty minimal project. You can host it on any platform that supports Ruby on Rails and SQLite. You can use the attached Dockerfile to build a containerized version or use the official prebuilt image from Docker Hub. For actual tracking you'll need a SerpApi key and optionally also an OpenAI key for the chat assistant.
 
+## Getting started
+
+See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for local setup instructions.
+
+For production deployment, Docker usage, and environment variable reference, see [docs/PRODUCTION.md](docs/PRODUCTION.md).
+
 ## Contributing
 
 Contributions are welcome! Open an issue or a pull request.

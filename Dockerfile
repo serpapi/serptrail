@@ -3,7 +3,7 @@
 
 # This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
 # docker build -t serptrail .
-# docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name serptrail serptrail
+# docker run -d -p 80:80 -e SECRET_KEY_BASE=<value from bin/rails secret> --name serptrail serptrail
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
