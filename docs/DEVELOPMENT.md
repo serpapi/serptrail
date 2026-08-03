@@ -10,7 +10,7 @@ Copy the example file and fill in your own values:
 cp .env.development.example .env.development
 ```
 
-Open `.env.development` and set values for each variable. The HTTP Basic Auth credentials protect the web interface locally — choose any values you like. Leave the `AR_ENCRYPTION_*` keys blank for now; you will generate them in the next step.
+Open `.env.development` and set values for each variable. The HTTP Basic Auth credentials protect the web interface locally — choose any values you like.
 
 ### 2. Generate Secret Key Base
 
